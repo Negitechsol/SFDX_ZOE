@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Institution_Master</fullName>
+    <active>true</active>
+    <label>Institution Master</label>
+    <picklistValues>
+        <picklist>Calendar_Activity_Duration_Type__c</picklist>
+        <values>
+            <fullName>Day</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Month</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Week</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Year</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Calendar_email_template__c</picklist>
+        <values>
+            <fullName>Infusion day</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New case generated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Infusion week1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Infusion week2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Infusion week3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Infusion week4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre infusion</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Kaltura Player</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PDF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

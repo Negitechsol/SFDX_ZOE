@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>FACID__c</columns>
+    <columns>FACNAME__c</columns>
+    <columns>FAC_TYPE_CODE__c</columns>
+    <columns>FAC_FDR__c</columns>
+    <columns>LTC__c</columns>
+    <columns>CAPACITY__c</columns>
+    <columns>ADDRESS__c</columns>
+    <columns>CITY__c</columns>
+    <columns>ZIP__c</columns>
+    <columns>FACADMIN__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Records</label>
+</ListView>

@@ -1,0 +1,184 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ZOE_LoginCntrl">
+	<aura:attribute name="name" type="String" />
+    <aura:attribute name="surname" type="String" />
+    <aura:attribute name="email" type="String" />
+    <aura:attribute name="matricula" type="String" />
+    <aura:attribute name="firstterms" type="Boolean" default="false"/>
+    <aura:attribute name="secondterms" type="Boolean" default="false"/>
+    <aura:attribute name="thirdterms" type="Boolean" default="false"/>
+    <aura:attribute name="nickname" type="String" />
+    <aura:attribute name="hasError" type="Boolean" />
+    <aura:attribute name="instituteList" type="List" default="[]" description="Institute Picklist Values"/>
+    <aura:attribute name="selectedInstituteList" type="List" default="[]" description="Selected Institution Picklist Values"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="isModal" type="boolean" default="false"/>
+    <aura:attribute name="isDisable" type="boolean" default="false"/>
+    <aura:attribute name="showcontent" type="String"/>
+        <c:ZOE_Login_Header/>
+    <aura:if isTrue="{!v.showcontent=='true'}">
+    <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide" />
+        <section class="contact-area">
+            <div class="bg-map"><img src="{!$Resource.zoe_img + '/img/bg-map.png'}" alt="image"/></div>
+                <div class="container">
+                    <div class="section-title">     
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            &nbsp;
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="contact-form">
+                                <form id="contactForm">
+                                    <div class="row">
+                                        <h2 class="login_h">REGISTRO </h2>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <lightning:input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Nombre"
+                                                    value="{!v.name}" maxlength="100" pattern="[a-zA-Z- À-ž]*" messageWhenPatternMismatch="por favor ingrese una entrada válida"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <lightning:input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Apellido"
+                                                    value="{!v.surname}" pattern="[a-zA-Z- À-ž]*" messageWhenPatternMismatch="por favor ingrese una entrada válida"/>
+                                            </div>
+                                        </div>                                       
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <lightning:input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Correo electrónico"
+                                                    value="{!v.email}" pattern="[a-z0-9].+@[a-z]+\.[a-z]{2,3}" messageWhenPatternMismatch="Ingrese una identificación de correo electrónico válida"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <lightning:select aura:id="profession" class="niceSelect">
+                                                    <option value="NURSE">Enfermera/o</option>
+                                                    <option value="PHARMACIST">Farmacéutica/o</option>
+                                                    <option value="NEUROPEDIATRICIAN">Neurologa/o Infantil</option>
+                                                    <option value="NEUROLOGIST">Neurologa/o</option>
+                                                    <option value="PEDIATRICIAN">Pediatra</option>
+                                                    <option value="OTHER">Otra</option>
+                                               </lightning:select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <lightning:input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Matrícula"
+                                                    value="{!v.matricula}"  pattern="[0-9]*" messageWhenPatternMismatch="Solo se permiten números"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <lightning:dualListbox aura:id="SelectInstitute"
+                               						name="Institute"
+                               						label="Seleccione Instituto"
+                               						sourceLabel="Instituto disponible"
+                               						selectedLabel="Instituto Seleccionado"
+                              						options="{!v.instituteList }"
+                               						value="{!v.selectedInstituteList}"
+                               						onchange="{!c.handleInstituteChange}"/>
+										</div>                                     
+                                        
+                                        <div class="col-lg-12 col-md-12">                                             
+                                       <div style="margin:auto;margin-top: 2%;">
+            							<div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-size_12-of-12">
+                                               <lightning:input aura:id="cbFirst" type="checkbox" onclick="{! c.opencModel }" value="{!v.firstterms}" label="Acepto los Términos y Condiciones del Sitio."/>   
+                                            </div>
+                                            <div class="slds-col slds-size_12-of-12">
+                                               <lightning:input aura:id="cbSecond" type="checkbox" onclick="{! c.openModel }" value="{!v.secondterms}" label="Acepto la Política de Privacidad del Sitio."/>   
+                                            </div>
+                                            <div class="slds-col slds-size_12-of-12">
+                                               <lightning:input aura:id="cbThird" type="checkbox" value="{!v.thirdterms}" onclick="{! c.thirdcb }" label="Los materiales incluidos en este Sitio han sido concebidos exclusivamente para los profesionales de la salud con fines informativos y educativos. En tal sentido, manifiesto ser profesional de la salud, por lo que quiero acceder al Sitio y a esta información."/>   
+                                            </div>
+                                        </div>   
+                				</div>      
+            <aura:if isTrue="{!v.isModalOpen}">
+             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" >
+                    <header class="slds-modal__header">
+                         <h2>TÉRMINOS Y CONDICIONES</h2>
+                        	<lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closecModel }"
+                                              alternativeText="close"
+                                              
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                                              
+                    </header>
+                    <body class="slds-modal__body" style="overflow-x: hidden; padding:10px;">
+                        	<c:Terms_Conditions/>
+                    <!--Modal/Popup Box Body Starts here-->
+                     
+                    </body>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="de acuerdo"
+                                          title="Cancel"
+                                          onclick="{! c.closecModel }"/>
+                        
+                    </footer>
+                 </div>
+               </section> 
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+             </aura:if>   
+            <aura:if isTrue="{!v.isModal}">
+             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" >
+                    <header class="slds-modal__header">
+                         <h2>Aviso de Privacidad para Páginas Web y Aplicaciones Móviles</h2>
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                                              
+                    </header>
+                    <body class="slds-modal__body" style="overflow-x: hidden; padding:10px;">
+                        	<c:privacy_policies/>
+                    </body>
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="de acuerdo"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                    </footer>
+                 </div>
+               </section> 
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+             </aura:if>  
+               					<lightning:button variant="brand"
+                                            label="Inscribirse"
+                                            title="Sign Up"
+											disabled="{!v.isDisable}"
+                                            class="btn btn-primary"
+                                            onclick="{!c.register}" iconName="utility:chevronright" iconPosition="right"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>                        
+                        <div class="col-lg-3">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+    <c:ZOE_Login_Footer />
+        </aura:if>
+</aura:component>

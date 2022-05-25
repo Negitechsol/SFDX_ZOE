@@ -1,0 +1,190 @@
+<aura:component >
+    
+<p>22.01.11_Versión_01</p>
+
+<p>Fecha de vigencia: DD de MM de 2022</p>
+
+<p>Los servicios, materiales, entrenamientos e información disponibles en este sitio (en adelante, el “Sitio”)
+    están destinados exclusivamente a profesionales de la salud, residentes en Argentina. Su acceso a este Sitio
+    y su uso está sujeto a la legislación y reglamentación aplicables en Argentina y a los siguientes Términos y
+    Condiciones de uso. Al acceder, navegar y usar este Sitio, Usted declara y garantiza ser un profesional de la
+    salud con matrícula vigente emitida válidamente en la República Argentina y acepta estos Términos y Condiciones
+    y la Política de Privacidad, sin limitación ni condicionamiento alguno, y reconoce que éstos reemplazan y dejan
+    sin efecto a todo otro acuerdo relativo al uso de este Sitio existente entre Usted y Novartis Argentina S.A.</p>
+
+<p>La información que aparece en este Sitio es únicamente informativa, educativa y tiene el propósito de ofrecer
+    a Usted una herramienta para acompañarlo durante el recorrido del tratamiento con Zolgensma (onasenogén abeparvovec),
+    brindando información y con funcionalidades interactivas que le darán soporte para cada etapa del tratamiento.</p>
+<p>La información brindada en este Sitio es meramente orientativa por lo que deberá recurrir al último prospecto
+    aprobado por ANMAT para información adicional, por tanto, toda esta información contenida en el presente no
+    reemplaza a la del prospecto bajo concepto alguno.   Adicionalmente, en una sección específica, podrá encontrar,
+    por ejemplo, un Z-Kit calculadora que podrá ayudarle a Usted, como profesional de la salud, a calcular la configuración
+    del kit de Zolgensma para un peso determinado siguiendo lo establecido en el último prospecto aprobado por ANMAT, y en
+    última instancia, a orientarlo en cómo podría realizar la prescripción del producto. Sin perjuicio de ello, el Sitio y
+    la información contenida en él no debe ser interpretada como recomendación y/o definición médica, ni reemplaza la
+    consulta médica ni deberá ser tomada como base para tomar decisiones y/o emprender acciones médicas.</p>
+
+<p>También podrá observar que en el Sitio existe disponible un calendario para que el profesional de la salud pueda
+    indicar la fecha de infusión de sus pacientes y luego automáticamente el Sitio le podrá arrojar recordatorios de
+    los procesos a seguir relativos al monitoreo antes, durante y después de la infusión de Zolgensma, tal y como se
+    describe en el prospecto vigente aprobado por ANMAT. Sin perjuicio de ello, tales recordatorios e información es
+    meramente orientativa, siguiendo lo aprobado en el prospecto y no suplanta, de manera alguna, la consulta, sugerencia,
+    recomendación y/o definición médica del médico tratante.</p>
+
+<p>1. Usted puede visitar y recorrer libremente el Sitio pero sólo puede extraer información del mismo, incluyendo
+    textos, imágenes, audio y video (que en conjunto, serán denominados en adelante como la “Información”) para uso
+    personal no comercial. Usted no podrá distribuir, modificar, transmitir, reutilizar, reenviar ni utilizar la
+    Información para fines públicos o comerciales, sin el permiso previo y escrito de Novartis Argentina S.A.</p>
+
+<p>2. Usted debe mencionar y reproducir cada uno y todos los avisos referidos al derecho de autor y a cualquier otro
+    derecho de propiedad contenido en cualquier información que Usted extraiga. Debe asumir que todo lo que Usted
+    vea o lea en este Sitio está protegido por el derecho de propiedad intelectual a menos que en algún caso particular
+    se notifique expresamente lo contrario. Este material no puede ser utilizado con otros fines ni objeto que los que
+    se establecen en estos Términos y Condiciones o en el texto mismo del Sitio, salvo que se tuviese un permiso específico
+    dado por escrito y en forma previa por Novartis Argentina S.A. Novartis Argentina S.A. no garantiza ni asume que el
+    uso que Usted haga del material exhibido en el Sitio no infringirá derechos de terceros que no sean de propiedad de
+    Novartis Argentina S.A. y/o de sus afiliadas.</p>
+
+<p>3. Para poder acceder al Sitio, es requisito registrarse previamente brindando ciertos datos personales sobre Usted.
+    El registro incluye la creación de una contraseña con la finalidad de verificar la identidad de Usted como profesional
+    de la salud. Toda vez que la contraseña es creada por el usuario, éste será el único responsable de guardar y preservar
+    su confidencialidad. Novartis Argentina S.A. respetará en todo momento la confidencialidad de su información y la de
+    sus datos proporcionados en su registro, de conformidad con la Política de Privacidad.</p>
+
+<p>4. Con excepción de la autorización limitada que antecede, no se le otorga ni se le confiere a Usted ninguna licencia
+    ni derecho sobre la información ni sobre cualquier otro derecho de propiedad intelectual de Novartis Argentina S.A.</p>
+
+<p>5. El Sitio puede contener o hacer referencia a derechos sobre patentes, marcas, información societaria, tecnología,
+    productos, procesos y otros derechos de propiedad de Novartis Argentina S.A. y/o de otras partes. No se le otorga
+    ni se le confiere a Usted licencia o derecho de propiedad alguno sobre marcas, patentes, secretos industriales,
+    tecnologías, productos, procesos y otros derechos de propiedad de cualquier otro tipo de Novartis Argentina S.A.
+    y/o de otras partes.</p>
+
+<p>6. Aunque Novartis Argentina S.A. hace todos los esfuerzos razonables para asegurar que la información sea precisa
+    y actual, la información puede contener imprecisiones técnicas y/o errores tipográficos. Novartis Argentina S.A.
+    se reserva el derecho de realizar cambios, correcciones y/o mejoras en la información y en los productos y
+    entrenamientos descritos en dicha información, en cualquier momento y sin previo aviso. Novartis Argentina S.A.
+    no promete ni garantiza la precisión de cualquier información. Novartis Argentina S.A. no asume penalidades ni
+    responsabilidades por errores u omisiones en el contenido del Sitio. TODA LA INFORMACIÓN SE PROVÉE DE LA FORMA
+    MÁS ADECUADA Y ASERTIVA POSIBLE, SIN GARANTÍAS DE NINGUNA ESPECIE, SEAN EXPRESAS O IMPLÍCITAS INCLUYENDO - SIN
+    LIMITARSE A ELLO - LAS GARANTIAS IMPLÍCITAS DE COMERCIABILIDAD, ADAPTABILIDAD A UN DETERMINADO FIN O USO O DE
+    NO-VIOLACIÓN DE LEYES O DERECHOS INDEPENDIENTEMENTE DE SI NOVARTIS ARGENTINA S.A. FUE INFORMADA SOBRE LA POSIBILIDAD
+    DE DICHOS DAÑOS. Novartis Argentina S.A. tampoco asume responsabilidad, ni será pasible por ningún daño o virus que
+    puedan afectar vuestro equipo de computación o cualquier otro elemento con motivo de su acceso al Sitio o el uso
+    por Usted de la información. </p>
+
+<p>7. Usted podrá ingresar al Sitio información relacionada con pacientes a la cual Novartis no tendrá acceso alguno
+    ni la utilizará para ningún propósito. Sin perjuicio de ello, toda comunicación o material que Usted transmita al
+    Sitio por correo electrónico o de otra forma, incluyendo, por ejemplo, preguntas, comentarios, sugerencias o
+    similares es y será tratada como no confidencial y como no protegida por derechos de propiedad intelectual. En
+    tal sentido, Novartis Argentina S.A. es libre de usar toda idea, concepto, know-how o técnicas contenidas en
+    cualquier comunicación que usted envíe al Sitio por cualquier motivo que sea, incluyendo -sin limitarse a ello- el
+    desarrollo, la elaboración y comercialización de productos utilizando dicha información.</p>
+
+<p>8. El Sitio puede contener información sobre productos y servicios con alcance mundial, no todos los cuales están
+    disponibles en cada localidad. Una referencia a un producto o servicio de Novartis Argentina S.A. no implica que
+    dicho producto o servicio esté o vaya a estar disponible en su localidad o ubicación geográfica.</p>
+
+<p>9. Novartis Argentina S.A. no ha revisado parcial ni totalmente sitios web de terceros que contengan vínculos con
+    este Sitio y no es responsable del contenido de dichas páginas fuera del Sitio o de otros sitios vinculados a éste.
+    Si Usted deseara vincular su sitio web con este Sitio, sólo puede vincular el portal (home page). No podrá vincularse
+    con ninguna otra página dentro de este Sitio sin el previo consentimiento escrito de Novartis Argentina S.A.</p>
+
+<p>10. Novartis Argentina S.A. no acepta responsabilidad por vínculos provenientes de nosotros hacia otros y,
+    en particular, no somos responsables de la precisión ni la legalidad del contenido de estos últimos. No aceptamos
+    responsabilidad derivada de incumplimientos u omisiones en las políticas de privacidad de terceros.</p>
+
+<p>11. Aunque Novartis Argentina S.A. puede periódicamente monitorear o revisar discusiones, charlas (chats),
+    correos electrónicos (e-mail), transmisiones, boletines y cosas similares en el Sitio, Novartis Argentina S.A.
+    no tiene obligación de hacerlo y no asume responsabilidad ni obligación que surja del contenido de alguna fuente
+    ni por cualquier error, difamación, discriminación, libelo, calumnia, omisión, falsedad, obscenidad, pornografía,
+    profanación, peligro, revelación de secretos o imprecisión contenida en alguna información dentro de tales fuentes
+    del Sitio. Tiene Usted prohibido enviar o trasmitir cualquier material ilegal, amenazador, ofensivo, difamatorio,
+    discriminador, obsceno, escandaloso, provocador, pornográfico o profano o material que pudiese constituir o alentar
+    alguna conducta que podría considerarse injuriosa, dar origen a alguna penalidad o viole de alguna otra forma
+    cualquier ley. Novartis Argentina S.A. cooperará plenamente con toda orden de autoridad competente administrativa
+    y/u orden de juez competente que solicite o requiera que Novartis Argentina S.A. revele la identidad de todo aquél
+    que envíe dicha información o material.</p>
+
+<p>12. Si Novartis Argentina S.A. llegase a conocer que Usted ha violado alguno de los Términos y Condiciones, Novartis
+    Argentina S.A. puede tomar medidas correctivas en forma inmediata, incluyendo el evitar que el usuario utilice los
+    servicios, información, entrenamientos y otras funcionalidades ofrecidas por Novartis Argentina S.A., pudiendo esta
+    última extraer toda información, datos y contenidos puestos en el Sitio por el usuario en cualquier momento y sin
+    previo aviso. Novartis Argentina S.A. no acepta ninguna responsabilidad derivada de esta acción.</p>
+
+<p>13. Usted indemnizará a Novartis Argentina S.A., manteniéndola indemne contra todo reclamo, pérdida, daños, pasivos,
+    juicio, acción, demanda, procedimiento (sean judiciales o administrativos) y gastos que surjan de o se relacionen
+    con el uso de alguna discusión, charla (chat), envío, transmisión, boletín y similar, contenido en el Sitio, incluyendo
+    todo lo que pueda surgir de una violación de esta notificación. Dichos reclamos incluirán -sin limitarse a ello- reclamos
+    basados en violaciones a patentes, marcas, nombres comerciales, propiedad intelectual, dilución de marcas, interferencia
+    distorsiva con un contrato o con relaciones comerciales posibles, competencia desleal, difamación o injuria a la
+    reputación, interpretación errónea o violación de garantías u otros daños o lesiones al negocio.</p>
+
+<p>14. Novartis Argentina S.A. periódicamente puede revisar estos Términos y Condiciones y proceder a actualizar este texto.
+    Usted queda obligado a los nuevos textos actualizados y, por lo tanto, periódicamente deberá visitar este Sitio para
+    revisar los Términos y Condiciones actualizados a los cuales queda Usted vinculado y obligado. Si Usted no está de
+    acuerdo con estos Términos y Condiciones (ya que pueden ser modificados periódicamente) o no está conforme con este
+    Sitio o con las herramientas, información, servicios, entrenamientos que en este Sitio se ofrecen, la única solución 
+    posible y exclusiva es dejar de utilizarlo. Por el contrario, si Usted recorre la página, Novartis Argentina S.A.
+    considerará que ha aceptado los Términos y Condiciones de entera conformidad. Cualquier cambio se publicará en esta
+    página y se acompañará de una nueva fecha de vigencia en la parte superior de la misma. Seguir visitando el Sitio
+    después de una actualización de los Términos y Condiciones significa que está de acuerdo y está obligado por dichos
+    cambios.</p>
+
+<p>15. Ninguna parte de este Sitio constituye una invitación u obligación para que los profesionales de la salud ofrezcan,
+    promuevan y/o prescriban los productos de Novartis Argentina S.A. </p>
+
+<p>16. Estos Términos y Condiciones y el uso del Sitio estarán gobernados por las leyes de la República Argentina.
+    Usted expresamente entiende y acepta someterse a la jurisdicción exclusiva de los Tribunales Nacionales en lo
+    Comercial con asiento en la Ciudad de Buenos Aires, Argentina, renunciando expresamente a cualquier otro fuero 
+    o jurisdicción que pudiera aplicar.</p>
+
+<p>17. Protección de Datos Personales. El Sitio se utiliza para recolectar dos conjuntos de datos de datos personales
+    y las condiciones y justificaciones del tratamiento de los mismos varían según los datos de que se trate:</p>
+
+<p>17.1 Datos de Usuarios. En el caso de los datos personales correspondientes a Usuarios del Sitio, los mismos son
+    gestionados por Novartis en carácter de responsable de tratamiento. Al respecto, aplican los términos y condiciones
+    indicados en el <a href="https://prod.novartis.com.ar/politica-de-privacidad-y-cookies" target="blank">Aviso de Privacidad.</a></p>
+
+<p>17.2 Datos de Pacientes. En el caso de los datos personales correspondientes a pacientes, NOVARTIS actúa en carácter
+    de encargado de tratamiento y los responsables de los datos personales son aquellos usuarios que ingresan los datos
+    a la plataforma y/o los tratan a través de la misma. Por tal motivo, en nuestro carácter en encargados de tratamiento
+    nos comprometemos a lo siguiente:</p>
+
+<p>17.2.1	Objeto y Duración de las actividades de Tratamiento: Las actividades de tratamiento consisten en la provisión
+    de una plataforma que tiene como objetivo brindar información sobre Zolgensma, desde la indicación hasta el monitoreo
+    antes, durante y después de la infusión de Zolgensma, acorde al último prospecto aprobado por ANMAT. Además, dispone
+    de funcionalidades y/o herramientas para que los profesionales puedan usar en distintas instancias del tratamiento,
+    como ser: una calculadora para determinar la configuración del kit de Zolgensma para un paciente con un peso 
+    determinado; un sistema de notificaciones que se genera a partir de la fecha de infusión de paciente; un Lab-tracker
+    que permite seguir la evolución del paciente a partir de los resultados de laboratorio, la dosis de corticoesteroides
+    indicada y/o la evolución de la valoración CHOP-INTEND. Todas las funcionalidades son opcionales de uso, pudiendo el
+    usuario de la plataforma eliminar aquellos datos que desee. En caso de datos que no hayan sido eliminados por el 
+    usuario, los mismos se mantendrán en la plataforma hasta que ocurra la primera de las siguientes circunstancias
+    (a) Novartis decida, a su exclusivo criterio, dar de baja la plataforma según se indica en los presentes Términos 
+    y Condiciones; (b) la cancelación de la cuenta del usuario por cualquier motivo que fuere; o (c) 10 años contados
+    desde la generación de los datos.</p>
+
+<p>17.2.2	Especificación de los Datos Personales: Nombre y/o apellido o iniciales, fecha de infusión de Zolgensma,
+    resultados de laboratorios del paciente requeridos según prospecto (transaminasas) y valores de referencia del 
+    laboratorio, valoración de CHOP-INTEND, dosificación de corticoesteroides. </p>
+
+<p>17.2.3	Novartis se compromete a no utilizar tales datos personales para propósitos ajenos a la administración y 
+    mantenimiento de la plataforma. Adicionalmente, se compromete a implementar y mantener medidas técnicas y
+    administrativas de confidencialidad y seguridad de los datos destinadas a protegerlos frente a posibles ataques y
+    preservar la integridad de los mismos y que sean adecuadas a la naturaleza de los datos y a los estándares de la 
+    industria.</p>
+
+<p>17.2.4	Por medio de la presente nos reservamos el derecho, y el Usuario consiente, a contratar a subencargados 
+    de tratamiento tanto en el país como en el extranjero, preservando siempre la seguridad y confidencialidad de los
+    datos y cumpliendo con la legislación aplicable, incluso en lo relativo a transferencias internacionales de datos
+    personales.</p>
+
+<p>17.2.5	Es responsabilidad del Usuario asegurarse de que, tanto la recolección como el tratamiento de los datos
+    personales cumplen con la legislación aplicable, incluyendo sin limitación la Ley 25.326 sobre Protección de Datos
+    Personales y su normativa modificatoria y complementaria. De igual manera, será responsabilidad del Usuario dar 
+    respuesta a los pedidos de acceso, rectificación, cancelación y/u oposición al tratamiento de datos personales, 
+    para lo cual podrá contar con asistencia técnica razonable de Novartis en la medida de las posibilidades técnicas
+    del Sitio y del tratamiento realizado a través del mismo.</p>
+	
+</aura:component>

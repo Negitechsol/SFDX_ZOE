@@ -1,0 +1,96 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="NewInfusionDateCntrl">
+    <aura:attribute name="propertyRecord" type="User_Infusion_Dates__c" />
+    <aura:attribute name="isInfBtnActive" type="Boolean" default="false" />
+    <aura:attribute name="calList" type="LIST"/>
+    <aura:attribute name="valSel" type="String"/>
+    <aura:attribute name="showcontent" type="String" default="false"/>
+    <aura:attribute name="showselect" type="String" default="false"/>    
+    <aura:attribute name="showmsg" type="String" default="false"/>    
+    <aura:attribute name="status" type="String"/>
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="dateInfu" type="Date" />
+    <aura:attribute name="refId" type="String" />
+    <aura:attribute name="reqType" type="String" />
+    <aura:attribute name="recordError" type="String"/>
+	<lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide" />
+    <aura:attribute name="fields" type="String[]" default="['Name','Patient_Reference_ID__c','Infusion_Date__c','Status__c']" />
+    <aura:attribute name="recordId" type="String"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <c:ZOE_HEADER />
+    
+    <!-- Modal/Popup Box starts here-->
+<div class='minHeight300'></div>
+<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" 
+   aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+   <div class="slds-modal__container">
+      <!-- Modal/Popup Box Header Starts here-->
+      <header class="slds-modal__header ">
+         <lightning:buttonIcon iconName="utility:close"
+            onclick="{! c.cancelDialog }"
+            alternativeText="close"
+            variant="bare-inverse"
+            class="slds-modal__close"/>
+         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Editar paciente</h2>
+      </header>
+      <!--Modal/Popup Box Body Starts here-->
+      <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+         <div id="main">
+            <aura:if isTrue="{!v.showselect=='true'}">
+            <lightning:select class="dropdown selectpatient" value="{!v.valSel}" onchange="{! c.onChange }">
+               <aura:iteration items="{!v.calList}" var="offer" >
+                  <option  value="{!offer.value}" >{!offer.label}</option>
+               </aura:iteration>
+            </lightning:select>
+           </aura:if>
+         </div>
+         
+         <aura:if isTrue="{!v.showcontent=='true'}">
+            <lightning:input name="Name" 
+               required="true" 
+               value="{!v.name}" 
+               label="Nombre" 
+               maxlength="255" onkeyup="{!c.onkeypress}" pattern="([A-z0-9À-ž\s]+)" messageWhenPatternMismatch="Allowed only alphanumeric"/>
+            <lightning:input type="Date" name="Infusion Date" 
+               required="true" 
+               value="{!v.dateInfu}" 
+               label="Fecha de infusión" 
+               maxlength="255"/>
+            <div class='delpatient'>
+               <ui:inputCheckbox aura:id="delpatient" />
+               <p class="pdelpatient"> Eliminar paciente</p>
+            </div>
+            <br />
+            <center>
+               <lightning:button variant="Brand" 
+                  label="Guardar" 
+                  title="Save" 
+                  onclick="{!c.handleSuccess}" disabled="{!v.isInfBtnActive}"/>
+               <lightning:button variant="Neutral" 
+                  label="Cancelar" 
+                  title="Cancel" 
+                  onclick="{!c.cancelDialog}"/>
+            </center>
+         </aura:if>
+         <aura:if isTrue="{!v.showmsg=='true'}">
+            <br />
+            <div id='On-DemandP' class="col-lg-12 col-md-12 curvDivfooter dropdown">
+               <p style='background:#8a199c;padding:10px;color: #FFF !important;border-radius: 10px 0px 10px 0px;'>
+                  <b>Fecha de infusión anterior a hoy</b>
+               </p>
+            </div>
+         </aura:if>
+      </div>
+      <!--Modal/Popup Box Footer Starts here-->
+      <footer class="slds-modal__footer">
+      </footer>
+   </div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+   
+    <div id="footer_content">
+        <c:ZOE_FOOTER />
+    </div>
+    
+   
+</aura:component>

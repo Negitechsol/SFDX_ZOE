@@ -1,0 +1,20 @@
+.THIS {
+}
+.THIS .minHeight300{
+    min-height:600px;
+}
+.THIS .header{
+    padding:0px !important;
+}
+.THIS .delpatient{
+    display:flex;
+    margin-top: 2%;
+}
+.THIS .pdelpatient
+{
+    line-height: 15px !important;
+    padding-left: 2% !important;
+}
+.THIS .slds-modal__content{
+    min-height:300px !important;
+}

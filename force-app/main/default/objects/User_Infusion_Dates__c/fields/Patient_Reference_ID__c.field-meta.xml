@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Patient_Reference_ID__c</fullName>
+    <description>Unique ID</description>
+    <displayFormat>{YYYY}{MM}{DD}{0000}</displayFormat>
+    <externalId>true</externalId>
+    <label>Patient Reference ID</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>AutoNumber</type>
+</CustomField>

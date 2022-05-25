@@ -1,0 +1,8 @@
+.THIS {
+}
+.THIS .minHeight300{
+    min-height:600px;
+}
+.THIS .header{
+    padding:0px !important;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Functionality__c</fullName>
+    <externalId>false</externalId>
+    <label>Functionality</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Z-Kit Calculator</fullName>
+                <default>false</default>
+                <label>Z-Kit Calculator</label>
+            </value>
+            <value>
+                <fullName>Virtual Assistant</fullName>
+                <default>false</default>
+                <label>Virtual Assistant</label>
+            </value>
+            <value>
+                <fullName>Lab Tracker</fullName>
+                <default>false</default>
+                <label>Lab Tracker</label>
+            </value>
+            <value>
+                <fullName>Infusion Date</fullName>
+                <default>false</default>
+                <label>Infusion Date</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,160 @@
+.THIS .not-allowed{
+	cursor:not-allowed !important;
+}
+.THIS .f_w_100{
+     padding:10px; font-weight:600;
+}
+.THIS .map_align{
+     text-align: center;
+}
+.THIS .slds-has-coordinates{
+    background: none !important;
+    padding: 0px !important;
+}
+.THIS .w150{
+    width: 150px !important;
+}
+.THIS .d_f{
+     display: flex;
+     padding: 37px 20%;
+}
+.THIS .headerText{
+    background-color:#19ce67;
+}
+.THIS .headerText h5{
+    color:#fff;
+}
+.THIS .mainarea{
+    display:none !important;    
+}
+.THIS .bg-1{
+    background-image: url('/ZOE/resource/1639564096000/banner_img/img/calculatorban.jpg') !important;
+}
+.THIS .bg-2{
+    background-image: url('/ZOE/resource/1639564096000/banner_img/img/calenderban.jpg') !important;
+}
+.THIS .bg-3{
+    background-image: url('/ZOE/resource/1639564096000/banner_img/img/labtrackerban.jpg') !important;
+}
+
+.THIS .item-bg1 {
+            background-image: url('/ZOE/resource/1639564096000/zoe_img/img/main-banner1.jpg');
+        }
+        .THIS .item-bg2 {
+            background-image: url('/ZOE/resource/1639564096000/zoe_img/img/main-banner2.jpg');
+        }
+        .THIS .item-bg3 {
+            background-image: url('/ZOE/resource/1639564096000/zoe_img/img/main-banner3.jpg');
+        }.THIS .mapbg {
+            background-image: url('/ZOE/resource/1648751920000/mapbg');
+    		width:100%;
+    		height:100%;
+    		background-repeat:no-repeat;
+    		background-size:cover;
+    		border: 2px solid #abaaaa; 
+			box-shadow: 5px 7px 5px 0px rgba(150,145,145,0.75);
+    		
+		}
+.THIS .mapcontainer{
+   /* height:100px;*/
+}
+.THIS .slds-coordinates__title{
+    display:none !important;
+}
+.THIS .featureclk{
+    cursor:pointer;
+}
+.THIS h4{
+    color: #8a199c;
+    font-weight: bolder !important;
+}
+.THIS .shape55 {
+    position: absolute;
+    right: 0px;
+    top: 72%;
+    z-index: -1;
+    -webkit-animation: moveBounce 5s linear infinite;
+    animation: moveBounce 5s linear infinite;
+}
+.THIS .slds-select_container{
+    width:80%;
+}
+.THIS .slds-select{
+    font-size:14px;
+}
+.THIS .DD .slds-form-element {
+    display: flex;
+}
+.THIS .prescription{
+  border-radius: 6px;
+  background-color: #f4f9fd;
+  font-size: 14px;
+  font-family: sans-serif;
+  color: black;
+}
+.THIS .quantity span{
+    padding:0px 8px;
+    line-height:1.5;
+    color:red;
+    border-bottom: 1px solid black;
+}
+.THIS .prescription p{
+    font-size: 14px;
+    color:black;
+}
+.THIS .rx{
+    font-size:60px;
+}
+.THIS .quantityVal{
+    color: #19ce67;
+    font-weight: 600;
+}
+.THIS .contactmail{
+    color: #19ce67;
+    font-weight: 600;
+}
+.THIS h1 {
+    color: #8a199c !important;
+}
+.THIS h2 {
+    color: #8a199c !important;
+}
+.THIS h3 > a {
+    color: #8a199c !important;
+}
+.THIS .main-services-box:hover > h3 > a{
+    color:#FFF !important;
+}
+.THIS .single-services-box:hover > h3 > a{
+    color:#FFF !important;
+}
+.THIS .modal-button{
+    padding:15px;
+}
+
+
+.THIS .owl-stage{
+    display:flex !important;
+}
+
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .THIS .main-banner-content h1{
+        font-size:30px;
+    }
+} 
+@media only screen and (max-width: 767px){
+    .THIS .main-banner-content h1{
+        font-size:25px;
+    }
+    .THIS .single-services-box{
+        height:300px;
+    }
+    .THIS p{
+        font-size:14px !important;
+    }
+    
+}

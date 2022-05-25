@@ -1,0 +1,168 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ZOE_Contact" >
+    <aura:attribute name="userlanguage" type="String" />
+    <aura:attribute name="showcontent" type="String"/>
+    
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="email" type="String" />
+    <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide" />
+    
+    <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <c:ZOE_HEADER />
+    <aura:if isTrue="{!v.showcontent=='true'}">
+	<section class="page-title-area">
+        <div class="d-table banner">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 							 <h2>Contact</h2>
+                            	 <aura:set attribute="else">
+                         	 <h2>Contacto</h2>
+                            	 </aura:set>
+                        </aura:if>
+                        <ul>
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li><a href="{!$Label.c.sitecontext + 'zeolandingpage'}" onclick="{!c.activeLink}">Home</a></li>
+                        <aura:set attribute="else">
+                           <li><a href="{!$Label.c.sitecontext + 'zeolandingpage'}" onclick="{!c.activeLink}">Casa</a></li>
+                        </aura:set>
+                     </aura:if>
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+ 							 <li>Contact</li>
+                            	 <aura:set attribute="else">
+                         	 <li>Contacto</li>
+                            	 </aura:set>
+                        	</aura:if>  
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        <section class="main-services-area ptb-50">
+        <div class="container">
+            <div class="section-title">
+                <img class="title_img" src="{!$Resource.home_icons + '/img/contact.png'}" alt="indicacion" />
+                    <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h4 class='sub2-title'>Contact</h4> 
+                        	<aura:set attribute="else">
+                       	<h4 class='sub2-title'>Contacto</h4>
+                       	 	</aura:set>
+                    </aura:if>
+                 </div>    
+           
+            <div class="row">
+                <div class="col-lg-2">
+                    &nbsp;
+                </div>
+                <div class="col-lg-8">
+                    <blockquote class="wp-block-quote quote_css">
+                        
+            	                    <div class="services-details-desc">
+                            <!-- <div class="services-details-image text-center">
+                                <img src="assets/img/psp.png" alt="image" width="150">
+                            </div> -->
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+                            
+                        	<p class="mb_20">Fill out the following form if you want someone from the Novartis team to contact you:</p>
+                        		<aura:set attribute="else">
+                       		<p class="mb_20">Llená el siguiente formulario si querés que alguien del equipo de Novartis se comunique con vos:</p>
+                        		</aura:set>
+                    </aura:if>
+                        <div class="form-group width_input">
+                            <lightning:input
+                                             type="text" 
+                                             class="form-control formInp"
+                                             data-error="Please enter your name"  onkeyup="{!c.onkeypress}"  placeholder="xyz@gmail.com" 
+                                             value="{!v.email}" pattern="[a-z0-9].+@[a-z]+\.[a-z]{2,3}" messageWhenPatternMismatch="Ingrese una identificación de correo electrónico válida"/>
+                            <!--<input type="text" class="form-control formInp" aura:id="auraidemail" 
+                                   data-error="Please enter your name" placeholder="usermail@mail" onchange="{!c.inputChanged}"/>
+                                             <div class="help-block with-errors"></div> -->
+                        </div>
+                                         <aura:if isTrue="{!v.userlanguage=='English'}">
+                                            
+                                  <div class="consult"><b> Reason for consultation: </b></div>
+                        					<aura:set attribute="else">
+                       		 	 	  <div class="consult"><b>Motivo de consulta:</b> </div>
+                       	 					</aura:set>
+                    			</aura:if>
+                        <!--<select class="form-group width_input formInp" id="auraidname" onchange="{!c.selectChanged}">-->
+                       <lightning:select class="form-group width_input formInp" name="selectItem" aura:id="selectItem"  onchange="{!c.selectChanged}">
+                           
+                                                <option>
+                                                    <aura:if isTrue="{!v.userlanguage=='English'}">
+                                  						Information about the reception of the product.
+                        									<aura:set attribute="else">
+                       		 	 						Información sobre la recepción del producto.
+                       	 									</aura:set>
+                    								</aura:if>
+                            					</option>
+                                                <option>
+                                                    <aura:if isTrue="{!v.userlanguage=='English'}">
+                                  						Information about the infusion.
+                        									<aura:set attribute="else">
+                       		 	 						Información sobre la infusión.
+                       	 									</aura:set>
+                    								</aura:if>
+												</option>
+                                                <option>
+                                                    <aura:if isTrue="{!v.userlanguage=='English'}">
+                                  						Information about Zolgensma® (onasemnogene abeparvovec).
+                        									<aura:set attribute="else">
+                       		 	 						Información sobre Zolgensma® (onasemnogén abeparvovec).
+                       	 									</aura:set>
+                    								</aura:if>
+                            					</option>
+                                                <option>
+                                                    <aura:if isTrue="{!v.userlanguage=='English'}">
+                                  						Other.
+                        									<aura:set attribute="else">
+                       		 	 						Otra.
+                       	 									</aura:set>
+                    								</aura:if>
+                            					</option>
+                        </lightning:select>
+                        <div class="text_left">
+                        <button class="btn btn-primary">
+							<aura:if isTrue="{!v.userlanguage=='English'}">
+                        		<a href="javascript:;" class="c_f" onclick="{!c.notify}">I want to be contacted</a> <i class="flaticon-right-chevron"></i>
+                        			<aura:set attribute="else">
+                       			<a href="javascript:;" class="c_f" onclick="{!c.notify}">Quiero ser contactado</a> <i class="flaticon-right-chevron"></i>
+                       	 			</aura:set>
+                    		</aura:if>                            
+                        </button>
+                         </div>
+						 </div>
+                  
+                    
+
+                               <cite>Tom Cruise</cite>
+                                </blockquote>
+
+                </div>
+                <div class="col-lg-2">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+            <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+    </section>
+    
+       <section class="fun-facts-area1 f_f_a">                
+             <p class="f_f_a_p">
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+                                The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+                                     <aura:set attribute="else">
+                                La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+                                     </aura:set>
+                            </aura:if>
+             </p>	
+        </section>
+
+
+    <div id="footer_content"><c:ZOE_FOOTER /></div>
+</aura:if>
+</aura:component>

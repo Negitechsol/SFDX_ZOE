@@ -1,0 +1,635 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="MasterConfigController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="trainings" type="Master_Configuration__c"/>
+    <aura:attribute name="totalquestions" type="String" default="4"/>
+    <aura:attribute name="isModal" type="boolean" default="false"/>
+    <aura:attribute name="finalResultModel" type="boolean" default="false"/>
+     <aura:attribute name="isModal2" type="boolean" default="false"/>
+    <aura:attribute name="finalResultModel2" type="boolean" default="false"/>
+     <aura:attribute name="isModal3" type="boolean" default="false"/>
+    <aura:attribute name="finalResultModel3" type="boolean" default="false"/>
+    <aura:attribute name="finalresult" type="String"/>
+    <aura:attribute name="value1" type="String" default=""/>
+    <aura:attribute name="option1" type="List" default="[
+                                                        {'label': 'siempre tiene una relación causal con el medicamento recibido.', 'value': 'siempre tiene una relación causal con el medicamento recibido'},
+                                                        {'label': 'puede o no tener una relación causal con el medicamento recibido.', 'value': 'puede o no tener una relación causal con el medicamento recibido'},
+                                                        {'label': 'nunca tiene una relación causal con el medicamento recibido.', 'value': 'nunca tiene una relación causal con el medicamento recibido'}
+                                                        ]"/>
+    <aura:attribute name="value2" type="String" default=""/>
+    <aura:attribute name="option2" type="List" default="[
+                                                        {'label': 'Dentro de las 24hs de haber tomado contacto con el mismo.', 'value': 'Dentro de las 24hs de haber tomado contacto con el mismo'},
+                                                        {'label': 'Dentro de dos días hábiles de haber tomado contacto con el mismo.', 'value': 'Dentro de dos días hábiles de haber tomado contacto con el mismo'},
+                                                        {'label': 'Hasta 72 hs corridas de haber tomado contacto con el mismo', 'value': 'Hasta 72 hs corridas de haber tomado contacto con el mismo'}
+                                                        ]"/>
+    <aura:attribute name="value3" type="String" default=""/>
+    <aura:attribute name="option3" type="List" default="[
+                                                        {'label': 'No es necesario porque no es un evento adverso', 'value': 'No es necesario porque no es un evento adverso'},
+                                                        {'label': 'Si, porque existe un escenario especial', 'value': 'Si, porque existe un escenario especial'},
+                                                        {'label': 'Sólo si el medico se lo indica', 'value': 'Sólo si el medico se lo indica'}
+                                                        ]"/>
+    <aura:attribute name="value4" type="String" default=""/>
+    <aura:attribute name="option4" type="List" default="[
+                                                        {'label': 'Sólo casilla genérica de mail', 'value': 'Sólo casilla genérica de mail'},
+                                                        {'label': 'Casilla genérica de mail, página web, WhatsApp', 'value': 'Casilla genérica de mail, página web, WhatsApp'},
+                                                        {'label': 'Casilla genérica de mail, página web', 'value': 'Casilla genérica de mail, página web'}
+                                                        ]"/>
+    
+     <aura:attribute name="value21" type="String" default=""/>
+    <aura:attribute name="option21" type="List" default="[
+                                                        {'label': '2-8 °C', 'value': '2-8 °C'},
+                                                        {'label': '0 °C', 'value': '0 °C'},
+                                                        {'label': '– 60 °C', 'value':'– 60 °C'}
+                                                        ]"/>
+    <aura:attribute name="value22" type="String" default=""/>
+    <aura:attribute name="option22" type="List" default="[
+                                                        {'label': '4 horas', 'value': '4 horas'},
+                                                        {'label': '6 horas', 'value': '6 horas'},
+                                                        {'label': '12 horas', 'value': '12 horas'}
+                                                        ]"/>
+    <aura:attribute name="value23" type="String" default=""/>
+    <aura:attribute name="option23" type="List" default="[
+                                                        {'label': 'Verdadero', 'value': 'Verdadero'},
+                                                        {'label': 'Falso', 'value': 'Falso'}
+                                                        ]"/>
+    <aura:attribute name="value24" type="String" default=""/>
+    <aura:attribute name="option24" type="List" default="[
+                                                        {'label': 'Verdadero', 'value': 'Verdadero'},
+                                                        {'label': 'Falso', 'value': 'Falso'}
+                                                      ]"/>
+    <aura:attribute name="value25" type="String" default=""/>
+     <aura:attribute name="option25" type="List" default="[
+                                                        {'label': 'El vial no se debe usar', 'value':'El vial no se debe usar'},
+                                                        {'label': 'Se debe seguir descongelando el vial hasta que las partículas desaparezcan', 'value': 'Se debe seguir descongelando el vial hasta que las partículas desaparezcan'},
+                                                        {'label': 'Se debe agitar para disolver las partículas', 'value': 'Se debe agitar para disolver las partículas'}
+                                                     
+                                                      ]"/>
+    <aura:attribute name="value26" type="String" default=""/>
+    <aura:attribute name="option26" type="List" default="[
+                                                        {'label': 'Verdadero', 'value': 'Verdadero'},
+                                                        {'label': 'Falso', 'value': 'Falso'}
+                                                      ]"/>
+    <aura:attribute name="value27" type="String" default=""/>
+    <aura:attribute name="option27" type="List" default="[
+                                                        {'label': '2 horas', 'value': '2 horas'},
+                                                        {'label': '4 horas', 'value': '4 horas'},
+                                                        {'label': '8 horas', 'value': '8 horas'}
+                                                      ]"/>
+    <aura:attribute name="value31" type="String" default=""/>
+    <aura:attribute name="option31" type="List" default="[
+                                                        {'label': 'Evaluar la función hepática ', 'value': 'Evaluar la función hepática'},
+                                                        {'label': 'Realizar los análisis de laboratorio: creatinina y hemograma completo (incluyendo hemoglobina y recuento plaquetario) y troponina-I.', 'value': 'Realizar los análisis de laboratorio: creatinina y hemograma completo (incluyendo hemoglobina y recuento plaquetario) y troponina-I'},
+                                                        {'label': 'Realizar pruebas iniciales para detectar la presencia de anticuerpos anti-AAV9', 'value':'Realizar pruebas iniciales para detectar la presencia de anticuerpos anti-AAV9'},
+                                                        {'label': 'Todas las anteriores', 'value':'Todas las anteriores'}
+
+                                                         ]"/>
+     <aura:attribute name="value32" type="String" default=""/>
+     <aura:attribute name="option32" type="List" default="[
+                                                        {'label': 'Dosis baja de aspirina', 'value': 'Dosis baja de aspirina'},
+                                                        {'label': 'Corticoides sistémicos (prednisolona oral 1mg/kg/día)', 'value': 'Corticoides sistémicos (prednisolona oral 1mg/kg/día)'},
+                                                        {'label': 'Ibuprofeno', 'value':'Ibuprofeno'},
+                                                        {'label': 'Antibióticos', 'value':'Antibióticos'}
+
+                                                         ]"/>
+    <aura:attribute name="value33" type="String" default=""/>
+    <aura:attribute name="option33" type="List" default="[
+                                                        {'label': 'Verdadero', 'value': 'Verdadero'},
+                                                        {'label': 'Falso', 'value': 'Falso'}
+                                                      ]"/>
+     <aura:attribute name="value34" type="String" default=""/>
+    <aura:attribute name="option34" type="List" default="[
+                                                        {'label': 'Inyección intravenosa directa', 'value': 'Inyección intravenosa directa'},
+                                                        {'label': 'Infusión lenta, durante 60 minutos', 'value': 'Infusión lenta, durante 60 minutos'}
+                                                      ]"/>
+      <aura:attribute name="value35" type="String" default=""/>
+    <aura:attribute name="option35" type="List" default="[
+                                                        {'label': 'Colocar un catéter primario en una vena central; y un catéter de respaldo', 'value': 'Colocar un catéter primario en una vena central; y un catéter de respaldo'},
+                                                        {'label': 'Colocar un catéter primario en una vena periférica; y un catéter de respaldo.', 'value': 'Colocar un catéter primario en una vena periférica; y un catéter de respaldo'},
+                                                        {'label': 'Colocar un catéter primario en una vena periférica.', 'value': 'Colocar un catéter primario en una vena periférica'}
+
+                                                      ]"/>
+     <aura:attribute name="value36" type="String" default=""/>
+    <aura:attribute name="option36" type="List" default="[
+                                                        {'label': '2 meses', 'value': '2 meses'},
+                                                        {'label': '3 meses', 'value': '3 meses'},
+                                                        {'label': '6 meses', 'value': '6 meses'}
+                                                      ]"/>
+   
+   
+   
+    <aura:attribute name="userlanguage" type="String" />
+    <aura:attribute name="showcontent" type="String"/>
+    <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+    <c:ZOE_HEADER />
+    <aura:if isTrue="{!v.showcontent=='true'}">
+        <section class="page-title-area banner">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-title-content">
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+                                <h2>Training</h2>
+                                <aura:set attribute="else">
+                                    <h2>Entrenamientos</h2>
+                                </aura:set>
+                            </aura:if>
+                            <ul>
+                                <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Home</a></li>
+                        <aura:set attribute="else">
+                           <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Casa</a></li>
+                        </aura:set> 
+                     </aura:if>
+                                <aura:if isTrue="{!v.userlanguage=='English'}">
+                                    <li>On-Demand Training</li>
+                                    <aura:set attribute="else">
+                                        <li>Entrenamientos on-demand</li>
+                                    </aura:set>
+                                </aura:if>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="main-services-area ptb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <blockquote class="wp-block-quote quote_css">
+                            <div>
+                                <img class="title_img" src="{!$Resource.home_icons + '/img/demandtraining.png'}" alt="indicacion" />
+                                <aura:if isTrue="{!v.userlanguage=='English'}">
+                                    <h4 class='sub-title'>On-Demand Training</h4>
+                                    <aura:set attribute="else">
+                                        <h4 class='sub-title'>Entrenamientos on-demand</h4>
+                                    </aura:set>
+                                </aura:if>
+                                <aura:if isTrue="{!v.userlanguage=='English'}">
+                                    <p class="block_p text_left">If you are a professional in the area of pharmacy, nursing or treating physician, we recommend you access the following training videos and content</p>
+                                    <aura:set attribute="else">
+                                        <p class="block_p text_left">Si sos profesional de área de farmacia, enfermería o médico tratante, te recomendamos acceder a los siguientes videos de entrenamiento y contenido</p>
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+        </section>
+        
+        <!--allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media * -->       
+        
+        <!--   <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2076321/sp/207632100/embedIframeJs/uiconf_id/46847003/partner_id/2076321?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_vwd0k1vo&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;wid=1_kz8jq93s" width="640" height="360" allowfullscreen="true" webkitallowfullscreen="true" allow="autoplay *; fullscreen *; encrypted-media *" mozAllowFullScreen="true" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>-->
+        
+        
+        <section class="partner-area bg-f4f9fd">
+            
+                
+            <div class="container videocontaoner">
+                <div class="row">
+                    <aura:iteration var="training" items="{!v.trainings}">
+                        <aura:if isTrue="{!training.Type__c=='Video'}" >
+                            <div class="col-lg-4 col-md-6 col-12 margin_b10">
+                              <div class="ratio ratio-16x9 videoframe">
+                                    <!-- <iframe class="video" src="{!training.Link__c}" aura:id="iframeid" title="YouTube video" width="720" height="480"  allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>  -->
+                                </div>
+                            </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!training.Type__c=='Kaltura Player'}" >
+                            
+                            <div class="col-lg-4 col-md-6 col-12 margin_b10">
+                                <div class="slds-col">
+                                    <h5 class='discrip'>{!training.Description__c}</h5>
+  								</div>
+                                <div class="ratio ratio-16x9 videoframe">
+                                    <iframe id="kaltura_player" src="{!training.Link__c+'&amp;iframeembed=true&amp;playerId=kaltura_player&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true'}" width="640" height="360" allowfullscreen="true" webkitallowfullscreen="true" allow="autoplay *; fullscreen *; encrypted-media *" mozAllowFullScreen="true" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+                                </div>
+                                 <div class="slds-col">
+                                       <aura:if isTrue="{!training.Description__c=='FARMACOVIGILANCIA'}" >
+                   							<h4 onclick="{! c.openQuiz }"><span class='margin_css btn btn-primary'><i class="flaticon-right-chevron"></i> EXAMEN <i class="flaticon-right-chevron font_size_13px"></i></span></h4>                            
+           								</aura:if>
+                                              <aura:if isTrue="{!training.Description__c=='TERAPIA GÉNICA'}" >
+                                                    <h4 onclick="{! c.openQuiz3 }" ><span class='margin_css btn btn-primary'><i class="flaticon-right-chevron"></i> EXAMEN <i class="flaticon-right-chevron font_size_13px"></i></span></h4>                 
+                                     </aura:if>
+                                              <aura:if isTrue="{!training.Description__c=='PROCESO DE LIBERACIÓN Y RECEPCIÓN'}" >
+                                                       <h4 onclick="{! c.openQuiz2 }" ><span class='margin_css btn btn-primary'><i class="flaticon-right-chevron"></i> EXAMEN <i class="flaticon-right-chevron font_size_13px"></i></span></h4>                 
+                                              </aura:if>
+  								</div> 
+                            </div>
+                        </aura:if>
+                    </aura:iteration>
+                </div>
+            </div>
+              </section>
+        <section class="about-area">
+            <div class="container p-0">
+                <div class="row m-0">
+                    <div class="col-lg-1 col-md-1 p-0">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-10 col-md-10 p-0">
+                        <div class="about-content about_width">
+                            <div class='section-title'>
+                                <img class="title_img" src="{!$Resource.home_icons + '/img/Downloadable.png'}" alt="indicacion" />
+                                <aura:if isTrue="{!v.userlanguage=='English'}">
+                                    <h4 class='sub2-title'>Downloadable Material</h4>
+                                    <aura:set attribute="else">
+                                        <h4 class='sub2-title'>Material Descargable</h4>
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                            <lightning:layout>
+                                <lightning:layoutItem padding="around-small">
+                                    <aura:if isTrue="{!v.userlanguage=='English'}">
+                                        <p>We share informative material on Zolgensma<sup>®</sup> (onasemnogene abeparvovec) that was developed in accordance with regulatory requirements and risk management plan:</p>
+                                        <ul>
+                                            
+                                            <aura:iteration var="training" items="{!v.trainings}">
+                                                <aura:if isTrue="{!training.Type__c=='PDF'}" >
+                                                    <div>
+                                                        <ul>
+                                                            <li><i class="flaticon-check-mark"></i>
+                                                                {!training.Description__c}<a href="{!training.Link__c}" target="blank"><b>&nbsp;Download</b></a>
+                                                            </li>
+                                                        </ul>
+                                                        
+                                                    </div>
+                                                    
+                                                </aura:if> 
+                                            </aura:iteration>
+                                            
+                                            
+                                            <!--<li><i class="flaticon-check-mark"></i> Manual of reception, preparation, administration and post-infusion care - <a href="{!$Resource.Trainingpdf1}" target="blank"><b>Download</b></a></li>
+                                  <li><i class="flaticon-check-mark"></i> Patient alert card - <a href="{!$Resource.Trainingpdf2}" target="blank"><b>Download</b></a></li>
+                                 <li><i class="flaticon-check-mark"></i> Informed Consent for the patient- <a href="{!$Resource.Trainingpdf3}" target="blank"><b>Download</b></a></li>-->
+                                        </ul>
+                                        <aura:set attribute="else">
+                                            <p>Te compartimos material informativo de Zolgensma<sup>®</sup> (onasemnogén abeparvovec) que fue desarrollado conforme a los requerimientos regulatorios y plan de manejo de riesgos: </p>
+                                            
+                                            <ul>
+                                                <aura:iteration var="training" items="{!v.trainings}">
+                                                    <aura:if isTrue="{!training.Type__c=='PDF'}" >
+                                                        <div>
+                                                            <ul>
+                                                                <li><i class="flaticon-check-mark"></i>
+                                                                    {!training.Description__c}<a href="{!training.Link__c}" target="blank"><b>&nbsp;Descargar</b></a>
+                                                                </li>
+                                                            </ul>
+                                                            
+                                                        </div>
+                                                    </aura:if> 
+                                                </aura:iteration>     
+                                           </ul>
+                                        </aura:set>
+                                    </aura:if>
+                                </lightning:layoutItem>
+                            </lightning:layout>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 p-0">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="fun-facts-area1">
+            <p class="b_g_img">
+                <aura:if isTrue="{!v.userlanguage=='English'}">
+                    The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+                    <aura:set attribute="else">
+                        La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+                    </aura:set>
+                </aura:if>
+            </p>
+        </section>
+        <div id="footer_content">
+            <c:ZOE_FOOTER />
+        </div>
+    </aura:if>
+    <div >
+        <aura:if isTrue="{!v.isModal}">
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" >
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2>Cuestionario Farmacovigilancia</h2>
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        
+                    </header>
+                    <body class="slds-modal__body over_flow popup">
+                        <p><b>Marque la respuesta correcta:</b><br></br></p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup"
+                                                  label="1)	Un evento adverso:"
+                                                  options="{! v.option1 }"
+                                                  value="{! v.value1 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup1" id="radioGroup1"
+                                                  label="2)	Los eventos adversos se deben reportar a Farmacovigilancia:"
+                                                  options="{! v.option2 }"
+                                                  value="{! v.value2 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup2" id="radioGroup2"
+                                                  label="3)	Una paciente que está tomando un medicamento de Novartis hace varios años, está embarazada. ¿Se debe reportar esta situación a Farmacovigilancia?"
+                                                  options="{! v.option3 }"
+                                                  value="{! v.value3 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup3" id="radioGroup3"
+                                                  label="4)	Las vías de comunicación para enviar el reporte a farmacovigilancia son:"
+                                                  options="{! v.option4 }"
+                                                  value="{! v.value4 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        
+                        
+                        
+                        <!--Modal/Popup Box Body Starts here-->
+                        
+                    </body>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Entregar"
+                                          title="Cancel"
+                                          onclick="{! c.submitQuiz}"/>
+                        
+                    </footer>
+                </div>
+            </section> 
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if> 
+    </div>
+     <div >
+        <aura:if isTrue="{!v.isModal2}">
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" >
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2>Cuestionario Proceso de liberación y recepción de Zolgensma<sup>®</sup></h2>
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel2 }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        
+                    </header>
+                    <body class="slds-modal__body over_flow popup">
+                        <p><b>Marque la respuesta correcta:</b><br></br></p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup21"
+                                                  label="1)	¿A qué temperatura se transporta Zolgensma®?"
+                                                  options="{! v.option21 }"
+                                                  value="{! v.value21 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup22" id="radioGroup22"
+                                                  label="2)¿E cuántas horas se descongela Zolgensma® en heladera?"
+                                                  options="{! v.option22 }"
+                                                  value="{! v.value22 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup23" id="radioGroup23"
+                                                  label="3)Zolgensma® debe utilizarse dentro de los 14 días de recibido en farmacia."
+                                                  options="{! v.option23 }"
+                                                  value="{! v.value23 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup24" id="radioGroup24"
+                                                  label="4)Una vez que los viales de Zolgensma® se descongelan, se puede volver a congelar dentro de las 8 horas"
+                                                  options="{! v.option24 }"
+                                                  value="{! v.value24 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup25" id="radioGroup25"
+                                                  label="5)¿Qué debe hacer si durante la inspección visual encuentra partículas en los viales de Zolgensma®?"
+                                                  options="{! v.option25 }"
+                                                  value="{! v.value25 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup26" id="radioGroup26"
+                                                  label="6)El departamento de calidad de Novartis debe liberar el producto frente a entidades regulatorias antes de utilizarse, e informar al Centro de Infusión dentro de las 24hs de recibido"
+                                                  options="{! v.option26}"
+                                                  value="{! v.value26 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                                                <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup27" id="radioGroup27"
+                                                  label="7)Una vez en la jeringa, Zolgensma® se utiliza dentro de las siguiente:"
+                                                  options="{! v.option27}"
+                                                  value="{! v.value27 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        
+                        
+                        
+                        <!--Modal/Popup Box Body Starts here-->
+                        
+                    </body>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Entregar"
+                                          title="Cancel"
+                                          onclick="{! c.submitQuiz2}"/>
+                        
+                    </footer>
+                </div>
+            </section> 
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if> 
+    </div>
+   <div >
+        <aura:if isTrue="{!v.isModal3}">
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" >
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2>Cuestionario Terapia Génica</h2>
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel3 }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        
+                    </header>
+                    <body class="slds-modal__body over_flow popup">
+                        <p><b>Marque la respuesta correcta:</b><br></br></p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup31"
+                                                  label="1)Antes de la infusión de Zolgensma®, debe:"
+                                                  options="{! v.option31 }"
+                                                  value="{! v.value31 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup32" id="radioGroup32"
+                                                  label="2)	¿Qué se le debe administrar a todos los pacientes antes y después de ser infundidos con Zolgensma®?"
+                                                  options="{! v.option32 }"
+                                                  value="{! v.value32 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup33" id="radioGroup33"
+                                                  label="3)	Las evaluaciones continuas incluyen el control de la función hepática mediante un examen clínico y la evaluación de ALT, AST, bilirrubina total y tiempo de protrombina."
+                                                  options="{! v.option33 }"
+                                                  value="{! v.value33 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup34" id="radioGroup34"
+                                                  label="4)	La infusión intravenosa se realiza por:"
+                                                  options="{! v.option34 }"
+                                                  value="{! v.value34 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup35" id="radioGroup35"
+                                                  label="5)El día de la infusión debe:"
+                                                  options="{! v.option35 }"
+                                                  value="{! v.value35 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                        <p style="font-size: 18px;"> 
+                            <lightning:radioGroup name="radioGroup36" id="radioGroup36"
+                                                  label="6)	El monitoreo post-infusión debe ser como mínimo por:"
+                                                  options="{! v.option36}"
+                                                  value="{! v.value36 }"
+                                                  type="radio"
+                                                  required="true"/>
+                        </p>
+                                                       
+                        
+                        
+                        <!--Modal/Popup Box Body Starts here-->
+                        
+                    </body>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Entregar"
+                                          title="Cancel"
+                                          onclick="{! c.submitQuiz3}"/>
+                        
+                    </footer>
+                </div>
+            </section> 
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if> 
+    </div>
+   
+     <aura:if isTrue="{!v.finalResultModel}">
+             
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Resultado de la prueba</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b> has anotado : {!v.finalresult}/4 </b>
+                        </p>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                   
+                        <lightning:button variant="brand"
+                                          label="De acuerdo"
+                                          title="OK"
+                                          onclick="{!c.closeModel}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    <aura:if isTrue="{!v.finalResultModel2}">
+             
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Resultado de la prueba</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b> has anotado : {!v.finalresult}/7 </b>
+                        </p>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                   
+                        <lightning:button variant="brand"
+                                          label="De acuerdo"
+                                          title="OK"
+                                          onclick="{!c.closeModel2}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+ <aura:if isTrue="{!v.finalResultModel3}">
+             
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Resultado de la prueba</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b> has anotado : {!v.finalresult}/6 </b>
+                        </p>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                   
+                        <lightning:button variant="brand"
+                                          label="De acuerdo"
+                                          title="OK"
+                                          onclick="{!c.closeModel3}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+</aura:component>

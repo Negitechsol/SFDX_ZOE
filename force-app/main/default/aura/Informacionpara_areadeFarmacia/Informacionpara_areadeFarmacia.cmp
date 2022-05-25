@@ -1,0 +1,1146 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="MasterConfigController">
+   <aura:attribute name="showZx" type="boolean" default="false"/>
+   <aura:attribute name="showResult" type="boolean" default="false"/>
+   <aura:attribute name="dosagemap" type="Map" />
+   <aura:attribute name="weightRanges" type="List"/>
+   <aura:attribute name="selectedRange" type="String"/>
+   <aura:attribute name="showcontent" type="String"/>
+   <aura:attribute name="dose5" type="String"/>
+   <aura:attribute name="dose8" type="String"/>
+   <aura:attribute name="totaldose" type="String"/>
+   <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+   <aura:attribute name="userlanguage" type="String" />
+   <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+   <c:ZOE_HEADER />
+   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   <aura:if isTrue="{!v.showcontent=='true'}">
+      <section class="page-title-area banner">
+         <div class="d-table">
+            <div class="d-table-cell">
+               <div class="container">
+                  <div class="page-title-content">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h2>Infusion</h2>
+                        <aura:set attribute="else">
+                           <h2>Infusión</h2>
+                        </aura:set>
+                     </aura:if>
+                     <ul>
+                         <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Home</a></li>
+                        <aura:set attribute="else">
+                           <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Casa</a></li>
+                        </aura:set>
+                     </aura:if>
+                        
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+                           <li>Information for Pharmacy area</li>
+                           <aura:set attribute="else">
+                              <li>Información para área de Farmacia</li>
+                           </aura:set>
+                        </aura:if>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Z-Kit Calculator </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <aura:if isTrue="{!v.userlanguage=='English'}">
+                     Before the infusion, the patient must have the following laboratory tests:
+                     <aura:set attribute="else">
+                        Antes de la infusión el paciente debe contar con las siguientes pruebas de laboratorio:
+                     </aura:set>
+                  </aura:if>
+                  <ul class="services-features-list">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li>The diagnosis of SMA must be confirmed with genetic testing of the SMN1 gene.</li>
+                        <aura:set attribute="else">
+                           <li>El diagnóstico de AME debe ser confirmado con el testeo genético del gen SMN1.</li>
+                        </aura:set>
+                     </aura:if>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li>Patients must be less than 2 years of age at the time of infusion.</li>
+                        <aura:set attribute="else">
+                           <li>Los pacientes deben ser menores a 2 años al momento de la infusión.</li>
+                        </aura:set>
+                     </aura:if>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li>The dosage of Zolgensma<sup>®</sup> varies depending on the weight of the patient. Therefore, you must weigh it to order the appropriate kit.</li>
+                        <aura:set attribute="else">
+                           <li>La dosificación de Zolgensma<sup>®</sup> varía en función del peso del paciente. Por ello debe pesarlo para solicitar el kit adecuado.</li>
+                        </aura:set>
+                     </aura:if>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <lightning:tabset selectedTabId="one">
+         <lightning:tab label="Médico" id="one" onactive="{! c.handleActive }">
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="section-title">
+                     <img class="title_img" src="{!$Resource.home_icons + '/img/Indication1.png'}" alt="indicacion" />
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h4 class='sub2-title'>Indication of ZOLGENSMA<sup>®</sup></h4>
+                        <aura:set attribute="else">
+                           <h4 class='sub2-title'>Indicación de ZOLGENSMA<sup>®</sup></h4>
+                        </aura:set>
+                     </aura:if>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <blockquote class="wp-block-quote quote_css">
+                           <div>
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <img class="title_img" src="{!$Resource.home_icons + '/img/Physician.png'}" alt="indicacion" />  
+                                 <h4 class='sub-title'>Physician Information </h4>
+                                 <aura:set attribute="else">
+                                    <img class="title_img" src="{!$Resource.home_icons + '/img/Physician.png'}" alt="indicacion" />
+                                    <h4 class='sub-title'>Información para el Médico </h4>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <p class="block_p">Closer to infusion time, before Novartis makes the
+                                 placement of the order in headquarters, take into account the following:
+                              </p>
+                              <aura:set attribute="else">
+                                 <p class="block_p">Cuando se acerque el momento de la infusión, antes de que Novartis haga la
+                                    colocación del pedido en casa matriz, tenga en cuenta lo siguiente:
+                                 </p>
+                              </aura:set>
+                           </aura:if>
+                        </blockquote>
+                     </div>
+                  </div>
+               </div>
+               <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+            </section>
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="carousel-wrap">
+                           <div class="owl-carousel owl-theme">
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">1</div>
+                                                         Lab tests
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Have current negative anti <b>AAV9</b> results (titer ≤1:50) at the time of infusion. The validity is 30 days from the blood draw.</li>
+                                                          <li><i class="i_css">o</i> <b>Baseline laboratory tests </b>current (see <a href="{!$Label.c.siteurl+$Label.c.PreInfusion}">pre-infusion</a> section for more detail.)</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">1</div>
+                                                            Pruebas de laboratorio
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Contar con resultados vigente de anti <b>AAV9 negativos</b> (título ≤1:50) al momento de la infusión. La vigencia es de 30 días a partir de la extracción de sangre.</li>
+                                                            <li><i class="i_css">o</i> <b>Pruebas de laboratorio basales </b>vigentes (ver sección <a class="hyplnk" href="{!$Label.c.siteurl+$Label.c.PreInfusion}">pre-infusión</a> para más detalle.)</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1 PT3" src="{!$Resource.infusion_3}" alt="indicacion" /> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">2</div>
+                                                         Confirmation of patient weight
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Re-confirm patient's <b>weight within 14 days prior to infusion</b> and/or at time of Zolgensma<sup>®</sup> order.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">2</div>
+                                                            Confirmación del peso del paciente
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Re-confirmar el <b>peso del paciente dentro de los 14 días previos</b> a la infusión y/o al momento del pedido de Zolgensma<sup>®</sup>.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.postinfusion_img+ '/indicacion_3.png'}" alt="indicacion" /> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div class=''>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">3</div>
+                                                         24 hours before the infusion
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> <b>24 hours before</b> the infusion, administer <b>systemic corticosteroids</b> equivalent to <b>𝟏mg/kg/día</b> of oral prednisolone for a total of 30 days.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">3</div>
+                                                            24 horas antes de la Infusión
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> <b>24 horas antes</b> de la infusión administrar <b>corticosteroides sistémicos</b> equivalentes a <b>𝟏mg/kg/día</b> de prednisolona oral durante un total de 30 días.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_5.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">4</div>
+                                                         infusion day
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> At the time of infusion, the <b>patient should not have</b> overt clinical symptoms of <b>infection</b>.</li>
+                                                         <li><i class="i_css">o</i> Make sure the patient is prepared in the infusion room, before the preparation of the product in the pharmacy.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">4</div>
+                                                            Día de infusión
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> En el momento de infusión, el <b>paciente no debe tener</b> síntomas clínicos evidentes de <b>infección</b>.</li>
+                                                            <li><i class="i_css">o</i> Asegúrese de que el paciente esté preparado en la sala de infusión, antes de la preparación del producto en farmacia.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_6.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div onclick="{!c.showModal}">
+                                                   <h3>
+                                                      <div class="numberCircle">5</div>
+                                                   </h3>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_7.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h4><span class='btn btn-primary btn_css_width'>Z-KIT Calculator <i class="flaticon-right-chevron"></i></span></h4>
+                                                      <p class="text_center">
+                                                         Calculate the Kit you need automatically!
+                                                      </p>
+                                                      <aura:set attribute="else">
+                                                         <h4><span class='btn btn-primary btn_css_width'>Z-KIT Calculator <i class="flaticon-right-chevron"></i></span></h4>
+                                                         <p class="text_center">
+                                                            ¡Calculá el Kit que necesitás automáticamente!
+                                                         </p>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div onclick="{!c.openModel}">
+                                                   <h3>
+                                                      <div class="numberCircle">6</div>
+                                                   </h3>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_8.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h4><span class='btn btn-primary btn_css_width'>Infusion Calendar <i class="flaticon-right-chevron"></i></span></h4>
+                                                      <p class="text_center">
+                                                         I received step-by-step notifications, adjusted to your patient's infusion date.
+                                                      </p>
+                                                      <aura:set attribute="else">
+                                                         <h4><span class='btn btn-primary btn_css_width'>Calendario de Infusión <i class="flaticon-right-chevron"></i></span></h4>
+                                                         <p class="text_center">
+                                                            Recibí las notificaciones del paso a paso, ajustado a la fecha de infusión de tu paciente. 
+                                                         </p>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                       <a href="{!$Label.c.siteurl+$Label.c.Entrenamientos}" class="{!if(v.Training =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}">   
+                        <blockquote class="wp-block-quote quote_css">
+                           <div>
+                              <img class="title_img" src="{!$Resource.home_icons + '/img/Trainings.png'}" alt="indicacion" />  
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <h4 class='sub-title'>On-Demand Trainings </h4>
+                                 <aura:set attribute="else">
+                                    <h4 class='sub-title'>Entrenamientos On-Demand </h4>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <p class="block_p">For more information on the reception process and
+                                 manipulation, access the training videos.
+                              </p>
+                              <aura:set attribute="else">
+                                 <p class="block_p">Para más información sobre el proceso de recepción y
+                                    manipulación, accedé a los videos de entrenamientos. 
+                                 </p>
+                              </aura:set>
+                           </aura:if>
+                           <cite>Tom Cruise</cite>
+                        </blockquote>
+                       </a>    
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="fun-facts-area">
+               <p>
+                  <aura:if isTrue="{!v.userlanguage=='English'}">
+                     The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+                     <aura:set attribute="else">
+                        La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+                     </aura:set>
+                  </aura:if>
+               </p>
+            </section>
+         </lightning:tab>
+         <lightning:tab label="Enfermería" id="two" onactive="{! c.handleActive }">
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="section-title">
+                     <img class="title_img" src="{!$Resource.home_icons + '/img/infusion1.png'}" alt="indicacion" />  
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h3 class='sub2-title'>ZOLGENSMA<sup>®</sup> infusion</h3>
+                        <aura:set attribute="else">
+                           <h3 class='sub2-title'>Infusión de ZOLGENSMA<sup>®</sup></h3>
+                        </aura:set>
+                     </aura:if>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <blockquote class="wp-block-quote quote_css">
+                           <div>
+                              <img class="title_img" src="{!$Resource.home_icons + '/img/nurse.png'}" alt="indicacion" />  
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <h4 class='sub-title'>Information for Nursing</h4>
+                                 <aura:set attribute="else">
+                                    <h4 class='sub-title'>Información para Enfermería</h4>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <p class="block_p">
+                                 On the day of the infusion, be sure to prepare the patient before preparing the product in the pharmacy, as follows:
+                              </p>
+                              <aura:set attribute="else">
+                                 <p class="block_p">
+                                    El día de la infusión asegúrese de preparar al paciente previo a la preparación del producto en farmacia, de la siguiente forma:
+                                 </p>
+                              </aura:set>
+                           </aura:if>
+                           <cite>Tom Cruise</cite>
+                        </blockquote>
+                     </div>
+                  </div>
+               </div>
+               <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+            </section>
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="carousel-wrap">
+                           <div class="owl-carousel owl-theme">
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">1</div>
+                                                         catheter insertion
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Placing a primary catheter in the vein (usually a peripheral vein in the arm or leg)</li>
+                                                         <li><i class="i_css">o</i> Insertion of a secondary backup catheter is recommended.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">1</div>
+                                                            Inserción de cateter
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Colocar un catéter primario en la vena (por lo general, una vena periférica en brazo o pierna)</li>
+                                                            <li><i class="i_css">o</i> Se recomienda la inserción de un catéter secundario de respaldo.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_10.png'}" alt="indicacion" /> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">2</div>
+                                                         Slow infusion
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Administer Zolgensma<sup>®</sup> as a slow infusion over at least 60 minutes.</li>
+                                                         <li><i class="i_css">o</i> It should never be infused as a direct intravenous injection or bolus.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">2</div>
+                                                            Infusión lenta
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Administrar Zolgensma<sup>®</sup> como infusión lenta durante al menos 60 minutos.</li>
+                                                            <li><i class="i_css">o</i> Nunca se deberá infundir como inyección intravenosa directa ni bolo.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_11.png'}" alt="indicacion" /> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">3</div>
+                                                         Saline Solution
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Finally, introduce saline solution into the syringe to ensure the entire infusion of Zolgensma<sup>®</sup>.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">3</div>
+                                                            Solución Salina
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Por último, introducir solución salina en la jeringa para asegurar todo la infusión de Zolgensma<sup>®</sup>.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_12.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">4</div>
+                                                         Infusion
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Zolgensma<sup>®</sup> infusion can be ambulatory. It will be at the discretion of the treating physician.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">4</div>
+                                                            Infusión
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> La infusión de Zolgensma<sup>®</sup> puede ser ambulatoria. Quedará a criterio del médico tratante.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_22.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                       <a href="{!$Label.c.siteurl+$Label.c.Entrenamientos}" onclick="{!c.activeLink}">   
+                        <blockquote class="wp-block-quote quote_css">
+                           <div>
+                              <img class="title_img" src="{!$Resource.zoe_indicacion_11}" alt="indicacion" /> 
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <h4 class='sub-title'>On-Demand Trainings </h4>
+                                 <aura:set attribute="else">
+                                    <h4 class='sub-title'>Entrenamientos On-Demand </h4>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <p class="block_p">For more information on the reception process and
+                                 manipulation, access the training videos.
+                              </p>
+                              <aura:set attribute="else">
+                                 <p class="block_p">Para más información sobre el proceso de recepción y
+                                    manipulación, accedé a los videos de entrenamientos. 
+                                 </p>
+                              </aura:set>
+                           </aura:if>
+                           <cite>Tom Cruise</cite>
+                        </blockquote>
+                       </a>    
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="fun-facts-area">
+               <p>
+                  <aura:if isTrue="{!v.userlanguage=='English'}">
+                      The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+                     <aura:set attribute="else">
+                         La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+                     </aura:set>
+                  </aura:if>
+               </p>
+            </section>
+         </lightning:tab>
+         <lightning:tab label="Farmacia" id="three" onactive="{! c.handleActive }">
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="section-title">
+                     <img class="title_img" src="{!$Resource.home_icons + '/img/Physician.png'}" alt="indicacion" />  
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h4 class='sub2-title'>ZOLGENSMA<sup>®</sup> infusion</h4>
+                        <aura:set attribute="else">
+                           <h4 class='sub2-title'>Infusión de ZOLGENSMA<sup>®</sup></h4>
+                        </aura:set>
+                     </aura:if>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <blockquote class="wp-block-quote quote_css">
+                           <div>
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <div>
+                                    <img class="title_img" src="{!$Resource.home_icons + '/img/Pharmacy.png'}" alt="indicacion" />  
+                                    <h4 class='sub-title'>Information for Pharmacy</h4>
+                                 </div>
+                                 <aura:set attribute="else">
+                                    <div>
+                                       <img class="title_img" src="{!$Resource.icons_web+ '/icons_web/Pharmacy.png'}" alt="indicacion"/> 
+                                       <h4 class='sub-title'>Información para Farmacia</h4>
+                                    </div>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <aura:set attribute="else">
+                                 <p class="block_p">El día de la infusión asegúrese de preparar el producto una vez que el paciente ya se encuentre preparado, siguiendo estos pasos:
+                                 </p>
+                              </aura:set>
+                           </aura:if>
+                           <cite>Tom Cruise</cite>
+                        </blockquote>
+                     </div>
+                  </div>
+               </div>
+               <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+            </section>
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="carousel-wrap">
+                           <div class="owl-carousel owl-theme">
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">1</div>
+                                                         Sterility Conditions 
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Maintain the sterile conditions of the laminar flow and the materials to be used at all times.</li>
+                                                         <li><i class="i_css">o</i> You must follow the Biosafety procedures of your Institution.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">1</div>
+                                                            Condiciones de Esterilidad 
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Mantener las condiciones de esterilidad del flujo laminar y los materiales a utilizar en todo momento.</li>
+                                                            <li><i class="i_css">o</i> Debe seguir los procedimientos de Bioseguridad de su Institución.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_13.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">2</div>
+                                                         Turn Gently
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Before withdrawing the volume from the vials, swirl the thawed contents of each vial very gently for visual inspection.</li>
+                                                         <li><i class="i_css">o</i> Never shake. </li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">2</div>
+                                                            Girar suavemente
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Antes de extraer el volumen de los viales, haga girar el contenido descongelado de cada vial muy suavente para realizar la inspección visual.</li>
+                                                            <li><i class="i_css">o</i> No agitar nunca. </li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_14.png'}" alt="indicacion" /> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">3</div>
+                                                         Visual inspection
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Zolgensma<sup>®</sup> is a clear to slightly opaque, colorless to faint off-white solution when thawed.</li>
+                                                         <li><i class="i_css">o</i> Do not use this medicine if there are particles or discoloration.</li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">3</div>
+                                                            Inspección Visual
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Cuando se descongela, Zolgensma<sup>®</sup> es una solución transparente a ligeramente opaca, de incolora a blanquecina tenue.</li>
+                                                            <li><i class="i_css">o</i> No use este medicamento si hay partículas o decoloración.</li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_15.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">4</div>
+                                                         Transfer to Infusion Syringe
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Once thawed and confirmed fit for use, withdraw the entire dose volume of Zolgensma<sup>®</sup> into a single infusion syringe.</li>
+                                                         <li><i class="i_css">o</i> You can divide the content in 2 syringes equally, if the total volume of Zolgensma<sup>®</sup> exceeds the total volume of Zolgensma<sup>®</sup>. </li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">4</div>
+                                                            Traspaso a Jeringa de Infusión
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Una vez descongelado y confirmado como apto para su uso, extraiga el volumen de dosis total de Zolgensma<sup>®</sup> en una sola jeringa de infusión.</li>
+                                                            <li><i class="i_css">o</i> Puede dividir el contenido en 2 jeringas en partes iguales, si el volumen total de Zolgensma<sup>®</sup> supera el volumen total de la misma. </li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_16.png'}" alt="indicacion"/>
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">5</div>
+                                                         Remove air, cap and transport
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> Remove air from syringe.</li>
+                                                         <li><i class="i_css">o</i> Cap the syringe immediately.</li>
+                                                         <li><i class="i_css">o</i> Transport her to the infusion room.</li>
+                                                         <li><i class="i_css">o</i> <b>Remember to use the content within 8 hours.</b></li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">5</div>
+                                                            Quite el aire, tape y transporte
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Elimine el aire de la jeringa.</li>
+                                                            <li><i class="i_css">o</i> Tape la jeringa inmediatamente.</li>
+                                                            <li><i class="i_css">o</i> Transpórtela a la sala de infusión.</li>
+                                                            <li><i class="i_css">o</i> <b>Recuerde usar el contenido dentro de las 8 horas.</b></li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_17.png'}" alt="indicacion"/> 
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="feedback-slides">
+                                 <div class="client-feedback">
+                                    <div>
+                                       <div class="item">
+                                          <div class="single-feedback">
+                                             <lightning:layoutItem padding="around-small">
+                                                <div>
+                                                   <aura:if isTrue="{!v.userlanguage=='English'}">
+                                                      <h3>
+                                                         <div class="numberCircle">6</div>
+                                                         Disposal of materials
+                                                      </h3>
+                                                      <ul>
+                                                         <li><i class="i_css">o</i> All materials that may have come into contact with Zolgensma<sup>®</sup> (eg: vial, materials used for injection, including sterile drapes and needles)<b> should be disposed of according to institution guidelines for waste management. biological waste.</b> </li>
+                                                      </ul>
+                                                      <aura:set attribute="else">
+                                                         <h3>
+                                                            <div class="numberCircle">6</div>
+                                                            Descarte de materiales
+                                                         </h3>
+                                                         <ul>
+                                                            <li><i class="i_css">o</i> Todos los materiales que puedan haber estado en contacto con Zolgensma<sup>®</sup> (p. ej., el vial, los materiales utilizados para la inyección, incluidos los paños estériles y las agujas)<b> deben desecharse según las pautas de la institución para el manejo de desechos biológicos.</b> </li>
+                                                         </ul>
+                                                      </aura:set>
+                                                   </aura:if>
+                                                   <div>
+                                                      <img class="slideimg1" src="{!$Resource.infusion_img+ '/infusion_18.png'}" alt="indicacion"/>
+                                                   </div>
+                                                </div>
+                                             </lightning:layoutItem>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="main-services-area ptb-50">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                       <a href="{!$Label.c.siteurl+$Label.c.Entrenamientos}" onclick="{!c.activeLink}">
+                        <blockquote class="wp-block-quote quote_css">
+                           <div>
+                              <img class="title_img" src="{!$Resource.home_icons + '/img/Trainings.png'}" alt="indicacion" />  
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <h4 class='sub-title'>On-Demand Trainings </h4>
+                                 <aura:set attribute="else">
+                                    <h4 class='sub-title'>Entrenamientos On-Demand </h4>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <p class="block_p">For more information on the reception process and
+                                 manipulation, access the training videos.
+                              </p>
+                              <aura:set attribute="else">
+                                 <p class="block_p">Para más información sobre el proceso de recepción y
+                                    manipulación, accedé a los videos de entrenamientos. 
+                                 </p>
+                              </aura:set>
+                           </aura:if>
+                           <cite>Tom Cruise</cite>
+                        </blockquote>
+                       </a>    
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="fun-facts-area">
+               <p>
+                  <aura:if isTrue="{!v.userlanguage=='English'}">
+                      The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+                     <aura:set attribute="else">
+                         La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+                     </aura:set>
+                  </aura:if>
+               </p>
+            </section>
+         </lightning:tab>
+      </lightning:tabset>
+      <aura:if isTrue="{!v.showZx}">
+         <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open " aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+               <header class="slds-modal__header headerText">
+                  <lightning:buttonIcon iconName="utility:close"
+                     onclick="{! c.hideModal }"
+                     alternativeText="close"
+                     variant="bare-inverse"
+                     class="slds-modal__close"/>
+                  <h5 id="modal-heading-01" class="slds-align_absolute-center" aura:id="popupheader">
+                     Z-Kit Calculator
+                  </h5>
+               </header>
+               <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                  <div class="row">
+                     <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="slds-p-around_xx-small">
+                           <lightning:select name="select" label="Seleccione el rango de peso del paciente (kg):" aura:id="select" value="{!v.selectedRange}" onchange="{! c.onChange }">
+                              <aura:iteration items="{!v.weightRanges}" var="option">
+                                 <option text="{!option.label}" value="{!option.label}" selected="{!option.selected}"/>
+                              </aura:iteration>
+                           </lightning:select>
+                           <!--  <div class="slds-col slds-size_1-of-1 slds-p-around_xx-small">
+                              <lightning:input type="number" name="input1" value="{!v.weight}" label="Patient Weight in Kg" min="2.60" max="13.50" step="0.01"/>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-p-around_xx-small">
+                              <lightning:input type="date" name="input2" value="{!v.takenDate}" label="Weight taken date" />
+                              </div>
+                              <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                              <lightning:button variant="brand" label="Calculate" title="Brand action" onclick="{! c.handleClick }" />
+                              </div>-->
+                        </div>
+                     </div>
+                     <div class="col-lg-9 col-md-12 col-sm-12">
+                     <div class="slds-p-top_small">
+                     <div class="prescription slds-p-around_medium" flexibility="auto">
+                     <!--<h5> Results</h5>
+                        <p>Dosage Volume(ML): {!v.dosage}</p>
+                         <p>Total Vials per Kit: 2</p>
+                         <p>NDC:71894-120-02</p>	-->
+                     <!-- <div class="prescription">
+                        <div class="header">-->
+                     <lightning:layout multipleRows="true" class="header">
+                     <lightning:layoutItem size="12" smallDeviceSize="6" mediumDeviceSize="4" largeDeviceSize="8">
+                     <div class="rx">℞</div>
+                     </lightning:layoutItem>
+                     <lightning:layoutItem size="12" smallDeviceSize="6" mediumDeviceSize="4" largeDeviceSize="4">
+                     <div class="patient">
+                     <div class="name">Nombre y Apellido</div>
+                     <div class="identification">DNI</div>
+                     <div class="payer">Obra Social - si aplica-</div>
+                     </div>
+                     </lightning:layoutItem>
+                     </lightning:layout>
+                     <!-- </div>-->
+                     <div class="body">
+                     <div class="general">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <p>Onasemnogene Abeparvovec</p>
+                     <aura:set attribute="else">
+                     <p>Onasemnogén Abeparvovec</p>
+                     </aura:set>
+                     </aura:if>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <p>Presentation: vials for intravenous infusion 2.0 x 10<sup>13</sup> vector genomes (vg)/ml</p>
+                     <aura:set attribute="else">
+                     <p>Presentación: viales para infusión endovenosa 2,0 x 10<sup>13</sup> genomas de vector (vg)/ml</p>
+                     </aura:set>
+                     </aura:if>
+                     </div>
+                     <div class="medecines">
+                     <lightning:layout multipleRows="true">
+                     <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="6" >
+                     <div class="slds-p-around_xx-small">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <div class="name">Prescribed amount:</div>
+                     <aura:set attribute="else">
+                     <div class="name">Cantidad prescripta:</div>
+                     </aura:set>
+                     </aura:if>
+                     </div>
+                     </lightning:layoutItem>
+                     <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="6" >
+                     <div class="slds-p-around_xx-small">
+                     <div class="quantity"><span>{!v.dose5}</span> vial/es de 5,5 ml</div>
+                     <div class="quantity"><span>{!v.dose8}</span> vial/es de 8,3 ml</div>
+                     </div>
+                     </lightning:layoutItem>
+                     <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="6" >
+                     <div class="slds-p-around_xx-small">
+                     <div class="name">Total:</div>
+                     </div>
+                     </lightning:layoutItem>
+                     <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="6" >
+                     <div class="slds-p-around_xx-small">
+                     <div class="quantity"><span>{!v.totaldose}</span> vial/es</div>
+                     </div>
+                     </lightning:layoutItem>
+                     </lightning:layout>
+                     <!-- <div class="medecine">
+                        <div class="name">Cantidad prescripta:</div>
+                        <div class="quantity">2</div>
+                        <div class="dose">vial/es de 5.5 ml</div>
+                        </div>
+                        <div class="medecine">
+                        <div class="name"></div>
+                        <div class="quantity">5</div>
+                        <div class="dose">vial /es de 8,3 ml</div>
+                        </div>
+                        <div class="medecine">
+                        <div class="name">Total:</div>
+                        <div class="quantity">7</div>
+                        <div class="dose">viales</div>
+                        </div>-->
+                     </div>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <p><strong>Single dose</strong><br/><strong>Diagnosis:</strong>Spinal Muscular Atrophy</p>
+                     <aura:set attribute="else">
+                     <p><strong>Dosis única</strong><br/><strong>Diagnóstico:</strong>Atrofia Muscular Espinal</p>
+                     </aura:set>
+                     </aura:if>
+                     <div class="signatute">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <div class="name">Date</div>
+                     <aura:set attribute="else">
+                     <div class="name">Fecha</div>
+                     </aura:set>
+                     </aura:if>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <div class="sign">Signature and stamp</div><div class="name">Date</div>
+                     <aura:set attribute="else">
+                     <div class="sign">Firma y Sello</div><div class="name">Fecha</div>
+                     </aura:set>
+                     </aura:if>
+                     </div>
+                     </div>
+                     </div>
+                     </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <div class="slds-backdrop slds-backdrop_open"></div>
+      </aura:if>
+      <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+      <aura:if isTrue="{!v.isModalOpen}">                 
+      <!-- Modal/Popup Box starts here-->
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+      <!-- Modal/Popup Box Header Starts here-->
+      <header class="slds-modal__header">
+      <lightning:buttonIcon iconName="utility:close"
+         onclick="{! c.closeModel }"
+         alternativeText="close"
+         variant="bare-inverse"
+         class="slds-modal__close"/>
+      <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Calendario de Infusión</h2>
+      </header>
+      <!--Modal/Popup Box Body Starts here-->
+      <div class="slds-modal__content slds-p-around_medium slds-grid slds-grid_vertical d_f" id="modal-content-id-1">
+         <lightning:button variant="brand"
+            label="Ingresar un NUEVO CASO"
+            title="Ingresar un NUEVO CASO"
+            class="btn btn-primary modal-button"
+            onclick="{!c.openCalInfDate}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />         
+         <lightning:button variant="brand"
+            label="MODIFICAR fecha de infusión"
+            title="MODIFICAR fecha de infusión"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.editpatient}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="Ir al CALENDARIO de mis casos"
+            title="Ir al CALENDARIO de mis casos"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.openCal}" iconName="utility:chevronright" iconPosition="right"/>    
+         </div>
+      <!--Modal/Popup Box Footer Starts here-->
+      <footer class="slds-modal__footer">
+      <lightning:button variant="neutral"
+         label="Cancel"
+         title="Cancel"
+         onclick="{! c.closeModel }"/>
+      </footer>
+      </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+      </aura:if>
+      <div id="footer_content"><c:ZOE_FOOTER /></div>
+   </aura:if>
+</aura:component>

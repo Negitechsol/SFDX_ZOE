@@ -1,0 +1,5 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" applyHtmlTag="true" lightningStylesheets="true" docType="html">
+    <iframe src="https://novartis8--gtxzoedev.my.salesforce.com/sfc/p/7h000000H3Mf/a/7h000000H0fJ/L0UcMuSdRZuCoBjQWCtoTRlS2TApvNH5sgEML3LdJvA"
+            width="100%"
+            height="1000px"/>
+</apex:page>

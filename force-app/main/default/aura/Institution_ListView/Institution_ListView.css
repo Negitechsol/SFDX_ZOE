@@ -1,0 +1,9 @@
+.THIS .zkitlistviewcontainer{
+    position:relative;
+}
+.THIS .newbutton{
+    position: absolute;
+    z-index: 1;
+    right: 16px;
+    top: 7px;
+}

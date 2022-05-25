@@ -1,0 +1,425 @@
+<aura:component access="GLOBAL" implements="lightning:availableForFlowScreens,lightning:actionOverride,force:appHostable,force:hasRecordId,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" controller="ZOEHeaderController" >
+      <force:recordData aura:id="recordLoader" recordId="{!$SObjectType.CurrentUser.Id}" fields="Name,Id" targetFields="{!v.currentUser}" />
+      <aura:attribute name="currentUser" type="User" /> 
+      <aura:attribute name="selectedlanguage" type="string"></aura:attribute>     
+      <aura:attribute name="currentRole" type="string"></aura:attribute>
+      <aura:attribute name="Preinfusion" type="string"></aura:attribute>
+      <aura:attribute name="Postinfusion" type="string"></aura:attribute>
+      <aura:attribute name="Infusion" type="string"></aura:attribute>
+      <aura:attribute name="Training" type="string"></aura:attribute>
+      <aura:attribute name="Configuration" type="string"></aura:attribute>
+      <aura:attribute name="Dashboard" type="string"></aura:attribute>
+      <aura:attribute type="map" name="linkMap"/>
+      <aura:attribute name="showcontent" type="String"/>
+      <aura:attribute name="showloader" type="string" /> 
+      <aura:registerEvent name="LanguageEvent" type="c:LanguageEvent"/>
+      <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+    <head>
+         <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		    
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/bootstrap.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/animate.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/fontawesome.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/owl.carousel.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/slick.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/nice-select.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/magnific-popup.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/odometer.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/flaticon.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/meanmenu.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/style.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/responsive.css'}"/>
+        
+        <title>Zolgensma®</title>
+        <link rel="icon" type="image/png" href="{!$Resource.zoe_img + '/img/favicon.png'}"/>
+     </head>
+    
+     <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+     <aura:if isTrue="{!v.showloader=='true'}">
+	 <div class="preloader">
+            <div class="loader">
+                <div class="indicator"> 
+                    <img src="{!$Resource.ZoeLoaderGif}"/>
+                </div>
+            </div>
+        </div>
+      </aura:if>
+      <aura:if isTrue="{!v.showcontent=='true'}">
+       <div id="header_content" class="opacity_none">	
+        <!-- Start Header Area -->
+        <header class="header-area">
+            <div class="top-header">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">                            
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="header-right-content">
+                                <div class="lang-select">
+                                    <div class="margintop_9px">
+                                    	<li><a href="#" class="dropdown-item dropdown_item_a" type="button">
+                                        	 <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        		Hello {!v.currentUser.Name}!
+                                            	<aura:set attribute="else">
+                                            		¡Hola {!v.currentUser.Name}!
+                                           	 	</aura:set>
+                                         	 </aura:if>
+                                             </a></li>
+                                     </div>
+                                    <a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}" class="homelink margin_top_10" alt="Home"><i class="fas fa-home i_primary"></i> </a>&nbsp;                                  
+                                    <lightning:select aura:id="select" name="select" value="{!v.selectedlanguage}" label="Selecciona un idioma" onchange="{!c.onLanguageChange }">
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="English">English</option>
+                                    </lightning:select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Navbar Area -->
+            <div class="navbar-area">
+                <div class="fovia-responsive-nav">
+                    <div class="container">
+                        <div class="fovia-responsive-menu">
+                            <div class="logo">
+                            
+                                  <a class="navbar-brand" href="{!$Label.c.sitecontext}" >
+									<img src="{!$Resource.zoe_img + '/img/logo.png'}" alt="logo" width="140" />
+                            </a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="fovia-nav">
+                    <div class="container">
+                        <nav class="navbar navbar-expand-md navbar-light">
+                            <a class="navbar-brand" href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}" id='Configurations'>
+								<img src="{!$Resource.zoe_img + '/img/logoGP.png'}" alt="logo" width="140" />
+                            </a>
+    
+                            <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+
+                                <ul class="{!v.currentRole=='Novarties Full Access user' ? 'navbar-nav fullnav' : 'navbar-nav subnav' }">
+                                     <!--<aura:if isTrue="{!v.currentRole=='Novarties Full Access user'}">-->
+                                     <aura:if isTrue="{!v.linkMap.Configuration}">
+                                         
+                                        <li class="nav-item menu-link" data-record="Configuration">
+                                        <a href="javascript:;" class="{!if(v.Configuration =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Configurations'>
+                                             <aura:if isTrue="{!v.Configuration == 'active'}">
+                                          <img class="menu-img , nav-link" src="{!$Resource.header_icons + '/Confiugurations1.png'}" alt="Configuration"/>
+                                            <aura:set attribute="else">
+                                        <img class="menu-img" src="{!$Resource.header_icons + '/Confiugurations.png'}" alt="Configuration"/>
+                                            </aura:set>
+                                        </aura:if>
+                                            </a>
+                                            <a href="javascript:;" class="{!if(v.Configuration =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Configurations'>
+                                            <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 Configurations
+                                   					  <aura:set attribute="else">
+                             					 Configuraciones
+                                   					  </aura:set>
+                        					</aura:if>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                               <!-- <li class="nav-item"><a href="{!$Label.c.siteurl+'accountlistview'}" class="nav-link">Account</a></li>
+                                                <li class="nav-item"><a href="{!$Label.c.siteurl+'master-configuration'}" class="nav-link">Master Configuration</a></li> -->
+                                        <!--    <li class="nav-item"><a href="{!$Label.c.siteurl+'user-infusion-date'}" class="nav-link">
+                                                    <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 		User Infusion Date
+                                   					  		<aura:set attribute="else">
+                             					 		Usuario Fecha de infusión
+                                   					  		</aura:set>
+                        							</aura:if>
+                                                    </a></li> -->
+                                              <!--  <li class="nav-item"><a href="{!$Label.c.siteurl+'zoe-calendar'}" class="nav-link">zoe-calendar</a></li>
+                                                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>-->
+                                                <li class="nav-item"><a href="{!$Label.c.siteurl+$Label.c.CalendarActivities}" class="nav-link">
+                                                    <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 		Calendar Activities
+                                   					  		<aura:set attribute="else">
+                             					 		Calendario de Actividades
+                                   					  		</aura:set>
+                        							</aura:if>
+                                                    </a></li>
+                                                <li class="nav-item"><a href="{!$Label.c.siteurl+$Label.c.InfusionCenter}" class="nav-link">
+                                                    <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 		Infusion Center Master
+                                   					  		<aura:set attribute="else">
+                             					 		Maestro del Centro de Infusión
+                                   					  		</aura:set>
+                        							</aura:if>
+                                                    </a></li>
+                                                <li class="nav-item"><a href="{!$Label.c.siteurl+$Label.c.InstitutionMaster}" class="nav-link">
+                                                    <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 		Institution Master
+                                   					  		<aura:set attribute="else">
+                             					 		Maestría de la Institución
+                                   					  		</aura:set>
+                        							</aura:if>
+                                                    </a></li>
+                                                <li class="nav-item"><a href="{!$Label.c.siteurl+$Label.c.Training}" class="nav-link">
+                                                    <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 		Training
+                                   					  		<aura:set attribute="else">
+                             					 		Entrenamientos
+                                   					  		</aura:set>
+                        							</aura:if>
+                                                    </a></li>
+                                                <li class="nav-item"><a href="{!$Label.c.siteurl+$Label.c.ZKitCalculator}" class="nav-link">
+                                                    <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 		Z-Kit Calculator
+                                   					  		<aura:set attribute="else">
+                             					 		Calculadora de kit Z
+                                   					  		</aura:set>
+                        							</aura:if>
+                                                    </a></li>
+                                                <li class="nav-item"><a href="{!$Label.c.siteurl+$Label.c.PendingRegistration}" class="nav-link">  
+                                                    <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 		Pending Registration
+                                   					  		<aura:set attribute="else">
+                             					 		Registro pendiente
+                                   					  		</aura:set>
+                        							</aura:if>
+                                                    </a></li>
+                                               <li class="nav-item"><a href="{!$Label.c.siteurl+$Label.c.ZoeContactlist}" class="nav-link">
+                                                    <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             					 		Contacts
+                                   					  		<aura:set attribute="else">
+                             					 		Contactos
+                                   					  		</aura:set>
+                        							</aura:if>
+                                                    </a></li>
+                                           </ul> 
+                                    	</li>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.linkMap.PreInfusion}">
+                                    <li class="nav-item menu-link" data-record="Preinfusion">
+                                        <a href="{!$Label.c.siteurl+'pre-infusion'}" class="{!if(v.Preinfusion =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Pre-infusion' >
+                                        <aura:if isTrue="{!v.Preinfusion == 'active'}">
+                                           <img class="menu-img" src="{!$Resource.header_icons + '/Pre-infusion1.png'}" alt="indicacion" id='Pre-infusion' />
+                                           <aura:set attribute="else">
+                                           <img class="menu-img" src="{!$Resource.header_icons + '/Pre-infusion.png'}" alt="indicacion" id='Pre-infusion' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           </aura:set>
+                                        </aura:if> 
+                                        </a>    
+                                         <a href="{!$Label.c.siteurl+$Label.c.PreInfusion}" class="{!if(v.Preinfusion =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Pre-infusion' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}">
+                                        <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	   Pre-infusion 
+                                            <aura:set attribute="else">
+                                            	Pre-infusión
+                                            </aura:set>
+                                         </aura:if> 
+                                        </a>                                        
+                                    </li>
+									</aura:if>
+                                    <aura:if isTrue="{!v.linkMap.Infusion}">
+                                      <li class="nav-item menu-link" data-record="Infusion" >
+                                           <a href="{!$Label.c.siteurl+'infusion'}" class="{!if(v.Infusion =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Infusion'>
+                                           <aura:if isTrue="{!v.Infusion == 'active'}">
+                                         <img class="menu-img" src="{!$Resource.header_icons + '/Infusion1.png'}" alt="Infusion" id='Infusion' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           <aura:set attribute="else">
+                                         <img class="menu-img" src="{!$Resource.header_icons + '/Infusion.png'}" alt="Infusion" id='Infusion' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           </aura:set>
+                                        </aura:if>
+                                          </a>
+                                        <a href="{!$Label.c.siteurl+$Label.c.Infusion}" class="{!if(v.Infusion =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Infusion'>
+                                        <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	Infusion
+                                            <aura:set attribute="else">
+                                            	Infusión
+                                            </aura:set>
+                                         </aura:if>
+                                        </a>                                        
+                                      </li>
+    								</aura:if>
+                                    <aura:if isTrue="{!v.linkMap.PostInfusion}">
+                                    <li class="nav-item menu-link" data-record="Postinfusion">
+                                       <a href="{!$Label.c.siteurl+$Label.c.PostInfusion}" class="{!if(v.Postinfusion =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Post-infusion'>
+                                          <aura:if isTrue="{!v.Postinfusion == 'active'}">
+                                         <img class="menu-img" src="{!$Resource.header_icons + '/Post-infusion1.png'}" alt="Post-infusion" id='Post-infusion' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           <aura:set attribute="else">
+                                         <img class="menu-img" src="{!$Resource.header_icons + '/Post-infusion.png'}" alt="Post-infusion" id='Post-infusion' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           </aura:set>
+                                        </aura:if> 
+                                        </a> 
+                                        <a href="{!$Label.c.siteurl+$Label.c.PostInfusion}" class="{!if(v.Postinfusion =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Post-infusion'>
+                                        <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	    Post-infusion
+                                            <aura:set attribute="else">
+                                            	Post-infusión
+                                            </aura:set>
+                                         </aura:if>
+                                        </a>
+                                    </li>
+    								</aura:if>
+                                    <aura:if isTrue="{!v.linkMap.Training}">
+                                    	<li class="nav-item menu-link" data-record="Training">
+                                          <a href="{!$Label.c.siteurl+$Label.c.Entrenamientos}" class="{!if(v.Training =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Training'>                                            <aura:if isTrue="{!v.Training == 'active'}">
+                                         <img class="menu-img" src="{!$Resource.header_icons + '/training1.png'}" alt="Entrenamientos" id='Training' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           <aura:set attribute="else">
+                                         <img class="menu-img" src="{!$Resource.header_icons + '/training.png'}" alt="Entrenamientos" id='Training' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           </aura:set>
+                                        </aura:if>
+                                            </a>     
+                                         <a href="{!$Label.c.siteurl+$Label.c.Entrenamientos}" class="{!if(v.Training =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Training'>
+                                           <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        		  Training
+                                               <aura:set attribute="else">
+                                            	  Entrenamientos
+                                               </aura:set>
+                                           </aura:if>
+                                         </a>
+                                    	</li>
+                                    </aura:if>
+                                     <!--<aura:if isTrue="{!v.currentRole=='Novarties Full Access user'}">-->
+                                     <aura:if isTrue="{!v.linkMap.Dashboard}">                                         
+                                    	 <li class="nav-item" data-record="Dashboard">
+                                         <a href="{!$Label.c.siteurl+$Label.c.ZoeDashboard}" class="{!if(v.Dashboard =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Dashboard'>
+                                            <aura:if isTrue="{!v.Dashboard == 'active'}">
+                                         <img class="menu-img" src="{!$Resource.header_icons + '/dashboard1.png'}" alt="Dashboard" id='Dashboard' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           <aura:set attribute="else">
+                                         <img class="menu-img" src="{!$Resource.header_icons + '/dashboard.png'}" alt="Dashboard" id='Dashboard' onmouseover="{!c.handleMouseOver}" onmouseout="{!c.handleMouseOut}"/>
+                                           </aura:set>
+                                        </aura:if>
+                                             </a>
+                                            <a href="{!$Label.c.siteurl+$Label.c.ZoeDashboard}" class="{!if(v.Dashboard =='active','nav-link active','nav-link')}" onclick="{!c.activeLink}" id='Dashboard'>
+                                            <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        		Dashboard
+                                            		<aura:set attribute="else">
+                                            	Tablero
+                                            		</aura:set>
+                                         	</aura:if>
+                                             </a>
+                                         </li>  
+                                     </aura:if>
+                                    
+                                     <li class="nav-item menu-link show_991px">
+                                              <a class="dropdown-item" href="#" id="navbarDarkDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                 <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                                      Quick Links
+                                                          <aura:set attribute="else">
+                                                      Enlaces Rápidos
+                                                          </aura:set>
+                                                 </aura:if>
+                                              </a>
+                                      <ul class="dropdown-menu user_dropdown" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><a href="{!$Label.c.siteurl+$Label.c.ZolgensmaPdf}" target="_blank" class="dropdown-item" type="button" onclick="{!c.activeLink}" id='QUICKLINK'>
+                                            <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	Zolgensma<sup>®</sup> Package Insert 
+                                            <aura:set attribute="else">
+                                            	Prospecto de Zolgensma<sup>®</sup>
+                                            </aura:set>
+                                         </aura:if>
+                                            </a></li>
+                                        <li><a href="{!$Label.c.siteurl+$Label.c.ReporteDeeventosadversos}" class="dropdown-item" type="button" onclick="{!c.activeLink}" id='QUICKLINK'>
+                                            <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	  Adverse Event Report
+                                            	<aura:set attribute="else">
+                                              Reporte de Eventos Adversos
+                                            	</aura:set>
+                                         	</aura:if>
+                                            </a></li>
+                                     <li><a href="{!$Label.c.siteurl+$Label.c.ServiciosDelpatient}" class="dropdown-item" type="button" onclick="{!c.activeLink}" id='QUICKLINK'>
+                                             <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        		Living Better Program
+                                            		<aura:set attribute="else">
+                                            	Programa Viviendo Mejor
+                                            		</aura:set>
+                                         	</aura:if>
+                                            </a></li> 
+                                        <li><a href="{!$Label.c.siteurl+$Label.c.Contacto}" class="dropdown-item" type="button" onclick="{!c.activeLink}" id='QUICKLINK'>
+                                             <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	Contact
+                                            <aura:set attribute="else">
+                                            	Contacto
+                                            </aura:set>
+                                         </aura:if>
+                                            </a></li>
+                                         <li><a href="javascript:;" class="dropdown-item" type="button" onclick="{!c.logout}">
+                                             <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        		Log out
+                                            		<aura:set attribute="else">
+                                            	Salir
+                                            		</aura:set>
+                                         	</aura:if>
+                                            </a></li>
+                                      </ul>
+                                    	</li>
+                                </ul>
+
+                            </div>
+                            
+                                    
+                             <div class="navbar-nav subnav hide_991px">
+                                  <ul class="">
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle user_class btn" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                         <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                             				  Quick Links
+                                   				  <aura:set attribute="else">
+                             				  Enlaces Rápidos
+                                   				  </aura:set>
+                        				 </aura:if>
+                                      </a>
+                                      <ul class="dropdown-menu user_dropdown" aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><a href="{!$Label.c.siteurl+$Label.c.ZolgensmaPdf}" target="_blank" class="dropdown-item" type="button" onclick="{!c.activeLink}" id='QUICKLINK'>
+                                            <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	Zolgensma<sup>®</sup> Package Insert 
+                                            <aura:set attribute="else">
+                                            	Prospecto de Zolgensma<sup>®</sup>
+                                            </aura:set>
+                                         </aura:if>
+                                            </a></li>
+                                        <li><a href="{!$Label.c.siteurl+$Label.c.ReporteDeeventosadversos}" class="dropdown-item" type="button" onclick="{!c.activeLink}" id='QUICKLINK'>
+                                            <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	  Adverse Event Report
+                                            	<aura:set attribute="else">
+                                              Reporte de Eventos Adversos
+                                            	</aura:set>
+                                         	</aura:if>
+                                            </a></li>
+                                     <li><a href="{!$Label.c.siteurl+$Label.c.ServiciosDelpatient}" class="dropdown-item" type="button" onclick="{!c.activeLink}" id='QUICKLINK'>
+                                             <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        		Living Better Program
+                                            		<aura:set attribute="else">
+                                            	Programa Viviendo Mejor
+                                            		</aura:set>
+                                         	</aura:if>
+                                            </a></li> 
+                                        <li><a href="{!$Label.c.siteurl+$Label.c.Contacto}" class="dropdown-item" type="button" onclick="{!c.activeLink}" id='QUICKLINK'>
+                                             <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        	Contact
+                                            <aura:set attribute="else">
+                                            	Contacto
+                                            </aura:set>
+                                         </aura:if>
+                                            </a></li>
+                                        <li><a href="javascript:;" class="dropdown-item" type="button" onclick="{!c.logout}">
+                                             <aura:if isTrue="{!v.selectedlanguage=='English'}">
+                                        		Log out
+                                            		<aura:set attribute="else">
+                                            	Salir
+                                            		</aura:set>
+                                         	</aura:if>
+                                            </a></li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- End Navbar Area -->
+        </header>
+        <!-- End Header Area -->
+    </div>
+           </aura:if>
+</aura:component>

@@ -1,0 +1,58 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" controller="ZOE_LoginCntrl">
+	<aura:attribute name="username" type="String" />
+    <aura:attribute name="hasError" type="Boolean" />
+    <aura:attribute name="showcontent" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide" />
+    <lightning:notificationsLibrary aura:id="notifyId"/>
+    <c:ZOE_Login_Header />
+    <aura:if isTrue="{!v.showcontent=='true'}">
+    <section class="contact-area ptb-100">
+        <div class="bg-map"><img src="{!$Resource.zoe_img + '/img/bg-map.png'}" alt="image"/></div>
+            <div class="container">
+                <div class="section-title">
+                     <h2>Restablecer Su Contraseña</h2>   
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="contact-form">
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <lightning:input
+                                                    type="email"
+                                                    class="form-control"
+                                                    placeholder="Nombre de usuario"
+                                                    value="{!v.username}"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <lightning:button variant="brand"
+                                        label="Restablecer La Contraseña"
+                                        title="Reset Password"
+                                        class="btn btn-primary"
+                                        onclick="{!c.resetpwd}" iconName="utility:chevronright" iconPosition="right"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-3">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </section>
+    <c:ZOE_Login_Footer />
+    </aura:if>
+</aura:component>

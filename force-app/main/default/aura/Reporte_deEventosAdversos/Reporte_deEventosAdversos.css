@@ -1,0 +1,298 @@
+.THIS .hyplnk{
+    color:#19ce67;
+}
+.THIS .banner{
+    background-image: url('/ZOE/resource/1639564096000/Quicklinks_img/img/reporto.png');
+    background-size:cover;
+    height:300px;
+}
+.THIS.f_f_a{
+    background-image: url('/ZOE/OMS/resource/1645647950000/map_zoe');
+    border-radius: 3px;
+    background-color: #822e9d;
+}
+.THIS .f_f_a_p{
+    color: #FFF !important;
+    text-align: center;
+     padding: 5px 0px;
+    font-size: 17px !important;
+    margin-bottom:1% !important;
+}
+.THIS .pl_50{
+     padding-left:50px
+}
+.THIS .i_css2{
+     font-size: 17px;
+}
+.THIS .ptb-100 {
+    padding-top: 10px !important;
+    padding-bottom: 100px;
+}
+.THIS h3{
+    color: #8a199c;
+    font-weight: bolder !important;
+  /*  text-decoration: underline;
+    text-decoration-color: #19ce67; */
+    margin-top:0px !important;
+}
+.THIS p {
+    color: #0a0a0a!important;
+    font-size: 15px!important;
+    margin-bottom: 15px!important;
+}
+.THIS h4{
+    color: #8a199c;
+    font-weight: bolder !important;
+}
+.THIS .sub-img{
+    float: left;
+    height: 60px;
+}
+.THIS .sub-title{
+    padding-top:1%;
+}
+.THIS .sub2-title{
+   padding-top: 5px;
+}
+
+.THIS .curvDiv{
+    border:1px solid #8a199c;
+    margin-left: 3%;
+    margin-top: 3%;
+    border-radius: 20px 0px 20px 0px;
+    padding:30px 25px;
+    border-width:1px 3px;
+    margin-bottom:4%;
+}
+.THIS .sub2-img{
+    float: left;
+    height: 40px;
+}
+.THIS li::marker {
+  color: #19ce67; 
+}
+.THIS .curvDivfooter{
+    width:95%;
+    margin-left: 4%;
+    margin-top: 2%;
+    border-radius: 15px 0px 15px 0px;
+    padding: 0px !important;
+}
+
+.THIS .title_img{
+    margin: 0px auto;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 70% 30% 30% 70%/60% 40% 60% 40%;
+    /* background-color: #19ce67; */
+    background-color: #822e9d;
+    color: #fff;
+    font-size: 25px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.THIS .section-title {
+ margin-bottom:25px;   
+ margin-top:20px;
+ text-align:left;
+ max-width:none;
+ display: inline-flex;
+}.THIS .quote_css{
+    background:none;
+    -webkit-box-shadow: 0 10px 55px 5px rgb(137 173 255 / 20%);
+    box-shadow: 0 10px 55px 5px rgb(137 173 255 / 20%);
+}
+.THIS .quote_css p{
+    font-style:normal;
+}
+.THIS .single-doctor-box1{
+    padding-left:100px;
+    padding-top:50px;
+    text-align:center;
+}
+.THIS .text_center{
+    text-align:center;
+}
+.THIS .margin_css{
+    margin:10px 0px;
+}
+.THIS .quote_css::after{
+    background-color:#822e9d;
+}
+
+.THIS .quote_css::before{
+    font-size:70px;
+    top:-15px;
+}
+
+.THIS .fun-facts-area{
+    background-image: url('/ZOE/resource/1645647950000/map_zoe');
+    border-radius: 3px;
+    background-color:#822e9d;
+}
+.THIS .i_css{
+    color:#19ce67;padding-right:5px;
+    font-size:16px;
+}
+
+.THIS .slideimg1{
+    width: 16%!important;
+    margin: 0px auto;
+}
+.THIS .single-feedback{
+    padding:10px 10px 10px 10px !important;
+    text-align:left !important;
+}
+.THIS .single-feedback h3{
+    font-size:25px !important;
+    padding-bottom:15px !important;
+}
+.THIS .single-feedback span{
+    color:#fff !important;
+}
+.THIS .btn_css_width{
+    width:50%;
+    margin:0px auto;
+}
+.THIS .text_center{
+    text-align:center !important;
+}
+.THIS .fun-facts-area{
+    background-image: url('/ZOE/resource/1645647950000/map_zoe');
+    border-radius: 3px;
+    background-color:#822e9d;
+}
+.THIS .fun-facts-area p{
+    color: #FFF !important;
+    text-align: center;
+    padding: 5px 0px;
+    font-size: 17px !important;
+    margin-bottom:-15px !important;
+}
+.THIS .owl-theme .owl-dots .owl-dot span{
+    color:#822e9d !important;
+}
+.THIS .main-services-area{
+    padding:0px !important ;
+}
+.THIS .margin_css_top{
+    margin-top:70px;
+}
+.THIS .text_left{
+    text-align:left;
+}
+.THIS .i_css{
+    color:#19ce67;padding-right:5px;
+    font-size:16px;
+}
+.THIS .p_in_margin{
+    margin-top:40px;
+}
+.THIS h1 {
+    color: #8a199c !important;
+}
+.THIS h2 {
+    color: #8a199c !important;
+}
+.THIS h3 > a {
+    color: #8a199c !important;
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .THIS .slds-tabs_default__nav{
+        margin:0px 5%;
+    }
+    
+    .THIS .fun-facts-area p{
+        font-size:15px !important;
+    }
+} 
+@media only screen and (max-width: 767px){
+ 
+    .THIS .slds-tabs_default__nav{
+        margin:0px 0px;
+    }
+    .THIS .slds-tabs_default__item{
+        padding:5px 10px;
+        font-size:13px;
+    }
+    .THIS .slds-tabs_default__item:active{
+        padding:5px 10px;
+        font-size:13px;
+    }
+    .THIS .block_p{
+        padding:0px 0px;
+    }
+    .THIS p{
+        font-size:14px;
+    }
+}
+@media only screen and (max-width: 767px){
+    .THIS .about-content ul li {
+     flex:0 0 100%;   
+     max-width:100%;
+    }
+    .THIS .about-content{
+        text-align:left;
+    }
+    .THIS .single-doctor-box1{
+        padding-top:0px;
+    }
+    .THIS .fun-facts-area p{
+        font-size:14px !important;
+        margin-bottom:-25px !important;
+    }
+    .THIS .slds-tabs_default__overflow-button{
+        line-height:30px;
+    }
+    .THIS .block_p{
+        font-size:14px !important;
+        text-align:left;
+    }
+    .THIS .single-services-box h3{
+        text-align:left;
+    }
+    .THIS .single-services-box p{
+        text-align:left;
+    }
+    .THIS .section-title1 h3{
+    font-size: 20px;
+}
+}
+@media only screen and (max-width: 576px){
+        
+    .THIS .single-doctor-box1{
+        padding-left:0px;
+        padding-top:10px;
+    }
+    .THIS .sub2-title{
+        font-size:18px;
+    }
+    .THIS .our-mission-image{
+        margin-top:20px;
+    }
+    .THIS .margin_b10{
+        margin-bottom:10px;
+    }
+    .THIS .p_in_margin{
+        margin-top:0px;
+    }
+    }
+@media only screen and (max-width: 300px){
+        
+  
+    .THIS .page-title-area{
+        padding-top:0px !important;
+        padding-bottom:0px !important;
+    }
+    }

@@ -1,0 +1,53 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" applyHtmlTag="true" lightningStylesheets="true" docType="html" >
+   
+    
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/popper.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/bootstrap.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/slick.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/jquery.meanmenu.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/jquery.appear.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/odometer.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/parallax.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/jquery.magnific-popup.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/jquery.nice-select.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/wow.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/jquery.ajaxchimp.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/form-validator.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/contact-form-script.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.zoe_js, '/js/main.js')}"/>
+    
+
+<apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/bootstrap.min.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/animate.min.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/fontawesome.min.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/owl.carousel.min.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/slick.min.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/nice-select.min.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/magnific-popup.min.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/odometer.min.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/flaticon.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/meanmenu.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/style.css')}"/>
+    <apex:styleSheet value="{!URLFOR($Resource.zoe_css, '/css/responsive.css')}"/>
+
+    <!-- div tag act as locator while calling Lightning.createComponent -->
+    <apex:includeLightning />
+    <div id="lightning" />
+    
+    <script>
+        $Lightning.use("c:ZOE_LoginApp", function() {
+        $Lightning.createComponent(
+            "c:ZOE_Login",
+            {},
+            "lightning",
+            function(cmp) {
+                
+            });
+        });
+    </script>
+    
+
+    
+
+</apex:page>

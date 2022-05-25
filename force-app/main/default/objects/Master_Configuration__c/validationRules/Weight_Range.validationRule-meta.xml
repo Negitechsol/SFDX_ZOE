@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Weight_Range</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT( ISBLANK(Weight_Range__c )), NOT( REGEX( Weight_Range__c , &quot;[a-zA-Z- À-ž0-9-.,]*&quot;)))</errorConditionFormula>
+    <errorDisplayField>Weight_Range__c</errorDisplayField>
+    <errorMessage>No se permiten letras ni caracteres especiales</errorMessage>
+</ValidationRule>

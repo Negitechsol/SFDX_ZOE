@@ -1,0 +1,151 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+     <aura:attribute name="userlanguage" type="String" />
+     <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+	 <c:ZOE_HEADER />
+
+    <section class="page-title-area page-title-bg2">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 							 <h2>Welcome to the ZOE platform!</h2>
+                            	 <aura:set attribute="else">
+                         	<h2>¡Bienvenidos a la plataforma ZOE!</h2>
+                            	 </aura:set>
+                        </aura:if> 
+                       
+                        <ul>
+                            <li><a href="home.html">Home</a></li>
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+                         	  <li>Reception and handling of Zolgensma®</li>
+                           	      <aura:set attribute="else">
+                           	  <li>Recepción y manipulación de Zolgensma®</li>
+                                  </aura:set>
+                            </aura:if> 
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="services-details-area ptb-100 bg-f4f9fd">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="services-details-desc">
+                            <!-- <div class="services-details-image">
+                                <img src="assets/img/services/1.jpg" alt="image">
+                            </div> -->
+                        
+                        <div class="services-details-features">
+                            <div class="row">
+                                <aura:if isTrue="{!v.userlanguage=='English'}">
+ 									<h5>Reception of Zolgensma®</h5>
+     									<aura:set attribute="else">
+ 									<h5>Recepción de Zolgensma®</h5>
+    				   				    </aura:set>
+								</aura:if>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <ul class="services-features-list">
+                                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 											<li><i class="flaticon-check-mark"></i> Zolgensma® travels and is delivered frozen at -60°C in clear vials. Remember that the number of vials varies according to the configuration of the requested kit.</li>
+     											<aura:set attribute="else">
+ 											<li><i class="flaticon-check-mark"></i> Zolgensma® viaja y se entrega congelado a-60°C en viales transparentes. Recordá que la cantidad de los viales varía acorde a la configuración del kit solicitado.</li>
+    				   					   		 </aura:set>
+										</aura:if>
+                                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 											<li><i class="flaticon-check-mark"></i> Vials must never be refrozen once received. </li>
+     											<aura:set attribute="else">
+ 											<li><i class="flaticon-check-mark"></i> Los viales no se deben volver a congelarse nunca, una vez recibidos. </li>
+    				   					   		 </aura:set>
+										</aura:if>
+                                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 											<li><i class="flaticon-check-mark"></i> Zolgensma® must be used within 14 days of receipt. </li>
+     											<aura:set attribute="else">
+ 											<li><i class="flaticon-check-mark"></i> Zolgensma®debeusarse dentro de los 14 días de la recepción. </li>
+    				   					   		 </aura:set>
+										</aura:if>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="services-details-features">
+                            <div class="row">
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+ 									<h5>Zolgensma® Handling</h5>
+     									<aura:set attribute="else">
+ 									<h5>Manipulación de Zolgensma®</h5>
+    				   				    </aura:set>
+								</aura:if>    
+                            
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <ul class="services-features-list">
+                                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 											<li><i class="flaticon-check-mark"></i> Zolgensma® will thaw in approximately 12 hours in the refrigerator.</li>
+     											<aura:set attribute="else">
+ 											<li><i class="flaticon-check-mark"></i> Zolgensma®se descongelará en aproximadamente 12 horas en la heladera.</li>
+    				   					   		 </aura:set>
+										</aura:if>
+                                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 											<li><i class="flaticon-check-mark"></i> It must be removed from the refrigerator the same day as the infusion. </li>
+     											<aura:set attribute="else">
+ 											<li><i class="flaticon-check-mark"></i> Debe ser retirado de la heladera el mismo día de la infusión. </li>
+    				   					   		 </aura:set>
+										</aura:if>
+                                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 											<li><i class="flaticon-check-mark"></i> Once thawed, Zolgensma® is a clear to slightly opaque, colorless to pale white liquid, free from particles.</li>
+     											<aura:set attribute="else">
+ 											<li><i class="flaticon-check-mark"></i> Una vez descongelado, Zolgensma® es un líquido transparente a ligeramente opaco, incoloro a blanco pálido, libre de partículas.</li>
+    				   					   		 </aura:set>
+										</aura:if>
+                                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 											<li><i class="flaticon-check-mark"></i> Do not use the vials if particles or discoloration are observed in the product. </li>
+     											<aura:set attribute="else">
+ 											<li><i class="flaticon-check-mark"></i> No usar los viales si se observan partículas o decoloración en el producto. </li>
+    				   					   		 </aura:set>
+										</aura:if>
+                                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 											<li><i class="flaticon-check-mark"></i> Do not shake the vials at any time.</li>
+     											<aura:set attribute="else">
+ 											<li><i class="flaticon-check-mark"></i> No agitar los viales en ningún momento.</li>
+    				   					   		 </aura:set>
+										</aura:if>    
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+						<aura:if isTrue="{!v.userlanguage=='English'}">
+ 							 <h3>For more information on the reception and handling process, access the on-demand training in the following section</h3>
+     						 	 <aura:set attribute="else">
+ 							 <h3>Para más información sobre el proceso de recepción y manipulación, accedéa los entrenamientos on-demand en la siguiente sección</h3>
+    				   			 </aura:set>
+						</aura:if>
+						<div class="submit-btn">
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+ 							 	<button class="btn btn-primary" onclick="{!c.openEntrenamientos}">TRAINING <i class="flaticon-right-chevron"></i></button>
+     						 	 	<aura:set attribute="else">
+ 							 	<button class="btn btn-primary" onclick="{!c.openEntrenamientos}">ENTRENAMIENTOS <i class="flaticon-right-chevron"></i></button>
+    				   			    </aura:set>
+						    </aura:if>
+						</div>
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 								 <h5>The information on this site is indicative. For more details, we recommend that you refer to the package insert for Zolgensma® (onsasemnogén abeparvovec). </h5>
+                        			 <aura:set attribute="else">
+                       			 <h5>La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al prospecto de Zolgensma® (onsasemnogén abeparvovec). </h5>
+                        			 </aura:set>
+                  	    </aura:if>
+
+						<!-- <p>Podés solicitarnos estas pruebas de laboratorio en la sección de Viviendo Mejor</p> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div id="footer_content"><c:ZOE_FOOTER /></div>
+</aura:component>

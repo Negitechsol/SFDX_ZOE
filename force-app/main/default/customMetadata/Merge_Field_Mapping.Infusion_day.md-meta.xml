@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Infusion_day</label>
+    <protected>false</protected>
+    <values>
+        <field>Field_API_Name__c</field>
+        <value xsi:type="xsd:string">User_Infusion_Date_Id__r.Infusion_Date__c</value>
+    </values>
+    <values>
+        <field>Merge_Field__c</field>
+        <value xsi:type="xsd:string">{Infusion_day_date}</value>
+    </values>
+    <values>
+        <field>Priority_Order__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Process_Name__c</field>
+        <value xsi:type="xsd:string">Notification</value>
+    </values>
+</CustomMetadata>

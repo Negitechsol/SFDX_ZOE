@@ -1,0 +1,57 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/bootstrap.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/animate.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/fontawesome.min.css'}"/>        
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/slick.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/nice-select.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/magnific-popup.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/odometer.min.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/flaticon.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/meanmenu.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/style.css'}"/>
+        <link rel="stylesheet" href="{!$Resource.zoe_css + '/css/responsive.css'}"/>
+        	
+        <title>Zolgensma®</title>
+        <link rel="icon" type="image/png" href="{!$Resource.zoe_img + '/img/favicon.png'}"/>
+     </head>
+    <aura:attribute name="showloader" type="string" /> 
+    <aura:attribute name="showcontent" type="String"/>
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:if isTrue="{!v.showloader=='true'}">
+       <div class="preloader">
+            <div class="loader">
+                <div class="indicator"> 
+                    <img src="{!$Resource.zoe_img + '/img/loaderwhite.gif'}" />
+                </div>
+            </div>
+        </div>
+    </aura:if>
+	<aura:if isTrue="{!v.showcontent=='true'}">
+        <header class="header-area">
+            <div class="navbar-area">
+                <div class="fovia-responsive-nav">
+                    <div class="container">
+                        <div class="text-center">
+                            <a class="navbar-brand" href="{!$Label.c.sitecontext}" >
+									   <img class="logo_width" src="{!$Resource.zoe_img + '/img/index_logo.png'}" alt="logo" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="fovia-nav">
+                    <div class="container">
+                        <div class="text-center">
+                            <a class="navbar-brand" href="{!$Label.c.sitecontext }" >
+                            <img class="logo_width" src="{!$Resource.zoe_img + '/img/logohd.png'}" alt="logo" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </aura:if>
+</aura:component>

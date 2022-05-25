@@ -1,0 +1,10 @@
+.THIS .footer_page p a{
+    color: #111f90;
+}
+.THIS .color-change a :hover{
+    color:#19ce67 !important;
+    font-size:13px;
+}
+.THIS .color-change a{
+    font-size:13px;
+}

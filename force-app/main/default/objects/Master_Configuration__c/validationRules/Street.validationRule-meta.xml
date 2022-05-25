@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Street</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT( ISBLANK(Street__c )), NOT( REGEX( Street__c , &quot;[a-zA-Z- À-ž0-9,.]*&quot;)))</errorConditionFormula>
+    <errorDisplayField>Street__c</errorDisplayField>
+    <errorMessage>Caracteres especiales no están permitidos</errorMessage>
+</ValidationRule>

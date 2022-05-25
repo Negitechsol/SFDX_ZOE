@@ -1,0 +1,127 @@
+.THIS .hyplnk{
+    color:#19ce67;
+}
+.THIS .t_a_C{
+    background:#8a199c;padding: 5px 0px;color: #FFF !important;border-radius: 3px;margin:0px auto;text-align:center;font-size: 17px;
+}
+
+.THIS .slds-size_8-of-12{
+    width: 66.666667%;
+}
+.THIS .shape2 {
+    top: 20% !important;
+}
+.THIS .uiInput--default.form-element {
+    padding-bottom: 5px !important;
+}
+.THIS .slds-page-header{
+    padding: 4px 2%;
+    background: #19ce67;
+    color: #FFF;
+    height: 55px;
+}
+.THIS .selectpatient{
+    width:50%;
+}
+.THIS .scrollit {
+    overflow-y: auto;
+    height:200px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+}
+.THIS .slds-text-title--caps{
+    color:#FFF;
+}
+.THIS .details p {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+.THIS .formdetails .slds-grid{
+    height:10px;
+}
+.THIS .slds-box{
+    padding-top:0px;
+}
+.THIS .tabletitle{
+        font-weight: bold;
+        color: #19ce67;
+}
+.THIS .uiInput--datetime .datePicker-openIcon {
+    bottom: 15px;
+}
+.THIS .slds-hidden{
+    max-height:1px;
+}
+.THIS .curvDivfooter{
+    width:50%;
+}
+.THIS .slds-button_success{
+    color:#FFF;
+}
+.THIS .sub-img{
+    float: left;
+    height: 60px;
+}
+.THIS .sub-title{
+    padding-top:1%;
+}
+.THIS .sub2-title{
+   padding-top: 5px;    
+   margin-left: 3%;
+
+}
+.THIS h1 {
+    color: #8a199c !important;
+}
+.THIS h2 {
+    color: #8a199c !important;
+}
+.THIS h3 {
+    color: #8a199c !important;
+}
+.THIS .box_css{
+    margin-top:3%;
+    background:none;   
+    -webkit-box-shadow: 0 10px 55px 5px rgb(137 173 255 / 20%);
+    box-shadow: 0 10px 55px 5px rgb(137 173 255 / 20%);
+}
+.THIS .ALT_small{
+    height:45px;
+    white-space: break-spaces  !important;
+    font-size: 10px !important;
+}
+.THIS .slds-truncate {
+
+}
+.THIS .ALT_small2{
+    width:120px;
+}
+.THIS .slds-p-bottom_small {
+    padding-bottom: 0px;
+}
+.THIS .hidebtn{
+    display:none;
+}
+.THIS .showbtn{
+    display:block;
+}
+.THIS .chartButton{
+	height: 20px;
+    position: absolute;
+    margin-left: 38%;
+    background: #8a199c;
+    color: #FFF;
+    padding: 5px;
+}
+.THIS .chartButton5{
+	height: 20px;
+    position: absolute;
+    margin-left: 90%;
+    background: #8a199c;
+    color: #FFF;
+    padding: 5px;
+}
+.THIS .chartDiv{
+    width:100%;height:300px;
+}

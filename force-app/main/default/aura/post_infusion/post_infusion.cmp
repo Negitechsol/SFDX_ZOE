@@ -1,0 +1,570 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="UserCalendarController">
+   <aura:attribute name="userlanguage" type="String" />
+   <aura:attribute name="showcontent" type="String"/>
+   <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+   <aura:attribute name="isLabModalOpen" type="boolean" default="false"/>
+   <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+   <aura:attribute type="map" name="parentLinkMap"/>
+   <c:ZOE_HEADER linkMap="{!v.parentLinkMap}"/>
+   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   <aura:if isTrue="{!v.showcontent=='true'}">
+      <section class="page-title-area banner">
+         <div class="d-table">
+            <div class="d-table-cell">
+               <div class="container">
+                  <div class="page-title-content">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h2>Post-infusion</h2>
+                        <aura:set attribute="else">
+                           <h2>Post-infusión</h2>
+                        </aura:set>
+                     </aura:if>
+                     <ul>
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Home</a></li>
+                        <aura:set attribute="else">
+                           <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Casa</a></li>
+                        </aura:set>
+                     </aura:if>
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+                           <li>Post-infusion monitoring</li>
+                           <aura:set attribute="else">
+                              <li>Monitoreo post-infusión</li>
+                           </aura:set>
+                        </aura:if>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+       
+       <section class="doctor-calendar-area ptb-100 pt-0">
+            <div class="container-fluid">
+                <div class="section-title"> 
+                </div> 
+			<div class="doctor-calendar-table table-responsive">
+                    <table class="table">
+                      <tr>
+                        <td rowspan="3">&nbsp;</td>
+                        <td colspan="4"><h3>MES 1</h3></td>
+                        <td colspan="4"><h3>MES 2</h3></td>
+                        <td colspan="4"><h3>MES 3</h3></td>
+                        <td colspan="4"><h3>>Mes 3</h3></td>
+                      </tr>
+                      <tr>
+                        <td colspan="4" class="col-2"><h3>Monitoreosemanal</h3></td>
+                        <td colspan="8" class="col-2"><h3>Monitoreocada 2 semanas</h3></td>
+                        <td rowspan="2" class="col-2"><h3 style="font-size:14px;">Monitoreosegúncriteriomédico</h3></td>
+                      </tr>
+                      <tr>
+                        <td colspan="1"><h3>1</h3></td>
+                        <td colspan="1"><h3>2</h3></td>
+                        <td colspan="1"><h3>3</h3></td>
+                        <td colspan="1"><h3>4</h3></td>
+                        <td colspan="1"><h3>5</h3></td>
+                        <td colspan="1"><h3>6</h3></td>
+                        <td colspan="1"><h3>7</h3></td>
+                        <td colspan="1"><h3>8</h3></td>
+                        <td colspan="1"><h3>9</h3></td>
+                        <td colspan="1"><h3>10</h3></td>
+                        <td colspan="1"><h3>11</h3></td>
+                        <td colspan="1"><h3>12</h3></td>
+                      </tr>
+                      <tr>
+                            <td colspan="1"><h3>FunciónHepática</h3>
+                                  <ul style="font-size: 11px;">
+                                    <li>ALT (alanina-aminotrasnferasa)</li>
+                                    <li>AST (aspartatoaminotransferasa)</li>
+                                    <li>BillirubinaTiempoProtrombina</li>
+                                  </ul>
+                            </td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td rowspan="3"><h3 style="font-size: 12px;">
+                                Continúe el monitoreo cada 2<br/> semanas, hasta que los resultados<br/> vuelvan a valores <br/>basales del paciente o a valores <br/>de referencia normal <br/>para pacientes con Atrofia<br/> Muscular Espinal.
+                                </h3>
+                            </td>
+                      </tr>
+                      <tr>
+                          <td colspan="1"><h3>Recuento de Plaquetas</h3>
+                            </td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                      </tr>
+                      <tr>
+                          
+                          <td colspan="1"><h3>Troponina I ó T <br/> (según disponibilidad)</h3>
+                            </td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3><i class="fa fa-check"></i></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                            <td colspan="1"><h3>&nbsp;</h3></td>
+                            <td colspan="1"><h3><h3><i class="fa fa-check"></i></h3></h3></td>
+                      </tr>
+                </table>
+                </div>
+            </div>
+       </section>
+       <section class="main-services-area pb_20">
+         <div class="container">
+            <div class="section-title">
+               <img class="title_img" src="{!$Resource.home_icons + '/img/Systemic.png'}" alt="indicacion" />
+               <!-- <span>Zolgensma®</span> -->
+               <aura:if isTrue="{!v.userlanguage=='English'}">
+                  <h4 class='sub2-title'>Systemic Corticosteroids</h4>
+                  <aura:set attribute="else">
+                     <h4 class='sub2-title'>Corticoesteroides Sistémicos</h4>
+                  </aura:set>
+               </aura:if>
+            </div>
+            <div class="row">
+               <div class="col-lg-12">
+                  <blockquote class="wp-block-quote quote_css">
+                     <div class="row">
+                        <div class="col-lg-9">
+                           <div class="inside_divpad">
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <p class="text_left">At the end of the 30-day period of corticosteroids equivalent to the
+                                    oral prednisolone (𝟏mg/kg/day), including the day of administration of
+                                    Zolgensma<sup>®</sup>, patients should be monitored for liver function.
+                                 </p>
+                                 <aura:set attribute="else">
+                                    <p class="text_left">Al final del período de 30 días de corticosteroides equivalente a la
+                                       prednisolona oral (𝟏mg/kg/día), incluido el día de la administración de
+                                       Zolgensma<sup>®</sup>, se debe controlar la función hepática de los pacientes.
+                                    </p>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                        </div>
+                        <div class="col-lg-3">
+                           <div>
+                              <!-- <img src="{!$Resource.zoe_img+ '/img/psp.png'}" alt="indicacion" class="psplogo_class" /> -->
+                              <img src="{!$Resource.postinfusion_img + '/injection.png'}"/>
+                           </div>
+                        </div>
+                     </div>
+                     <cite>Tom Cruise</cite>
+                  </blockquote>
+               </div>
+            </div>
+         </div>
+         <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+      </section>
+       <!-- Start Doctor Calendar Area -->
+      <section class="services-area  bg-f4f9fd pt_10">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6 col-md-12 col-sm-12 featureclk" >
+                  <div class="single-services-box bg-1 single_service_h">
+                     <div class="icon">
+                        <img src="{!$Resource.home_icons + '/img/pills.png'}"/>  
+                        <!--         <i class="flaticon-ekg"></i> -->
+                     </div>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h3>If patients have no findings
+                           significant at the end of the period of 30
+                           days:
+                        </h3>
+                        <p>
+                           Taper prednisolone (or equivalent)
+                           for 28 days <br/>
+                           For example: 2 weeks at 0.5 mg/kg/day and
+                           then 2 weeks at 0.25 mg/kg/day.
+                        </p>
+                        <aura:set attribute="else">
+                           <h3>Si los pacientes no tienen hallazgos
+                              significantes al final del período de 30
+                              días:
+                           </h3>
+                           <p class="single_service_h">
+                              Disminuir la prednisolona (o equivalente)
+                              durante 28 días<br/>
+                              Por ejemplo: 2 semanas a 0,5 mg/kg/día y
+                              luego 2 semanas a 0,25 mg/kg/día.
+                           </p>
+                        </aura:set>
+                     </aura:if>
+                     <!-- <a href="#" class="read-more-btn">Read more <i class="fas fa-arrow-right"></i></a> -->
+                  </div>
+               </div>
+               <div class="col-lg-6 col-md-12 col-sm-12 featureclk">
+                  <div class="single-services-box bg-2 single_service_h">
+                     <div class="icon">
+                        <img src="{!$Resource.home_icons + '/img/warning.png'}"/>  
+                        <!--            <i class="flaticon-extraction"></i> -->
+                     </div>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h3>If patients have abnormalities in the
+                           liver function at the end of the 30-day period
+                           days:
+                        </h3>
+                        <p>
+                           Continue corticosteroids until
+                           AST/ALT values are below
+                           2 x ULN and all other evaluations
+                           return to the normal range, followed by a
+                           gradual reduction over 28 days
+                        </p>
+                        <aura:set attribute="else">
+                           <h3>Si los pacientes tienen anomalías en la
+                              función hepática al final del período de 30
+                              días:
+                           </h3>
+                           <p>
+                              Continúe con los corticoesteroides hasta que
+                              los valores de AST/ALT estén por debajo de
+                              2 x ULN y todas las demás evaluaciones
+                              vuelvan al rango normal, seguido de una
+                              reducción gradual durante 28 días
+                           </p>
+                        </aura:set>
+                     </aura:if>
+                     <!-- <a href="#" class="read-more-btn">Read more <i class="fas fa-arrow-right"></i></a> -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="main-services-area pb_20">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  <blockquote class="wp-block-quote quote_css">
+                     <div class="row">
+                        <div class="col-lg-12">
+                           <div class="inside_divpad">
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <p class="text_left">Inadequate response to corticosteroids: consult experts if patients do not respond adequately to the equivalent of 𝟏mg/kg/day of oral prednisolone 1</p>
+                                 <aura:set attribute="else">
+                                    <p class="text_left">Respuesta inadecuada a los corticosteroides: consulte a los expertos si los pacientes no responden adecuadamente al equivalente de 𝟏mg/kg/día de prednisolona oral 1</p>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                        </div>
+                     </div>
+                     <cite>Tom Cruise</cite>
+                  </blockquote>
+               </div>
+            </div>
+         </div>
+         <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+      </section>
+      <section class="services-area bg-f4f9fd">
+         <div class="container">
+            <div class="section-title1">
+               <aura:if isTrue="{!v.userlanguage=='English'}">
+                  <h3>Haven't tried these features yet?</h3>
+                  
+                  <aura:set attribute="else">
+                     <h3>¿Todavía no probaste estas funcionalidades?</h3>
+                  </aura:set>
+               </aura:if>
+            </div>
+            <div class="row">
+               <div class="col-lg-2 col-md-12 col-sm-12">
+                  &nbsp;
+               </div>
+                <aura:if isTrue="{!v.parentLinkMap.CALENDAR}">
+                    <div class="col-lg-4 col-md-6 col-sm-6 featureclk" onclick="{!c.openModel}" >
+                        <div class="single-services-box single-services-height bg-3 ban1 mousehover">
+                            <div class="icon">
+                                <img src="{!$Resource.home_icons + '/img/calender.png'}"/> 
+                            </div>
+                            <div onclick="{!c.openModel}">
+                                <aura:if isTrue="{!v.userlanguage=='English'}">
+                                    <h3>Infusion Calendar</h3>
+                                    <p>                          
+                                        Receive notifications about
+                                        post-infusion monitoring adjusted to
+                                        your patient's infusion date
+                                    </p>
+                                    <aura:set attribute="else">
+                                        <h3>Calendario de Infusión</h3>
+                                        <p>                          
+                                            Recibi las notificaciones sobre el
+                                            monitoreo post-infusión ajustado a
+                                            la fecha de infusión de tu paciente
+                                        </p>
+                                    </aura:set>
+                                </aura:if>
+                            </div>                     
+                        </div>
+                    </div>
+                    <aura:set attribute="else">
+                        <div class="col-lg-4 col-md-6 col-sm-6 featureclk">
+                            <div class="single-services-box single-services-height bg-3 ban1 mousehover">
+                                <div class="icon">
+                                    <img src="{!$Resource.home_icons + '/img/calender.png'}"/> 
+                                </div>
+                                <div>
+                                    <aura:if isTrue="{!v.userlanguage=='English'}">
+                                        <h3>Infusion Calendar</h3>
+                                        <p>                          
+                                            Receive notifications about
+                                            post-infusion monitoring adjusted to
+                                            your patient's infusion date
+                                        </p>
+                                        <aura:set attribute="else">
+                                            <h3>Calendario de Infusión</h3>
+                                            <p>                          
+                                                Recibi las notificaciones sobre el
+                                                monitoreo post-infusión ajustado a
+                                                la fecha de infusión de tu paciente
+                                            </p>
+                                        </aura:set>
+                                    </aura:if>
+                                </div>                     
+                            </div>
+                        </div>
+                    </aura:set>
+                </aura:if> 
+               <div class="col-lg-4 col-md-6 col-sm-6 featureclk" onclick="{!c.openTrackerModal}" >
+                  <div class="single-services-box single-services-height bg-4 ban2 mousehover">
+                     <div class="icon">
+                        <img src="{!$Resource.home_icons + '/img/labtracker.png'}"/>  
+                     </div>
+                     <div onclick="{!c.openTrackerModal}">
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+                           <h3>Patient Lab Tracker</h3>
+                           <p>                            
+                              Take the evolution of
+                              lab results of your
+                              patients here! 
+                           </p>
+                           <aura:set attribute="else">
+                              <h3>LabTracker de pacientes</h3>
+                              <p>                            
+                                 ¡Llevá la evolución de los
+                                 resultados de laboratorio de tus
+                                 pacientes aquí! 
+                              </p>
+                           </aura:set>
+                        </aura:if>
+                     </div>                     
+                  </div>
+               </div>
+               <div class="col-lg-2 col-md-12 col-sm-12">
+                  &nbsp;
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="main-services-area pb_20">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  <blockquote class="wp-block-quote quote_css">
+                     <div class="row">
+                        <div class="col-lg-12">
+                           <div class="inside_divpad">
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <p class="text_left">Any laboratory finding with a result outside the reference range, whether or not it has associated symptoms and
+                                    Regardless of whether or not it is considered related to the medicinal product, it is an EVENT
+                                    ADVERSE that must be reported to Patient Safety within 24 hours of becoming aware of the
+                                    same.
+                                 </p>
+                                 <aura:set attribute="else">
+                                    <p class="text_left">Todo hallazgo de laboratorio con resultado fuera del rango de referencia, tenga o no síntomas asociados e
+                                       independientemente que se considere relacionado o no con el producto medicinal, es un EVENTO
+                                       ADVERSO que debe reportarse a <a href="{!$Label.c.siteurl+$Label.c.ReporteDeeventosadversos}" class="hyp" onclick="{!c.activeLink}">Seguridad del Paciente</a> dentro de las 24 horas de tomar conocimiento del
+                                       mismo.
+                                    </p>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                        </div>
+                     </div>
+                     <cite>Tom Cruise</cite>
+                  </blockquote>
+               </div>
+            </div>
+         </div>
+         <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+      </section>
+      <section class="fun-facts-area1 b_g_i">
+         <p class="t_a_C">
+            <aura:if isTrue="{!v.userlanguage=='English'}">
+               The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+               <aura:set attribute="else">
+                  La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+               </aura:set>
+            </aura:if>
+         </p>
+      </section>
+      <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+      <aura:if isTrue="{!v.isModalOpen}">                 
+         <!-- Modal/Popup Box starts here-->
+         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+         <div class="slds-modal__container">
+         <!-- Modal/Popup Box Header Starts here-->
+         <header class="slds-modal__header">
+         <lightning:buttonIcon iconName="utility:close"
+            onclick="{! c.closeModel }"
+            alternativeText="close"
+            variant="bare-inverse"
+            class="slds-modal__close"/>
+         <aura:if isTrue="{!v.userlanguage=='English'}">
+         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Infusion Calendar</h2>
+         <aura:set attribute="else">
+         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Calendario de Infusión</h2>
+         </aura:set>
+         </aura:if>
+         </header>
+         <!--Modal/Popup Box Body Starts here-->
+         <div class="slds-modal__content slds-p-around_medium slds-grid slds-grid_vertical d_f" id="modal-content-id-1">
+        <aura:if isTrue="{!v.parentLinkMap.CALENDAR}">
+         <lightning:button variant="brand"
+            label="Ingresar un NUEVO CASO"
+            title="Ingresar un NUEVO CASO"
+            class="btn btn-primary modal-button"
+            onclick="{!c.openCalInfDate}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />         
+         <lightning:button variant="brand"
+            label="MODIFICAR fecha de infusión"
+            title="MODIFICAR fecha de infusión"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.editpatient}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="Ir al CALENDARIO de mis casos"
+            title="Ir al CALENDARIO de mis casos"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.openCal}" iconName="utility:chevronright" iconPosition="right"/>  
+        <aura:set attribute="else">
+            <lightning:button variant="brand"
+            label="Ingresar un NUEVO CASO"
+            title="Ingresar un NUEVO CASO"
+            class="btn btn-primary modal-button not-allowed"
+            iconName="utility:chevronright" iconPosition="right"/>
+         <br />         
+         <lightning:button variant="brand"
+            label="MODIFICAR fecha de infusión"
+            title="MODIFICAR fecha de infusión"
+            class="btn btn-primary modal-button Calendar-Activities not-allowed"
+            iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="Ir al CALENDARIO de mis casos"
+            title="Ir al CALENDARIO de mis casos"
+            class="btn btn-primary modal-button Calendar-Activities not-allowed"
+             iconName="utility:chevronright" iconPosition="right"/>
+        </aura:set>
+        </aura:if>
+           
+         </div>
+         <!--Modal/Popup Box Footer Starts here-->
+         <footer class="slds-modal__footer">
+         <lightning:button variant="neutral"
+            label="Cancel"
+            title="Cancel"
+            onclick="{! c.closeModel }"/>
+         </footer>
+         </div>
+         </section>
+         <div class="slds-backdrop slds-backdrop_open"></div>
+         </aura:if>
+         <aura:if isTrue="{!v.isLabModalOpen}">                 
+         <!-- Modal/Popup Box starts here-->
+         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+         <div class="slds-modal__container">
+         <!-- Modal/Popup Box Header Starts here-->
+         <header class="slds-modal__header">
+         <lightning:buttonIcon iconName="utility:close"
+            onclick="{! c.closeModel }"
+            alternativeText="close"
+            variant="bare-inverse"
+            class="slds-modal__close"/>
+         <aura:if isTrue="{!v.userlanguage=='English'}">
+         	<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Zolgensma Labtracker</h2>
+         <aura:set attribute="else">
+         	<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Labtracker de Zolgensma</h2>
+         </aura:set>
+         </aura:if>
+         </header>
+         <!--Modal/Popup Box Body Starts here-->
+         <div class="slds-modal__content slds-p-around_medium slds-grid slds-grid_vertical d_f" id="modal-content-id-1">
+        <aura:if isTrue="{!v.parentLinkMap.LABTRACKER}">
+            <lightning:button variant="brand"
+            label="Ingresar un NUEVO CASO"
+            title="Ingresar un NUEVO CASO"
+            class="btn btn-primary modal-button"
+            onclick="{!c.openLabInfDate}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="MODIFICAR fecha de infusión"
+            title="MODIFICAR fecha de infusión"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.editpatientlab}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="Ir al LABTRACKER de mis casos existentes"
+            title="Ir al LABTRACKER de mis casos existentes"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.openTracker}" iconName="utility:chevronright" iconPosition="right"/>
+        <aura:set attribute="else">
+            <lightning:button variant="brand"
+            label="Ingresar un NUEVO CASO"
+            title="Ingresar un NUEVO CASO"
+            class="btn btn-primary modal-button not-allowed"
+            iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="MODIFICAR fecha de infusión"
+            title="MODIFICAR fecha de infusión"
+            class="btn btn-primary modal-button Calendar-Activities"
+            iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="Ir al LABTRACKER de mis casos existentes"
+            title="Ir al LABTRACKER de mis casos existentes"
+            class="btn btn-primary modal-button Calendar-Activities not-allowed"
+             iconName="utility:chevronright" iconPosition="right"/>
+        </aura:set>
+        </aura:if>
+         
+         </div>
+         <!--Modal/Popup Box Footer Starts here-->
+         <footer class="slds-modal__footer">
+         <lightning:button variant="neutral"
+            label="Cancel"
+            title="Cancel"
+            onclick="{! c.closeModel }"/>
+         </footer>
+         </div>
+         </section>
+         <div class="slds-backdrop slds-backdrop_open"></div>
+         </aura:if>
+      <div id="footer_content">
+         <c:ZOE_FOOTER />
+      </div>
+   </aura:if>
+</aura:component>

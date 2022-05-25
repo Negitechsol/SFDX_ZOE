@@ -1,0 +1,417 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+<p>Novartis Argentina S.A., con domicilio en Ramallo 1851, CABA, es el responsable del tratamiento de sus
+    datos personales ya que decide para qué y cómo se tratan. Esta responsabilidad puede ser ejercida en
+    exclusividad o conjuntamente con otra(s) compañía(s) del grupo Novartis, en cuyo caso actúan como
+    responsables conjuntos. En este Aviso de Privacidad, “nosotros” se refiere a Novartis Argentina S.A.
+    y las compañías de su grupo (cuando corresponda).</p>
+<p>El presente aviso de privacidad (“Aviso”) cubre únicamente las páginas web, aplicaciones web o
+    aplicaciones móviles (referidas en conjunto como “app”) en donde esté expresamente referenciado y es
+    de aplicación a los usuarios de cada app (cada usuario será designado como “Ud.” en este Aviso).</p>
+<p>Lo invitamos a leer este Aviso con atención ya que especifica en qué contexto tratamos información que
+    se refiere directa o indirectamente a Ud. como un individuo (“información personal”) y explica sus
+    derechos con respecto al tratamiento de sus datos personales.</p>
+<p>Si bien este Aviso está dirigido a individuos que interactúan con la app mencionada en este Aviso,
+    podría darse el caso de que se le solicite revisar otros avisos de privacidad adicionales que podrían
+    estar en nuestra página de Internet corporativa o en nuestras páginas web específicas para algunos
+    países si Ud. es residente de una determinada jurisdicción o cuando los procesos de tratamiento sean
+    gobernados por otras políticas o avisos. Cuando así se requiera, le proveeremos también avisos de
+    privacidad específicos para actividades que no estén cubiertas por este Aviso, incluyendo pero no
+    limitándose a reclutamiento, empleo, manejo de proveedores y otros terceros o soporte a pacientes.</p>
+<P>Tenga presente que si Ud. accede a un link o página de internet de terceros desde nuestra app, deberá
+    consultar los avisos de privacidad de tales terceros. Novartis no brinda ninguna garantía y no es
+    responsable por la información o las prácticas de privacidad de páginas o servicios de terceros.</P>
+<p>Consideramos que la privacidad es un tema de suma importancia. Nos hemos comprometido a que toda la
+    información personal que recibamos sea tratada y protegida de acuerdo con las leyes de protección
+    de datos aplicables y las políticas y estándares de Novartis.</p>
+<p>En caso de que tenga cualquier duda sobre el tratamiento de sus datos personales o este Aviso, por
+    favor contacte a nuestro oficial de protección de datos al mail <a href="dpo.argentina@novartis.com."><b>dpo.argentina@novartis.com.</b></a></p>
+<p>Por otra parte, le solicitamos tener presente lo que se indica en la cláusula 17 (Protección de Datos
+    Personales) de los Términos y Condiciones de www.soyzoe.com.ar en relación a los datos de los pacientes
+    ya que este aviso de privacidad no está destinado a los mismos.</p>
+<p>Al hacer click en “Acepto”, Ud. está consintiendo al tratamiento de sus datos personales según se
+    describe en este Aviso de Privacidad.</p>
+<p>Podríamos cambiar o actualizar este Aviso en el futuro publicando uno nuevo en esta app. Por favor,
+    revise periódicamente este Aviso a fin de enterarse de cualquier cambio.</p>
+<p>Novartis Argentina S.A. trata información personal sobre Ud. cuando Ud. visita esta aplicación web y
+    utiliza ZOE para obtener información y orientación durante el proceso de indicación e infusión de
+    Zolgensma (onasemnogén abeparvovec) en Argentina.</p>
+  <h6><b>1.	¿Qué datos personales tenemos sobre Ud.?</b></h6>
+    <p>Los datos personales podrían ser provistos directamente por Ud. (por ejemplo, cuando completa un
+        formulario o interactúa con la app), por terceros que son dueños o administran la app u obtenidos
+        de fuentes confiables de información disponible públicamente y/o que hayan obtenido su
+        consentimiento para compartirla con nosotros. Podríamos recolectar diferentes tipos de información
+        sobre Ud., incluyendo:</p>
+<P>i.	información general identificativa y de contacto (como ser nombre, apellido y email).</P>
+<p>ii.	información sobre su profesión (título, nombre de la institución en que trabaja y matrícula que lo
+    habilita como profesional);</p>
+<p>iii.	sus datos de identificación electrónica (datos de login, derechos de acceso, password o contraseña,
+    cookies y otros identificadores, registros de actividad en el sistema, tiempos de conexión y acceso;</p>
+<p>iv.	estadísticas relativas a su uso de la aplicación web (información sobre las páginas que visitó,
+    sobre las herramientas que utilizó, temas consultados, tiempo de permanencia en la app);</p>
+<P>v.	datos sobre uso (fecha y hora de acceso a la app, documentos descargados, videos reproducidos,
+    encuestas realizadas, cantidad de casos generados en el calendario y en el LabTracker).</P>
+<p>Por favor, tenga presente que no es nuestra intención recopilar, utilizar o compartir información
+    personal referida a niños o adolescentes sin el consentimiento previo de sus padres o tutores.</p>
+<P>En Argentina, la información referida a personas jurídicas también es considerada información personal
+    por lo que este Aviso aplica también a la información que recolectemos sobre personas jurídicas.</P>
+<h6><b>2.	¿Para qué finalidades usamos su información personal y cómo se justifica ese uso?</b></h6>
+    <p>2.1.	Justificación legal del tratamiento</p>
+<p>No trataremos su información personal si no tenemos una justificación adecuada y prevista en la ley
+    para hacerlo. Por tal motivo, solamente trataremos su información personal si:</p>
+<p>-	hemos obtenido su consentimiento previo;</p>
+<p>-	el tratamiento es necesario para cumplir con nuestras obligaciones contractuales con Ud. o a fin
+    de dar inicio a trámites precontractuales como ser dar respuesta a pedidos de información como parte
+    de un proceso de due dilligence de Novartis; o</p>
+<p>-	el tratamiento es necesario para cumplir con nuestras obligaciones legales o administrativas.</p>
+<p>En caso de que el tratamiento se fundamente en su consentimiento, Ud. tiene derecho a revocar el mismo
+    en cualquier momento. A fin de revocar su consentimiento u obtener más información sobre nuestros
+    intereses específicos o sus derechos, podrá contactarse con Novartis según se indica en la sección
+    nro. 7 más abajo.</p>
+<p>2.2.	Finalidades del tratamiento</p>
+<p>Siempre que tratamos su información personal lo hacemos con una finalidad específica y tratamos
+    únicamente la información personal necesaria a tal fin. En particular, tratamos su información personal
+    para alguno o todos de los siguientes propósitos:</p>
+<p>-	administrar nuestros usuarios (validar el usuario, aprobar o denegar su registro, manejo de la
+    cuenta, responder consultas y brindar soporte técnico);</p>
+<p>-	administrar y mejorar nuestro sitio y apps (diagnosticar problemas del servidor, optimizar el
+    tráfico, integrar y optimizar páginas de internet cuando resulte adecuado);</p>
+<p>-	medir el uso de nuestro sitio y apps (generando estadísticas sobre el tráfico, recopilando
+    información sobre el comportamiento de los usuarios y las secciones que visitan);</p>
+<p>-	mejorar y personalizar su experiencia y mejorar el contenido para Ud. (recordando sus elecciones
+    y preferencias mediante la utilización de cookies);</p>
+<p>-	mejorar la calidad de nuestros productos y servicios y expandir nuestras actividades de negocio;</p>
+<p>-	monitorear y prevenir fraudes, incumplimientos y otros potenciales usos no autorizados de nuestro
+    sitio y app;</p>
+<p>-	dar respuesta a requerimientos oficiales de autoridades públicas o judiciales que tengan
+    jurisdicción y competencia;</p>
+<p>-	gestionar nuestros recursos tecnológicos, incluyendo administración de infraestructura y continuidad
+    del servicio en caso de crisis;</p>
+<p>-	preservar los intereses económicos de la compañía y garantizar el cumplimiento de la normativa
+    aplicable y de nuestras obligaciones informativas (como ser cumplir con nuestras políticas internas
+    y la legislación local, impuestos y retenciones, gestionar reportes de fraude o conductas inapropiadas,
+    realizar auditorías, defendernos en juicio, etc);</p>
+<p>-	archivos y conservación de registros; y</p>
+<p>-	cualquier otro propósito determinado por la ley y/o las autoridades competentes..</p>
+<p>Por favor, tenga presente que la información que recopilemos también podrá ser usada para ciertas
+    finalidades estándar (por ejemplo, para medir el uso de nuestro sitio o app), como se indica a
+    continuación:</p>
+<p>-	para dar indicaciones y controlar a los terceros que trabajan para nosotros, mientras dure dicha
+    relación;</p>
+<p>-	permitirle acceso a nuestros módulos de entrenamiento;</p>
+    <p>-	gestionar nuestros recursos tecnológicos, incluyendo administración de infraestructura y
+        continuidad del servicio en caso de crisis.</p>
+<h6><b>3.	¿Quién tiene acceso a su información personal y a quién transferimos su información personal?</b></h6>
+<p>Salvo lo que se indica en este Aviso, no venderemos, compartiremos ni transferiremos de otra manera su
+    información personal a terceros.</p>
+<p>En el marco de nuestras actividades y para los mismos propósitos indicados en este Aviso, las siguientes
+    personas podrán tener acceso o recibir su información, siempre en la medida en que sea necesario para
+    obtener tales propósitos:</p>
+<p>•	Nuestro personal (incluyendo también personal, departamentos y otras compañías del grupo Novartis);</p>
+<p>•	Nuestros agentes y comisionistas independientes (si los hubiera);</p>
+<p>•	Otros proveedores que nos brindan bienes y servicios;</p>
+<p>•	Los proveedores de nuestros sistemas tecnológicos, de almacenaje en la nube, de bases de datos y
+    consultores;</p>
+<p>•	Cualquier tercero a quien cedamos o novemos alguno de nuestros derechos u obligaciones; y</p>
+<p>•	Nuestros asesores y abogados externos en caso de una venta o transferencia de cualquier parte de
+    nuestro negocio o bienes.</p>
+<p>Los individuos indicados arriba tienen una obligación contractual de proteger la confidencialidad y 
+    seguridad de su información personal, en cumplimiento de la legislación aplicable.</p>
+<p>Asimismo, podríamos transferir o brindar acceso a su información personal a autoridades regulatorias
+    o policiales o a tribunales u otras entidades públicas nacionales o internacionales cuando la
+    legislación aplicable o una orden de las mismas nos lo requiera.</p>
+<p>Tenga presente que la información personal que recolectamos sobre Ud. podría ser tratada, accedida o
+    guardada en un país fuera de aquel en donde Novartis Argentina S.A. está ubicada, y que dicho país
+    podría no ofrecer el mismo nivel de protección para la información personal.</p>
+<p>En caso de que transfiriéramos su información personal a terceros en otros países, nos aseguraremos
+    de protegerla: (i) aplicando el nivel de protección requerido por las leyes de protección de datos
+    aplicables a Novartis Argentina S.A. y las compañías de su grupo, (ii) actuando de conformidad con
+    nuestras políticas y estándares y (iii) si dichos terceros no están ubicados en un país considerado
+    adecuado por la Agencia de Acceso a la Información Pública, mediante la firma de los acuerdos de
+    transferencia de datos aprobados por la Dirección Nacional de Protección de Datos Personales mediante
+    disposición 60 E/2016 u otros acuerdos contractuales asimilables. Ud. podrá solicitar más información
+    relativa a transferencias internacionales de información personal y obtener una copia de las medidas
+    de resguardo implementadas si se comunica con nosotros como se indica en la sección 6 más abajo.</p>
+    <p>En casos de transferencias de información personal intra-grupo, las mismas se realizan hacia países
+        considerados adecuados y, en caso de necesitar reenviarse a otro país, el grupo Novartis ha
+        adoptado políticas corporativas vinculantes que son un sistema de principios, reglas y herramientas
+        prescriptas por la legislación europea con la finalidad de obtener niveles efectivos de protección
+        de la información personal que viaje hacia fuera del Área Económica Europea y Suiza. Podrá conocer
+        más sobre estas políticas en el siguiente link: <a href="https://www.novartis.com/privacy-policy/novartis-binding-corporate-rules-bcr" target="blank"><b>https://www.novartis.com/privacy-policy/novartis-binding-corporate-rules-bcr"</b></a></p>
+<h6><b>4.	¿Cómo usamos cookies y otras tecnologías similares en los sitios y aplicaciones?</b></h6>
+<p>También podríamos recopilar y tratar información sobre su visita a este sitio o app, como ser las
+    secciones que Ud. visita, la página desde la cual llegó a nuestro sitio o las búsquedas que Ud.
+    realice en el mismo. Esa información se utilizará para ayudarnos a mejorar los contenidos del sitio
+    o la app y para generar estadísticas agregadas sobre las personas que utilizan nuestro sitio o app
+    para nuestro uso interno y/o para realizar investigaciones de mercado. Al hacer esto, podríamos
+    instalar “cookies” u otra tecnología similar que recopilan el nombre de dominio del usuario, su
+    proveedor de internet, su sistema operativo y la fecha y hora del acceso. Las cookies se generan y
+    guardan en la computadora, teléfono celular u otro dispositivo del usuario cuando el mismo carga una
+    página de internet específica. Cada vez que el usuario vuelve a esa página de internet, el navegador
+    recupera y envía este archivo de “cookie” al sitio. Las cookies son útiles porque sirven propósitos
+    clave como ser ayudar a un sitio a recordar las preferencias y configuraciones del usuario, generar
+    análisis que nos ayudan a mejorar los servicios, brindarle contenido o anuncios relevantes y
+    autenticándolo en los sitios. Las cookies no causan daño a su sistema. Ud. puede configurar su
+    navegador para que lo notifique cuando reciba una cookie, esto le permitirá decidir si la quiere
+    aceptar o no. También podrá rechazar todas las cookies desde el inicio. Sin embargo, si no acepta
+    nuestras cookies, no podrá utilizar todas las funcionalidades del sitio o la app. Cuando visite
+    nuestro sitio, se le podría presentar un cartel de manejo de cookies que le ayudará a administrar
+    la configuración y aceptar o rechazar las cookies.</p>
+<p>En las páginas web de Novartis, Ud. tiene la opción de aceptar el uso de cookies utilizando el banner
+    de "Cookie Settings" que aparece cuando Ud. visita el sitio por primera vez o administrar esas
+    configuraciones en cualquier momento más tarde. La configuración de cookies le brinda la opción
+    de aceptar o rechazar cada categoría de cookies (con la excepción de aquellas cookies necesarias).
+    Por favor, vaya a "Cookie Settings" para conocer más sobre los tipos de cookies que usamos
+    (el propósito que persiguen, su duración y origen) y cómo manejar sus preferencias.</p>
+<p>El presente sitio/app utiliza las siguientes cookies y otras tecnologías de seguimiento:</p>
+<p>1.	BrowserId_sec</p>
+<p>2.	CookieConsentPolicy</p>
+<p>3.	LSKey-c$CookieConsentPolicy</p>
+<p>4.	autocomplete</p>
+<p>5.	clientSrc</p>
+<p>6.	inst</p>
+<p>7.	oid</p>
+<p>8.	oinfo.</p>
+<p>Algunos de nuestros servicios, incluyendo páginas web, utilizan los servicios de análisis denominados
+    “Google Analytics” provistos por Google LLC, con domicilio en Amphitheatre Parkway, Mountain View,
+    CA 94043, USA (“Google”) para optimizarlos. Google utiliza la información obtenida a través de la
+    cookie para crear un perfil de qué páginas Ud. visitó durante una sesión. La información generada
+    por la cookie sobre el uso de nuestros servicios es transmitida a los servidores de Google en donde se
+    almacena. A fin de incrementar la seguridad de su datos personales, utilizamos la función de anonimizar
+    IP y otras funcionalidades provistas por Google para mantenerlo anónimo. Para más información sobre el
+    funcionamiento de la anonimización de su IP, puede acceder al siguiente link: <a href="https://support.google.com/analytics/answer/2763052"><b>https://support.google.com/analytics/answer/2763052</b></a></p>
+<p>Google utilizará esta información en nuestro beneficio para evaluar su uso del sitio, brindarnos reportes
+    sobre la actividad del sitio y brindarnos otros servicios relacionados con actividad del sitio y
+    utilización de internet. Novartis utiliza la información provista por Google Analytics para planificar
+    su negocio, para sus actividades internas y para medidas de marketing a fin de entender mejor cómo mejorar
+    el contenido de nuestros servicios web y la experiencia asociada a los mismos.</p>
+<p>Algunos de nuestros sitios utilizan también cookies provistas por OneTrust para permitirle la administración
+    de las cookies de manera fácil y ayudarnos a obtener su consentimiento para la ubicación y mantenimiento
+    de las cookies en su dispositivo. Necesitamos estas cookies para recordar las elecciones que Ud.
+    realice respecto a configuración de cookies.</p>
+<p>Además de cookies, también podríamos utilizar otras tecnologías de seguimiento (también conocidas como
+    “action tags, “Flash local objects”, “single-pixel GIFs”, “clear “GIFs”, “invisible GIFs” y “1-by-1 GIFs”)
+    provistas por empresas de publicidad contratadas por Novartis para brindarle avisos relevantes
+    (interactivos o no interactivos) en base a sus intereses o historial de navegación. Usualmente, utilizamos
+    los servicios de compañías de redes sociales y otras agencias de publicidad para recolectar información
+    como sus detalles de navegación, identificador de cliente único, etc. para que le podamos brindar avisos
+    en nuestros sitios y en otras páginas web que Ud. utilice.</p>
+<p>La justificación legal para el tratamiento de su información personal mientras realizamos análisis del uso del sitio es su consentimiento. Si no quiere que sigamos utilizando su información, por favor abandone el sitio y elimine las cookies.</p>
+<h6><b>5.	¿Cómo protegemos su información personal?</b></h6>
+<p>Hemos implementado medidas técnicas y organizacionales apropiadas para brindar un nivel adecuado de
+    seguridad y confidencialidad a su información personal.</p>
+<p>Su propósito es protegerla contra destrucción o alteración accidentales o ilegales, pérdida accidental,
+    divulgación o acceso no autorizados y contra otras formas ilegales de tratamiento.</p>
+    <h6><b>6.	¿Por cuánto tiempo guardamos su información personal?</b></h6>
+<p>Conservaremos su información personal sólo mientras sea necesario para cumplir con el propósito para el
+    cual fue solicitada y dar cumplimiento a requerimientos legales o regulatorios.</p>
+<p>Únicamente guardaremos los datos personales y la información personal mientras el presente sitio se
+    mantenga activo, salvo que una ley u otra norma de orden público nos exijan un plazo de retención más
+    extenso o más abreviado. Cuando concluya ese plazo, su información personal será removida de nuestros
+    sistemas activos (pero podrían permanecer por más tiempo en los sistemas de backup).</p>
+    <p>La información personal recopilada y tratada en el contexto de un reclamo o disputa serán eliminadas
+        o archivadas: (i) tan pronto como se alcance un acuerdo extrajudicial, (ii) cuando la sentencia de
+        última instancia sea pronunciada y quede firme, o (iii) cuando prescriba el derecho a la acción.</p>
+<h6><b>7.	¿Cuáles son sus derechos y cómo puede ejercerlos?</b></h6>
+<p>Ud. puede ejercer los siguientes derechos en los términos y con las limitaciones previstas por la ley:</p>
+<p>-	El derecho a ser informado sobre qué información personal poseemos sobre Ud. y cómo la tratamos;</p>
+<p>-	El derecho a acceder a su información personal, según la misma es tratada por nosotros, y, en caso de
+    que considere que alguna información referida a Ud. es incorrecta, obsoleta o incompleta, requerir su
+    corrección o actualización;</p>
+<p>-	El derecho a requerir la eliminación de su información personal o la restricción del tratamiento de
+    la misma a categorías específicas de tratamiento;</p>
+<p>-	El derecho a revocar su consentimiento en cualquier momento, sin que ello afecte la legitimidad del
+    tratamiento realizando antes de tal revocación;</p>
+<p>-	El derecho a oponerse, por completo o parcialmente, al tratamiento de su información personal. Con
+    ciertas excepciones, esto incluye el derecho a oponerse a acciones de marketing directo y el derecho de
+    oponerse a que su información personal sea utilizada en investigaciones.</p>
+<p>En caso de que tenga cualquier consulta, o si quiere ejercer los derechos indicados arriba, puede enviar
+    un email a nuestro delegado de protección de datos personales a <a href="dpo.argentina@novartis.com."><b>dpo.argentina@novartis.com.</b></a> o una carta a
+    Novartis Argentina S.A. a la dirección indicada al principio de este aviso.</p>
+<p>En caso de que no esté satisfecho con la manera en que tratamos su información personal, podrá enviar su
+    reclamo a nuestro oficial de protección de datos global a la dirección <a href="global.privacy_office@novartis.com"><b>global.privacy_office@novartis.com</b></a>
+    y él investigará su inquietud.</p>
+    <p>Adicionalmente, le recordamos que LA AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de
+        Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que
+        interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en
+        materia de protección de datos personales.</p>
+<h6><b>8.	¿Cómo se le informarán los cambios a nuestro aviso de privacidad?</b></h6>
+<p>De vez en cuando, podremos modificar o actualizar este Aviso mediante la publicación de un nuevo aviso
+    de privacidad. Por favor, revise este Aviso regularmente a fin de mantenerse al tanto de tales cambios.</p>
+<p>Última actualización: 20 de diciembre de 2021</p>
+
+<!--
+<P>Esta Política de Privacidad describe el modo en el que Novartis Argentina S.A. recopila, almacena
+    y utiliza la información sobre las personas que visitan este sitio web. Al utilizar este sitio web,
+    aprueba la recopilación y el uso de sus datos personales como se establece en esta Política de 
+    Privacidad. También reconoce que Novartis Argentina S.A. puede cambiar, modificar, añadir, eliminar
+    o actualizar de cualquier otro modo esta Política de Privacidad, según considere, sin aviso previo.
+    Sin embargo, siempre se tratará su información personal de acuerdo con la Política de Privacidad
+    vigente en el momento de su recopilación. Nuestra intención es publicar los cambios de la Política
+    de Privacidad en esta página, para que usted disponga de toda la información acerca de los tipos 
+    de información que recopilamos, el modo en el que la utilizamos y las circunstancias en las que se
+    puede divulgar. Nuestra Política de Privacidad se encuentra en nuestra página principal, así como 
+    en cualquier página en la que se soliciten Datos Personales. En todas las secciones en las que se
+    recaben Datos Personales, se proporcionará, de ser necesaria, una explicación ampliada sobre los 
+    fines para los cuales se utilizarán los datos solicitados.</P>
+<h6><b>1. Compromiso de privacidad</b></h6>
+    <P>El término “Datos Personales”, tal como se emplea en esta Política de Privacidad, hace referencia
+        a la información que puede utilizarse para identificarlo, como su nombre, fecha de nacimiento,
+        dirección de correo electrónico, dirección postal o número de teléfono. Generalmente, procesaremos
+        los Datos Personales exclusivamente como se describe en esta Política de Privacidad. Sin embargo,
+        nos reservamos el derecho de llevar a cabo un procesamiento adicional en la medida en la que lo
+        permita o lo requiera la legislación o como complemento de alguna investigación jurídica o penal.</P>
+    <P>La siguiente sección explica cómo y dónde recopilamos sus Datos Personales.</P>
+<h6><b>2. Uso previsto de los Datos Personales</b></h6>
+    <P>La mayoría de nuestros servicios no requieren ningún tipo de registro, lo que le permitirá visitar
+        nuestra página web sin necesidad de identificarse. Sin embargo, algunos de los servicios le pedirán
+        que nos proporcione sus Datos Personales. En estas situaciones, si elige no proporcionarnos sus
+        Datos Personales solicitados, puede que no tenga acceso a algunas secciones de la página web y que
+        nosotros no podamos responder a su consulta.</P>
+    <P>Todos los Datos Personales recabados a través de esta página web se incluirán en una base de datos
+        de titularidad de Novartis Argentina S.A., con el objetivo de proporcionarle y/o facturarle los
+        productos o servicios que haya solicitado, así como para mantenerle informado, incluso por medios
+        electrónicos, sobre productos y servicios de Novartis Argentina S.A. y el Grupo Novartis que
+        consideramos que pueden ser de su interés. En todo caso, la utilización de sus datos para cualquier
+        otra finalidad le será comunicada antes de proceder a su tratamiento.</P>
+<h6><b>3. Confidencialidad de Datos Personales</b></h6>
+	<P>Nos comprometemos a no vender, difundir o distribuir de ningún otro modo sus Datos Personales a 
+        terceros, excepto en los casos dispuestos en la presente  Política de Privacidad. En este sentido,
+        usted consiente que podamos ceder sus Datos Personales a otras compañías del Grupo Novartis que se
+        comprometan a tratarlos de conformidad con la presente Política de Privacidad. Asimismo, los Datos
+        Personales se pueden transferir a terceros que actúen en nuestro nombre para que los procesen de 
+        conformidad con los fines para los que se recopilaron originalmente o pueden procesarse de otro modo
+        legal, como prestación de servicios, evaluación de la utilidad del sitio web, marketing, gestión 
+        de datos o asistencia técnica. Estos terceros han suscrito un contrato con nosotros para utilizar
+        exclusivamente los Datos Personales para los fines acordados y no vender ni divulgar sus Datos 
+        Personales a otros terceros, salvo que lo requiera la legislación, lo permitamos nosotros o se 
+        indique en esta Política de Privacidad.</P>
+	<P>Asimismo, sus Datos Personales recopilados pueden transferirse a terceros en caso de que el negocio
+        relacionado con esta página web y los datos de los clientes relacionados con él se vendan, 
+        adjudiquen o cedan de forma total o parcial; en tal caso, le pediríamos al comprador, adjudicatario
+        o cesionario que trate los Datos Personales de acuerdo con esta Política de Privacidad. Asimismo,
+        los Datos Personales podrán divulgarse a terceros si fuéramos requeridos para actuar de este modo
+        con base en la legislación vigente, una orden judicial o un reglamento gubernamental o si dicha
+        divulgación fuera necesaria, de algún otro modo, para respaldar una investigación o un procedimiento
+        judicial o penal aquí o en el extranjero.</P>
+<h6><b>4.  Derecho de acceso, rectificación y supresión</b></h6>
+	<P>Siempre que procesamos Datos Personales, tomamos las medidas razonables para garantizar que sus Datos
+        Personales se mantengan precisos y actualizados para los fines para los que fueron recopilados.</P>
+	<P>De conformidad con la Ley Nº 25.326 de Protección de los Datos Personales, usted tiene la facultad
+        de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis 
+        meses, salvo que acredite un interés legítimo al efecto conforme lo establecido en el artículo 14
+        , inciso 3 de la ley 25.326. Asimismo, podrá ejercer los derechos de rectificación y supresión.</P>
+	<P>Si desea ponerse en contacto con nosotros respecto a nuestro uso de sus Datos Personales o bien
+        ejercer sus derechos de acceso, rectificación y supresión al tratamiento de sus Datos Personales,
+        por favor envíe un correo electrónico a
+        <a href="mailto:dpo.argentina@novartis.com" style="color: #111f90;">dpo.argentina@novartis.com (enlace envía correo electrónico)</a> 
+        o envíe una comunicación escrita a Ramallo 1851 de la Ciudad Autónoma de Buenos Aires (C.P.: C1429DUC).
+        Si se pone en contacto con nosotros, indique el nombre del sitio web en el que introdujo sus datos y
+        acompañe una copia de su documento nacional de identidad, pasaporte u otro documento válido que lo 
+        identifique, así como la información específica que quiere que corrijamos, actualicemos o eliminemos.
+        Las solicitudes para suprimir Datos Personales estarán sujetas a cualquier obligación legal y ética
+        vigente de informar o cumplimentar documentos u obligaciones de retención documental que nos sean impuestas.</P>
+	<P>La Agencia de Acceso a la Información Pública, en su carácter de Órgano de Control de la Ley N° 
+        25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten
+        afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de
+        datos personales.</P>
+<h6><b>5. Seguridad y confidencialidad</b></h6>
+	<P>Novartis Argentina S.A. ha adoptado y mantiene las medidas de seguridad, administrativas, técnicas
+        y físicas, necesarias y razonables para proteger sus Datos Personales contra daño, pérdida,
+        alteración, destrucción o el uso, acceso o tratamiento no autorizados. Procuramos que las medidas
+        de seguridad adoptadas sean las adecuadas para mantener correctamente resguardados sus datos
+        personales.</P>
+	<P>En lo que respecta a la información de datos personales sensibles, hacemos los esfuerzos razonables
+        con el fin que se limite el periodo del tratamiento y siempre apegados a la finalidad para los
+        cuales se recaban.</P>
+<h6><b>6. Transferencia internacional de datos</b></h6>
+	<P>Formamos parte del Grupo Novartis, un grupo global de empresas que dispone de bases de datos en 
+        diferentes países; algunas de las cuales están gestionadas por terceros en nombre de la compañía
+        local del Grupo Novartis. Por este motivo, podremos transferir sus Datos Personales a una de 
+        las bases de datos del Grupo fuera de su país de residencia, lo cual incluye la posibilidad de
+        que se transfieran a países que pueden no ofrecer un nivel adecuado de protección de sus Datos 
+        Personales, en comparación con la seguridad proporcionada en su país.</P>
+	<P>En caso de que el nivel de protección de privacidad en un país concreto no sea adecuado conforme
+        la normativa vigente, adoptaremos las medidas apropiadas para garantizar que la información
+        transferida cuente con la adecuada protección y el tratamiento de datos cumpla con los requisitos
+        de la normativa vigente. </P>
+	<P>Para más información acerca de cómo sus Datos Personales pueden ser transferidos a jurisdicciones
+        fuera de la Argentina, por favor póngase en contacto con nosotros utilizando la información de
+        contacto provista al final de esta política.</P>
+<h6><b>7. Cookies y etiquetas de internet</b></h6>
+	<P>Podremos recopilar y procesar información sobre su visita a este sitio web, como las páginas que
+        visita, el sitio web desde el que accede y algunas búsquedas que realiza. Dicha información se
+        emplea para ayudarnos a mejorar el contenido del sitio y recopilar estadísticas totales sobre
+        las personas que utilizan nuestro sitio web para uso interno y de investigación de mercado. 
+        Para ello, instalaremos cookies que recopilen el nombre del dominio de usuario, su proveedor
+        de servicios de internet, su sistema operativo y la fecha y la hora de acceso. Una cookie es
+        una información que se envía a su navegador y se almacena en el disco duro de su ordenador. 
+        Las cookies no dañan su ordenador. Puede configurar su navegador para que le notifique cuando 
+        reciba una cookie, lo cual le permitirá decidir si desea aceptarla o no. Si no desea que
+        instalemos cookies, envíenos un correo electrónico a dpo.argentina@novartis.com(link sends e-mail).
+        No obstante, le informamos de que puede que no logre utilizar todas las funciones de su software
+        de navegación si no acepta. Podremos contar con los servicios de terceros para ayudarnos a 
+        recopilar y procesar la información descrita en este apartado.</P>
+	<P>De manera ocasional, podremos emplear etiquetas de internet (conocidas como etiquetas de acción,
+        GIF de un sólo píxel, GIF transparentes, GIF invisibles y GIF 1×1) y cookies en este sitio y
+        podremos utilizar dichas etiquetas/cookies mediante un tercero proveedor de servicios de publicidad
+        o un tercero proveedor de servicios de análisis web que podría conservar la información 
+        correspondiente (incluida su dirección IP) en un país extranjero. Estas etiquetas/cookies
+        se encuentran en anuncios en línea que atraen usuarios a este sitio web y a diversas páginas 
+        de este sitio. Empleamos esta tecnología para medir las respuestas de los visitantes a nuestros
+        sitios web y la eficacia de nuestras campañas de publicidad (incluidas las veces que se abre
+        una página y qué información se consulta) y para evaluar el uso de este sitio web por su parte
+        . El tercero proveedor de servicios de publicidad o el tercero proveedor de servicios de análisis
+        web podrá recopilar datos sobre los visitantes de nuestro sitio u otros sitios gracias a estas
+        etiquetas de internet/cookies, podrá redactar informes para nosotros sobre la actividad del sitio
+        web y proporcionar más servicios relacionados con el uso de este sitio web e internet. Podrán proporcionar tal información a otras partes si media un requerimiento judicial o si contratan a terceros para que procesen la información en su nombre.</P>
+<h6><b>8. Google Analytics</b></h6>
+	<P>Utilizamos “Google Analytics” para racionalizar nuestra cartera de sitios web (i) optimizando el
+        tráfico hacia y entre sitios web corporativos e (ii) integrando y optimizando páginas web, si
+        procede. “Google Analytics” es un servicio ofrecido por Google Inc. (Google en adelante), que
+        genera estadísticas detalladas sobre el tráfico de un sitio web y los orígenes del tráfico y 
+        mide las conversiones y las ventas. “Google Analytics” emplea cookies almacenadas en su ordenador
+        para analizar el modo en el que los usuarios utilizan nuestro sitio web.</P>
+	<P>La información generada por las cookies sobre su uso del sitio web, incluida su dirección IP, se
+        convertirá en anónima mediante el uso de los ajustes adecuados (función “_anonymizelp()” o 
+        equivalente) y se transmitirá a los servidores de Google de los Estados Unidos.</P>
+	<P>En nuestro nombre, Google empleará la información generada por las cookies para evaluar el uso
+        de nuestro sitio web, recopilar informes sobre la actividad del sitio web y nos proporcionará
+        dichos informes para fines analíticos.</P>
+	<P>Google podrá ceder esta información a terceros en caso de una obligación legal o si un tercero
+        procesa los datos en nombre de Google. Google no combinará ni asociará, en ningún caso, su
+        dirección IP a otros datos almacenados por él.</P>
+	<P>Podrá evitar o detener la instalación y el almacenamiento de cookies mediante la configuración
+        de su navegador descargando e instalando el Complemento de inhabilitación para navegadores de
+        Google Analytics gratuito, disponible en https://tools.google.com/dlpage/gaoptout?hl=en
+        (el enlace es externo).</P>
+	<P>Le informamos de que, en tal caso, no podrá utilizar íntegramente todas las funciones de nuestro
+        sitio web.</P>
+	<P>Al utilizar nuestro sitio web, da su consentimiento para procesar cualquier dato personal que
+        Google recopile del modo y para los fines descritos anteriormente.</P>
+<h6><b>9. Información personal y menores de edad</b></h6>
+	<P>La mayoría de los servicios disponibles en este sitio web están destinados a mayores de edad
+        (de 18 años en adelante). Cualquier persona que solicite información sobre un fármaco indicado
+        para su uso en menores deberá ser mayor de edad. No recopilamos, utilizamos ni divulgamos 
+        intencionadamente los Datos Personales de menores de 18 años sin obtener previamente el 
+        consentimiento de una persona con responsabilidad parental (p. ej., un progenitor o tutor legal)
+        mediante un contacto directo por los canales tradicionales. Facilitaremos al padre o tutor
+        (i) notificación sobre los tipos de Datos Personales específicos que se han recopilado del
+        menor y (ii) la oportunidad de oponerse a la recolección, uso o almacenamiento de dicha
+        información. Cumplimos la legislación destinada a la protección del menor.</P>
+<h6><b>10. Enlaces a otras páginas web</b></h6>
+	<P>Esta Política de Privacidad se aplica únicamente a este sitio web y no a las páginas web propiedad
+        de terceros. Facilitaremos enlaces a otros sitios web que consideramos de interés para nuestros
+        visitantes. Nuestro deseo es garantizar que dichas páginas web mantienen los estándares más
+        elevados. Sin embargo, debido a propia la naturaleza de internet, no podemos garantizar los
+        estándares de privacidad de sitios web de los que proporcionamos el enlace o hacernos responsables
+        de los contenidos de otros sitios que no sean de nuestra titularidad, por lo que, esta Política
+        de Privacidad no se aplicará a ningún sitio enlazado que no pertenezca a Novartis.</P>
+<h6><b>11. Contacto</b></h6>
+    <P>Si tiene alguna consulta o reclamo sobre el cumplimiento de esta Política de Privacidad o si
+        le gustaría hacer alguna recomendación o comentario para mejorar la calidad de la Política
+        de Privacidad, envíenos un correo electrónico a  dpo.argentina@novartis.com(link sends e-mail).</P> -->
+
+
+    
+</aura:component>

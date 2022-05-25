@@ -1,0 +1,651 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="InfusionCenter" >
+   <aura:attribute name="mapMarkers" type="Object"/>
+   <aura:attribute name="center" type="Object" />
+   <aura:attribute name="zoomLevel" type="Integer" />
+   <aura:attribute name="markersTitle" type="String" />
+   <aura:attribute name="showFooter" type="Boolean" />
+   <aura:attribute name="showZx" type="boolean" default="false"/>
+   <aura:attribute name="showResult" type="boolean" default="false"/>
+   <aura:attribute name="dosagemap" type="Map" />
+   <aura:attribute name="weightRanges" type="List"/>
+   <aura:attribute name="selectedRange" type="String"/>
+   <aura:attribute name="showcontent" type="String"/>
+   <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+   <aura:attribute name="isLabModalOpen" type="boolean" default="false"/>
+   <aura:attribute name="dose5" type="String"/>
+   <aura:attribute name="dose8" type="String"/>
+   <aura:attribute name="totaldose" type="String"/>
+   <aura:attribute name="userlanguage" type="String" />
+   <aura:attribute type="map" name="parentLinkMap"/>
+   <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+   <!-- handlers-->
+   <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+   <c:ZOE_HEADER linkMap="{!v.parentLinkMap}"/>
+   <aura:if isTrue="{!v.showcontent=='true'}">
+      <div class="mainarea">
+         <!-- Start Main Banner Area -->
+         <div class="home-slides owl-carousel owl-theme">
+            <div class="main-banner item-bg1">
+               <div class="d-table">
+                  <div class="d-table-cell">
+                     <div class="container">
+                        <div class="main-banner-content">
+                           <!-- <span>Zolgensma®</span> -->
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h1>Welcome to ZOE! </h1>
+                              <p>Designed to accompany you during the Zolgensma<sup>®</sup> journey</p>
+                              <aura:set attribute="else">
+                                 <h1>¡Bienvenidos a ZOE! </h1>
+                                 <p>Diseñada para acompañarte durante el recorrido de Zolgensma<sup>®</sup></p>
+                              </aura:set>
+                           </aura:if>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="circle-shape1"><img src="{!$Resource.zoe_img + '/img/circle-shape1.png'}" alt="image"/></div>
+               <div class="circle-shape2"><img src="{!$Resource.zoe_img + '/img/circle-shape2.png'}" alt="image"/></div>
+               <div class="shape1"><img src="{!$Resource.zoe_img + '/img/shape/1.png'}" alt="image"/></div>
+            </div>
+            <div class="main-banner item-bg2">
+               <div class="d-table">
+                  <div class="d-table-cell">
+                     <div class="container">
+                        <div class="main-banner-content">
+                           <!-- <span>Zolgensma®</span> -->
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h1>Zolgensma<sup>®</sup> Infusion Centers</h1>
+                              <p>Get to know the institutions that are already <br/> part of this tour!</p>
+                              <aura:set attribute="else">
+                                 <h1>Centros de Infusión de Zolgensma<sup>®</sup></h1>
+                                 <p>¡Conocé las instituciones que ya forman <br/> parte de este recorrido!</p>
+                              </aura:set>
+                           </aura:if>
+                           <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Quis ipsumpsum dolor sit amet consectetur.</p> -->
+                           <div class="btn-box">
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <a href="#map_location" class="btn btn-primary">Map of centers <i class="fas fa-bell"></i></a>
+                                 <aura:set attribute="else">
+                                    <a href="#map_location" class="btn btn-primary">Mapa de centros <i class="fas fa-bell"></i></a>
+                                 </aura:set>
+                              </aura:if>                            
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="circle-shape1"><img src="{!$Resource.zoe_img + '/img/circle-shape1.png'}" alt="image"/></div>
+               <div class="circle-shape2"><img src="{!$Resource.zoe_img + '/img/circle-shape2.png'}" alt="image"/></div>
+               <div class="shape1"><img src="{!$Resource.zoe_img + '/img/shape/1.png'}" alt="image"/></div>
+            </div>
+            <div class="main-banner item-bg3">
+               <div class="d-table">
+                  <div class="d-table-cell">
+                     <div class="container">
+                        <div class="main-banner-content">
+                           <div class='w150'>
+                              <a href="https://www.viviendomejor.com.ar/" target="blank"><img src="{!$Resource.zoe_img + '/img/psp.png'}" /></a>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h1>Living Better Service</h1>
+                              <p>Get to know all the services of the support program for patients with SMA in Argentina.</p>
+                              <aura:set attribute="else">
+                                 <h1>Servicio de Viviendo Mejor</h1>
+                                 <p>Conocé todos los servicios del programa de soporte para pacientes con AME en Argentina.</p>
+                              </aura:set>
+                           </aura:if>
+                           <div class="btn-box">
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <a href="#" class="btn btn-primary">go to services <i class="fas fa-bell"></i></a>
+                                 <aura:set attribute="else">
+                                    <a href="#" class="btn btn-primary">Ir a servicios <i class="fas fa-bell"></i></a>
+                                 </aura:set>
+                              </aura:if>                            
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="circle-shape1"><img src="{!$Resource.zoe_img + '/img/circle-shape1.png'}" alt="image"/></div>
+               <div class="circle-shape2"><img src="{!$Resource.zoe_img + '/img/circle-shape2.png'}" alt="image"/></div>
+               <div class="shape1"><img src="{!$Resource.zoe_img + '/img/shape/1.png'}" alt="image"/></div>
+            </div>
+         </div>
+         <!-- End Main Banner Area -->
+         <section class="main-services-area ptb-100">
+            <div class="container">
+               <div class="section-title">
+                  <span>Zolgensma<sup>®</sup></span>
+                  <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <h2>Stages for Gene Therapy treatment</h2>
+                     <p> In these sections you will find useful information and tools that will accompany you during your journey with Zolgensma<sup>®</sup>. Navigate through each stage to discover the content!</p>
+                     <aura:set attribute="else">
+                        <h2>Etapas para el tratamiento de Terapia Génica</h2>
+                        <p> En estas secciones encontrarás información y herramientas útiles que te acompañarán durante el recorrido con Zolgensma<sup>®</sup>. ¡Navegá por cada etapa para descubrir el contenido!</p>
+                     </aura:set>
+                  </aura:if>
+               </div>
+               <div class="row">
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                      <aura:if isTrue="{!v.parentLinkMap.PreInfusion}">
+                         <a href="{!$Label.c.sitecontext + $Label.c.PreInfusion}">
+                          <div class="main-services-box">
+                           <div class="icon">
+                              <img src="{!$Resource.header_icons + '/Pre-infusion.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                           <h3><a href="{!$Label.c.sitecontext + $Label.c.PreInfusion}">Pre-infusion</a></h3>
+                           <aura:set attribute="else">
+                           <h3><a href="{!$Label.c.sitecontext + $Label.c.PreInfusion}">Pre-infusión</a></h3>
+                           </aura:set>
+                           </aura:if>                     
+                         </div>
+                         </a>
+                     <aura:set attribute="else">
+                          <a href="javascript:;" class='not-allowed'>
+                          <div class="main-services-box">
+                           <div class="icon">
+                              <img src="{!$Resource.header_icons + '/Pre-infusion.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                           <h3><a href="javascript:;" class='not-allowed'>Pre-infusion</a></h3>
+                           <aura:set attribute="else">
+                           <h3><a href="javascript:;" class='not-allowed'>Pre-infusión</a></h3>
+                           </aura:set>
+                           </aura:if>                     
+                         </div>
+                         </a>
+                     </aura:set>
+                     </aura:if>
+                     
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                  	<aura:if isTrue="{!v.parentLinkMap.Infusion}">
+                     <a href="{!$Label.c.sitecontext +$Label.c.Infusion}">
+                        <div class="main-services-box">
+                           <div class="icon">
+                              <img src="{!$Resource.header_icons + '/Infusion.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">                              
+                     <h3><a href="{!$Label.c.sitecontext +$Label.c.Infusion}">Infusion</a></h3>
+                     <aura:set attribute="else">
+                     <h3><a href="{!$Label.c.sitecontext +$Label.c.Infusion}">Infusión</a></h3>
+                     </aura:set>
+                     </aura:if>                    
+                     </div>
+                     </a>
+                    <aura:set attribute="else">
+                      <a href="javascript:;" class='not-allowed'>
+                        <div class="main-services-box">
+                           <div class="icon">
+                              <img src="{!$Resource.header_icons + '/Infusion.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">                              
+                     <h3><a href="javascript:;" class='not-allowed'>Infusion</a></h3>
+                     <aura:set attribute="else">
+                     <h3><a href="javascript:;" class='not-allowed'>Infusión</a></h3>
+                     </aura:set>
+                     </aura:if>                    
+                     </div>
+                     </a>  
+                    </aura:set>
+                    </aura:if>
+
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <aura:if isTrue="{!v.parentLinkMap.PostInfusion}">
+                     <a href="{!$Label.c.sitecontext +$Label.c.PostInfusion}">
+                        <div class="main-services-box">
+                           <div class="icon">
+                              <!-- <i class="flaticon-care"></i> -->
+                              <img src="{!$Resource.header_icons + '/Post-infusion.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h3>
+                     <a href="{!$Label.c.sitecontext +$Label.c.PostInfusion}">Post-infusion</a></h3>
+                     <aura:set attribute="else">
+                     <h3><a href="{!$Label.c.sitecontext +$Label.c.PostInfusion}">Post-infusión</a></h3>
+                     </aura:set>
+                     </aura:if>                     
+                     </div>
+                     </a>
+                    <aura:set attribute="else">
+                      <a href="javascript:;" class='not-allowed'>
+                        <div class="main-services-box">
+                           <div class="icon">
+                              <!-- <i class="flaticon-care"></i> -->
+                              <img src="{!$Resource.header_icons + '/Post-infusion.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h3>
+                     <a href="javascript:;" class='not-allowed'>Post-infusion</a></h3>
+                     <aura:set attribute="else">
+                     <h3><a href="javascript:;" class='not-allowed'>Post-infusión</a></h3>
+                     </aura:set>
+                     </aura:if>                     
+                     </div>
+                     </a>
+                    </aura:set>
+                    </aura:if>
+                    
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <aura:if isTrue="{!v.parentLinkMap.Training}">
+                     <a href="{!$Label.c.sitecontext + $Label.c.Entrenamientos}">
+                        <div class="main-services-box">
+                           <div class="icon">                             
+                              <img src="{!$Resource.header_icons + '/training.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h3>
+                     <a href="{!$Label.c.sitecontext +  $Label.c.Entrenamientos}">Training</a></h3>
+                     <aura:set attribute="else">
+                     <h3><a href="{!$Label.c.sitecontext +  $Label.c.Entrenamientos}">Entrenamientos</a></h3>
+                     </aura:set>
+                     </aura:if>                     
+                     </div>
+                     </a>
+                    <aura:set attribute="else">
+                      <a href="javascript:;" class='not-allowed'>
+                        <div class="main-services-box">
+                           <div class="icon">                             
+                              <img src="{!$Resource.header_icons + '/training.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h3>
+                     <a href="javascript:;" class='not-allowed'>Training</a></h3>
+                     <aura:set attribute="else">
+                     <h3><a href="javascript:;" class='not-allowed'>Entrenamientos</a></h3>
+                     </aura:set>
+                     </aura:if>                     
+                     </div>
+                     </a>
+                    </aura:set>
+                    </aura:if>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+         </section>
+         <section class="services-area ptb-100 bg-f4f9fd">
+            <div class="container">
+               <div class="section-title">
+                  <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <span>Digital tools</span>
+                     <h2>Zolgensma<sup>®</sup> - Tools</h2>
+                     <p>Zolgensma<sup>®</sup> - Tools is a set of interactive tools designed to facilitate the different stages of the journey with Zolgensma<sup>®</sup>. We invite you to investigate them!</p>
+                     <aura:set attribute="else">
+                        <span>Herramientas digitales</span>
+                        <h2>Zolgensma<sup>®</sup> - Herramientas</h2>
+                        <p>Zolgensma<sup>®</sup> - Herramientas es un conjunto de herramientas interactivas diseñadas para facilitar las distintas instancias del recorrido con Zolgensma<sup>®</sup>. ¡Te invitamos a investigarlas!</p>
+                     </aura:set>
+                  </aura:if>
+               </div>
+               <div class="row">
+                  <aura:if isTrue="{!v.parentLinkMap.ZKIT}">
+                     <div class="col-lg-4 col-md-6 col-sm-12 featureclk" onclick="{!c.showModal}" >
+                        <div class="single-services-box bg-1">
+                           <div class="icon">
+                              <img src="{!$Resource.home_icons + '/img/calculator.png'}"/> 
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h3><a onclick="{!c.showModal}">Z-Kit Calculator</a></h3>
+                              <p>This tool automatically calculates the configuration of the Zolgensma<sup>®</sup> kit depending on the weight of your patient so that you can formulate an appropriate prescription.</p>
+                              <aura:set attribute="else">
+                                 <h3><a onclick="{!c.showModal}">Calculadora de kit Z</a></h3>
+                                 <p>Esta herramienta calcula automáticamente la configuración del kit de Zolgensma<sup>®</sup> dependiendo del peso de tu paciente para que puedas formular una adecuada prescripción.</p>
+                              </aura:set>
+                           </aura:if>                          
+                        </div>
+                     </div>
+                     <aura:set attribute="else">
+                        <div class="col-lg-4 col-md-6 col-sm-12 featureclk" >
+                           <div class="single-services-box bg-1">
+                              <div class="icon">
+                                 <img src="{!$Resource.home_icons + '/img/calculator.png'}"/>
+                              </div>
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <h3>Z-Kit Calculator</h3>
+                                 <p>This tool automatically calculates the configuration of the Zolgensma<sup>®</sup> kit depending on the weight of your patient so that you can formulate an appropriate prescription.</p>
+                                 <aura:set attribute="else">
+                                    <h3>Calculadora de kit Z</h3>
+                                    <p>Esta herramienta calcula automáticamente la configuración del kit de Zolgensma<sup>®</sup> dependiendo del peso de tu paciente para que puedas formular una adecuada prescripción.</p>
+                                 </aura:set>
+                              </aura:if>
+                           </div>
+                        </div>
+                     </aura:set>
+                  </aura:if>
+                  <aura:if isTrue="{!v.parentLinkMap.CALENDAR}">
+                     <div class="col-lg-4 col-md-6 col-sm-12 featureclk" onclick="{!c.openModel}">
+                        <div class="single-services-box bg-2">
+                           <div class="icon">
+                              <img src="{!$Resource.home_icons + '/img/calender.png'}"/>
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h3><a onclick="{!c.openModel}">Follow-up Schedule</a></h3>
+                              <p>If you already know the date of your patient's infusion, this calendar will notify you which studies you will have to order at the right time. It also sends you reminders!</p>
+                              <aura:set attribute="else">
+                                 <h3><a onclick="{!c.openModel}">Calendario de Seguimiento</a></h3>
+                                 <p>Si ya conoces la fecha de infusión de tu paciente, este calendario te notificará qué estudios tendrás que pedir en el momento adecuado. ¡Además te envía recordatorios!</p>
+                              </aura:set>
+                           </aura:if>                           
+                        </div>
+                     </div>
+                     <aura:set attribute="else">
+                        <div class="col-lg-4 col-md-6 col-sm-12 featureclk">
+                           <div class="single-services-box bg-2">
+                              <div class="icon">
+                                 <img src="{!$Resource.home_icons + '/img/calender.png'}"/> 
+                              </div>
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <h3><a>Follow-up Schedule</a></h3>
+                                 <p>If you already know the date of your patient's infusion, this calendar will notify you which studies you will have to order at the right time. It also sends you reminders!</p>
+                                 <aura:set attribute="else">
+                                    <h3><a>Calendario de Seguimiento</a></h3>
+                                    <p>Si ya conoces la fecha de infusión de tu paciente, este calendario te notificará qué estudios tendrás que pedir en el momento adecuado. ¡Además te envía recordatorios!</p>
+                                 </aura:set>
+                              </aura:if>                             
+                           </div>
+                        </div>
+                     </aura:set>
+                  </aura:if>
+                  <aura:if isTrue="{!v.parentLinkMap.LABTRACKER}">
+                     <div class="col-lg-4 col-md-12 col-sm-12 featureclk" onclick="{!c.openTrackerModal}" >
+                        <div class="single-services-box bg-3">
+                           <div class="icon">
+                              <img src="{!$Resource.home_icons + '/img/labtracker.png'}"/>                              
+                           </div>
+                           <aura:if isTrue="{!v.userlanguage=='English'}">
+                              <h3><a onclick="{!c.openTrackerModal}">Patient Lab Tracker</a></h3>
+                              <p>Because patient monitoring is important, the Patient Lab Tracker will allow you to view the value of your patients' labs from start to finish. Don't stop following up!</p>
+                              <aura:set attribute="else">
+                                 <h3><a onclick="{!c.openTrackerModal}">LabTracker de pacientes</a></h3>
+                                 <p>Porque el monitoreo del paciente es importante, el LabTracker de pacientes te permitirá visualizar de inicio a fin, el valor de los laboratorios de tus pacientes. ¡No dejes de hacer el seguimiento!</p>
+                              </aura:set>
+                           </aura:if>                         
+                        </div>
+                     </div>
+                     <aura:set attribute="else">
+                        <div class="col-lg-4 col-md-12 col-sm-12 not-allowed">
+                           <div class="single-services-box bg-3">
+                              <div class="icon">
+                                 <img src="{!$Resource.home_icons + '/img/labtracker.png'}"/>                                 
+                              </div>
+                              <aura:if isTrue="{!v.userlanguage=='English'}">
+                                 <h3><a class='not-allowed'>Patient Lab Tracker</a></h3>
+                                 <p>Because patient monitoring is important, the Patient Lab Tracker will allow you to view the value of your patients' labs from start to finish. Don't stop following up!</p>
+                                 <aura:set attribute="else">
+                                    <h3><a class='not-allowed'>LabTracker de pacientes</a></h3>
+                                    <p>Porque el monitoreo del paciente es importante, el LabTracker de pacientes  te permitirá visualizar de inicio a fin, el valor de los laboratorios de tus pacientes. ¡No dejes de hacer el seguimiento!</p>
+                                 </aura:set>
+                              </aura:if>                             
+                           </div>
+                        </div>
+                     </aura:set>
+                  </aura:if>
+               </div>
+            </div>
+         </section>
+         <aura:if isTrue="{!v.showZx}">
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open " aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+               <div class="slds-modal__container">
+                  <header class="slds-modal__header headerText">
+                     <lightning:buttonIcon iconName="utility:close"
+                        onclick="{! c.hideModal }"
+                        alternativeText="close"
+                        variant="bare-inverse"
+                        class="slds-modal__close"/>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <h5 id="modal-heading-01" class="slds-align_absolute-center" aura:id="popupheader">
+                           Z-Kit Calculator
+                        </h5>
+                        <aura:set attribute="else">
+                           <h5 id="modal-heading-01" class="slds-align_absolute-center" aura:id="popupheader">
+                              Calculadora de kit Z
+                           </h5>
+                        </aura:set>
+                     </aura:if>
+                  </header>
+             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                  <div class="row">
+                     <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="slds-p-around_xx-small">
+                           <lightning:select name="select" label="Seleccione el rango de peso del paciente (kg):" aura:id="select" value="{!v.selectedRange}" onchange="{! c.onChange }">
+                              <aura:iteration items="{!v.weightRanges}" var="option">
+                                 <option text="{!option.label}" value="{!option.label}" selected="{!option.selected}"/>
+                              </aura:iteration>
+                           </lightning:select>
+                           <!--  <div class="slds-col slds-size_1-of-1 slds-p-around_xx-small">
+                              <lightning:input type="number" name="input1" value="{!v.weight}" label="Patient Weight in Kg" min="2.60" max="13.50" step="0.01"/>
+                              </div>
+                              <div class="slds-col slds-size_1-of-1 slds-p-around_xx-small">
+                              <lightning:input type="date" name="input2" value="{!v.takenDate}" label="Weight taken date" />
+                              </div>
+                              <div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                              <lightning:button variant="brand" label="Calculate" title="Brand action" onclick="{! c.handleClick }" />
+                              </div>-->
+                        </div>
+                     </div>
+                     <div class="col-lg-9 col-md-12 col-sm-12">
+                     <div class="slds-p-top_small">
+                     <div class="prescription slds-p-around_medium" flexibility="auto">
+                     <!--<h5> Results</h5>
+                        <p>Dosage Volume(ML): {!v.dosage}</p>
+                         <p>Total Vials per Kit: 2</p>
+                         <p>NDC:71894-120-02</p>	-->
+                     <!-- <div class="prescription">
+                        <div class="header">-->
+                     <lightning:layout multipleRows="true" class="header">
+                     <lightning:layoutItem size="12" smallDeviceSize="6" mediumDeviceSize="4" largeDeviceSize="8">
+                     <div class="rx">℞</div>
+                     </lightning:layoutItem>
+                     <lightning:layoutItem size="12" smallDeviceSize="6" mediumDeviceSize="4" largeDeviceSize="4">
+                     <div class="patient">
+                     <div class="name">Nombre y Apellido</div>
+                     <div class="identification">DNI</div>
+                     <div class="payer">Obra Social - si aplica-</div>
+                     </div>
+                     </lightning:layoutItem>
+                     </lightning:layout>
+                     <!-- </div>-->
+                     <div class="body">
+                     <div class="general">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <p>Onasemnogene Abeparvovec</p>
+                     <aura:set attribute="else">
+                     <p>Onasemnogén Abeparvovec</p>
+                     </aura:set>
+                     </aura:if>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <p>Presentation: vials for intravenous infusion 2.0 x 10<sup>13</sup> vector genomes (vg)/ml</p>
+                     <aura:set attribute="else">
+                     <p>Presentación: viales para infusión endovenosa 2,0 x 10<sup>13</sup> genomas de vector (vg)/ml</p>
+                     </aura:set>
+                     </aura:if>
+                     </div>
+                     <div class="medecines">
+                     <lightning:layout multipleRows="true">
+                     <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="6" >
+                     <div class="slds-p-around_xx-small">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <div class="name">Prescribed amount:</div>
+                     <aura:set attribute="else">
+                     <div class="name">Cantidad prescripta:</div>
+                     </aura:set>
+                     </aura:if>
+                     </div>
+                     </lightning:layoutItem>
+                     <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="6" >
+                     <div class="slds-p-around_xx-small">
+                     <div class="quantity"><span>{!v.dose5}</span> vial/es de 5,5 ml</div>
+                     <div class="quantity"><span>{!v.dose8}</span> vial/es de 8,3 ml</div>
+                     </div>
+                     </lightning:layoutItem>
+                     <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="6" >
+                     <div class="slds-p-around_xx-small">
+                     <div class="name">Total:</div>
+                     </div>
+                     </lightning:layoutItem>
+                     <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="6" largeDeviceSize="6" >
+                     <div class="slds-p-around_xx-small">
+                     <div class="quantity"><span>{!v.totaldose}</span> vial/es</div>
+                     </div>
+                     </lightning:layoutItem>
+                     </lightning:layout>
+                     </div>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <p><strong>Single dose</strong><br/><strong>Diagnosis:</strong>Spinal Muscular Atrophy</p>
+                     <aura:set attribute="else">
+                     <p><strong>Dosis única</strong><br/><strong>Diagnóstico:</strong>Atrofia Muscular Espinal</p>
+                     </aura:set>
+                     </aura:if>
+                     <div class="signatute">
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <div class="name">Date</div>
+                     <aura:set attribute="else">
+                     <div class="name">Fecha</div>
+                     </aura:set>
+                     </aura:if>
+                     <aura:if isTrue="{!v.userlanguage=='English'}">
+                     <div class="sign">Signature and stamp</div><div class="name">Date</div>
+                     <aura:set attribute="else">
+                     <div class="sign">Firma y Sello</div><div class="name">Fecha</div>
+                     </aura:set>
+                     </aura:if>
+                     </div>
+                     </div>
+                     </div>
+                     </div>
+                     </div>
+                  </div>
+               </div>
+               </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>          
+         </aura:if>
+         <aura:if isTrue="{!v.isModalOpen}">                 
+         <!-- Modal/Popup Box starts here-->
+         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+         <div class="slds-modal__container">
+         <!-- Modal/Popup Box Header Starts here-->
+         <header class="slds-modal__header">
+         <lightning:buttonIcon iconName="utility:close"
+            onclick="{! c.closeModel }"
+            alternativeText="close"
+            variant="bare-inverse"
+            class="slds-modal__close"/>
+         <aura:if isTrue="{!v.userlanguage=='English'}">
+         	<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Infusion Calendar</h2>
+         <aura:set attribute="else">
+         	<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Calendario de Infusión</h2>
+         </aura:set>
+         </aura:if>
+         </header>
+         <!--Modal/Popup Box Body Starts here-->
+         <div class="slds-modal__content slds-p-around_medium slds-grid slds-grid_vertical d_f" id="modal-content-id-1">
+         <lightning:button variant="brand"
+            label="Ingresar un NUEVO CASO"
+            title="Ingresar un NUEVO CASO"
+            class="btn btn-primary modal-button"
+            onclick="{!c.openCalInfDate}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />         
+         <lightning:button variant="brand"
+            label="MODIFICAR fecha de infusión"
+            title="MODIFICAR fecha de infusión"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.editpatient}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="Ir al CALENDARIO de mis casos"
+            title="Ir al CALENDARIO de mis casos"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.openCal}" iconName="utility:chevronright" iconPosition="right"/>    
+         </div>
+         <!--Modal/Popup Box Footer Starts here-->
+         <footer class="slds-modal__footer">
+         <lightning:button variant="neutral"
+            label="Cancel"
+            title="Cancel"
+            onclick="{! c.closeModel }"/>
+         </footer>
+         </div>
+         </section>
+         <div class="slds-backdrop slds-backdrop_open"></div>
+         </aura:if>
+         <aura:if isTrue="{!v.isLabModalOpen}">                 
+         <!-- Modal/Popup Box starts here-->
+         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+         <div class="slds-modal__container">
+         <!-- Modal/Popup Box Header Starts here-->
+         <header class="slds-modal__header">
+         <lightning:buttonIcon iconName="utility:close"
+            onclick="{! c.closeModel }"
+            alternativeText="close"
+            variant="bare-inverse"
+            class="slds-modal__close"/>
+         <aura:if isTrue="{!v.userlanguage=='English'}">
+         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Zolgensma Labtracker</h2>
+         <aura:set attribute="else">
+         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Labtracker de Zolgensma</h2>
+         </aura:set>
+         </aura:if>
+         </header>
+         <!--Modal/Popup Box Body Starts here-->
+         <div class="slds-modal__content slds-p-around_medium slds-grid slds-grid_vertical d_f" id="modal-content-id-1">
+         <lightning:button variant="brand"
+            label="Ingresar un NUEVO CASO"
+            title="Ingresar un NUEVO CASO"
+            class="btn btn-primary modal-button"
+            onclick="{!c.openLabInfDate}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+        <lightning:button variant="brand"
+            label="MODIFICAR fecha de infusión"
+            title="MODIFICAR fecha de infusión"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.editpatientlab}" iconName="utility:chevronright" iconPosition="right"/>
+         <br />
+         <lightning:button variant="brand"
+            label="Ir al LABTRACKER de mis casos existentes"
+            title="Ir al LABTRACKER de mis casos existentes"
+            class="btn btn-primary modal-button Calendar-Activities"
+            onclick="{!c.openTracker}" iconName="utility:chevronright" iconPosition="right"/>
+         </div>
+         <!--Modal/Popup Box Footer Starts here-->
+         <footer class="slds-modal__footer">
+         <lightning:button variant="neutral"
+            label="Cancel"
+            title="Cancel"
+            onclick="{! c.closeModel }"/>
+         </footer>
+         </div>
+         </section>
+         <div class="slds-backdrop slds-backdrop_open"></div>
+         </aura:if>
+         <section id="map_location" class="mapcontainer" >
+         <h4 class="map_align"><b>{! v.markersTitle }</b></h4>
+         <div class="container-fluid">
+         <div class="row" >
+         <lightning:map
+            mapMarkers="{! v.mapMarkers }"
+            center="{! v.center }"
+            zoomLevel="{! v.zoomLevel }"
+            markersTitle=""
+            showFooter="{ !v.showFooter }" >
+         </lightning:map>  
+         <!--  <c:TestMap/>-->
+         </div>
+         <aura:if isTrue="{!v.userlanguage=='English'}">
+         <h6 class="f_w_100">If you want to know the requirements to register your institution as a Zolgensma<sup>®</sup> Infusion Center, write to us at <span class='contactmail'>contacto.zoe@novartis.com</span></h6>
+         <aura:set attribute="else">
+         <h6 class="f_w_100">Si querés conocer los requisitos para dar de alta tu institución como centro de Infusión de Zolgensma<sup>®</sup>, escribinos a <span class='contactmail'>contacto.zoe@novartis.com</span></h6>
+         </aura:set>
+         </aura:if>
+         </div>
+         <div class="shape55"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+         </section>
+      </div>
+      <c:ZOE_FOOTER />
+   </aura:if>
+</aura:component>

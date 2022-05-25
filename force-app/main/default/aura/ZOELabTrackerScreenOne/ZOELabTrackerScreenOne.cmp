@@ -1,0 +1,483 @@
+<aura:component access="GLOBAL" controller="UserCalendarController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable">
+    <aura:attribute name="lstUserCal" type="List"/>
+    <aura:attribute name="lstChartdata" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="isDosBtnActive" type="Boolean" default="false" />
+    <aura:attribute name="isTransBtnActive" type="Boolean" default="false" />
+    <aura:attribute name="isPalqBtnActive" type="Boolean" default="false" />
+    <aura:attribute name="isChopBtnActive" type="Boolean" default="false" />
+    
+    <aura:attribute name="data" type="object" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="columnsplatelets" type="List" />
+    <aura:attribute name="columnsTRANSAMINASAS" type="List" />
+    <aura:attribute name="columnsCHOPINTEND" type="List" />
+    <aura:attribute name="showTable" type="Boolean" default="false"/> 
+    <aura:attribute name="calList" type="LIST"/>
+    <aura:attribute name="valSel" type="String"/>
+    <aura:attribute name="showcontent" type="String"/>
+	<aura:handler name="init" value="{!this}" action="{!c.onPageReferenceChange}"/>
+    <lightning:notificationsLibrary aura:id="notifyId"/>
+    <aura:attribute name="setMessage" type="String"/> 
+    <aura:attribute name="idOfUserInfusion" type="String"/> 
+    <aura:attribute name="showError" type="boolean" default="false"/>
+    <aura:attribute name="showData" type="boolean" default="false"/>
+    <aura:attribute name="isShowView" type="boolean" default="false"/>
+    <aura:attribute name="message" type="String" default="NoError"/> 
+    <aura:attribute name="userlanguage" type="String" />
+    <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+    <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide" />   
+    <ltng:require scripts="{!$Resource.chartjs}" afterScriptsLoaded="{!c.loadChart}"/>
+
+
+    
+    <c:ZOE_HEADER />
+    
+        <ltng:require scripts="https://cdn.sheetjs.com/xlsx-0.18.7/package/dist/shim.min.js" />
+        <ltng:require scripts="{!$Resource.SheetJS}" />
+    <ltng:require scripts="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js" />
+    <ltng:require scripts="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.mini.min.js" />
+    <ltng:require scripts="https://cdn.sheetjs.com/xlsx-latest/package/dist/shim.min.js" />
+    <ltng:require scripts="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js" />
+    
+    <aura:if isTrue="{!v.showcontent=='true'}">
+ 	<div class="c-container">        
+        <div class="col-lg-12 col-md-12" style='margin-top: 2%;'>
+            <div><img class="sub-img" src="{!$Resource.home_icons + '/img/labtracker.png'}" alt="indicacion" />
+                <aura:if isTrue="{!v.userlanguage=='English'}">
+                    <h3 class='sub-title'>Lab Tracker</h3> 
+                    <aura:set attribute="else">
+                        <h3 class='sub-title'>Lab Tracker</h3>
+                    </aura:set>
+                </aura:if>
+            </div>  
+        </div>
+        
+            <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+    <lightning:tabset>
+     <lightning:tab label="Single Patient">
+     <div id="main">        
+        <lightning:select class="dropdown selectpatient" value="{!v.valSel}" onchange="{! c.onChange }">
+             <aura:iteration items="{!v.calList}" var="offer" >
+             	<option  value="{!offer.value}" >{!offer.label}</option> 
+             </aura:iteration>
+         </lightning:select>
+     </div>
+        <aura:if isTrue="{!v.isShowView}">
+        
+ 			<lightning:layout >
+                <lightning:layoutItem padding="around-small" size="2" class="details">
+                    <div class="header-column" style="text-align: right;">
+                        <p class="field-title" title="Field 1"><b>Nombre y apellido:</b></p>
+                        <p class="field-title" title="Field 1"><b>ID paciente:</b></p>
+                        <p class="field-title" title="Field 1"><b>Fecha de infusión:</b></p>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="4" class="details">
+                    <div class="header-column" style="text-align: left; word-break: break-word;">
+                        <p class="field-title" title="Field 1">{!v.lstUserCal[0].paitentName} </p>
+                        <p class="field-title" title="Field 1">{!v.lstUserCal[0].paitentid}</p>
+                        <!--<p class="field-title" title="Field 1">{!v.lstUserCal[0].userInfustionDate} </p> -->
+                        <lightning:formattedDateTime value="{!v.lstUserCal[0].userInfustionDate}" year="numeric" month="numeric" day="numeric"  />
+                    </div>
+
+                    <lightning:input aura:id="infusiondate" name="infusiondate" label="infusiondate" value="{!v.lstUserCal[0].userInfustionDate}" required="true" class="slds-hidden" />
+                    <lightning:input aura:id="infusionid" name="infusionid" label="infusionid" value="{!v.lstUserCal[0].calInfusionId}" required="true" class="slds-hidden" />
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="6" class="details">
+                   <!-- added for All Charts Img Download -->
+                    <div class="slds-float_right slds-p-bottom_small">
+                        <h3 class="slds-page-header__title">Download Charts
+                            <lightning:buttonIcon iconName="utility:download"  size="large" variant="bare" alternativeText="Download Images" onclick="{!c.downloadImgs}"/>
+                        </h3>
+                    </div>
+                   <!-- added for All Charts Img Download -->
+                    <div class="slds-float_right slds-p-bottom_small">
+                        <h3 class="slds-page-header__title">Download All
+                            <lightning:buttonIcon iconName="utility:download"  size="large" variant="bare" alternativeText="Download" onclick="{!c.downloadAllTable}"/>
+                          </h3>
+                    </div>
+                </lightning:layoutItem>
+        	</lightning:layout>
+            <div class='box_css'>
+                 <h3 class="sub2-title">Evolución de la administración de Costicoesteroides </h3>                
+                <lightning:layout>
+                <lightning:layoutItem padding="around-small" size="6">
+                    <button id="DosisImg" class="slds-button chartButton">Descargar</button>
+                    <a id="DosisImg-down" style='display:none'>Download</a>
+                    <div id='chart1div'>                        
+                        <canvas aura:id="chart1" id="chart1" style="width:100%;max-width:600px;height:310px;"/>
+                    </div>
+                    
+                </lightning:layoutItem>
+                     <lightning:layoutItem padding="around-small" size="6"> 
+                     <span class="tabletitle">Dosis de Corticoides</span>   
+                    <div class="slds-float_right slds-p-bottom_small">
+		    <h3 class="slds-page-header__title">Descargar datos
+                            <lightning:buttonIcon iconName="utility:download"  size="large" variant="bare" alternativeText="Download" onclick="{!c.downloadData}"/>
+                        </h3>
+                    </div>
+                    <div class="slds-float_right slds-p-bottom_small">   
+                        <h3 class="slds-page-header__title">Añadir filas
+                            <lightning:buttonIcon iconName="utility:add"  size="large" variant="bare" alternativeText="Add" onclick="{!c.addDoseRow}"/>
+                        </h3>
+                    </div>
+                    <aura:if isTrue="{!v.showTable}">
+                        <div class="scrollit">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Fecha">Fecha</div>
+                                        </th>
+                                        <th scope="col" style='display:none'>
+                                            <div class="slds-truncate" title="Dia">Dia</div>
+                                        </th>
+                                        <th scope="col" style='display:none'>
+                                            <div class="slds-truncate" title="Semana">Semana</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Corticoides">Dosis (mg/kg/día)</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            
+                                <tbody>
+                                <aura:iteration items="{!v.data}" var="a" indexVar="index">
+                                    <aura:if isTrue="{!not(empty(a.isDoseInfusionTable))}">
+                                        <tr>
+                                            <td data-label="calInfusionDate">
+                                                <!--<div class="slds-truncate" title="">{!a.calInfusionDate}</div>-->
+                                                <div><ui:inputDate aura:id="oDate"  class="field" value="{!a.calInfusionDate}" format="DD-MM-YYYY" change="{!c.dateChange1}" displayDatePicker="true" /></div>
+                                            </td>
+                                            <td data-label="calday" style='display:none'>
+                                                <div aura:id="oDate_Day1" class="slds-truncate" title="">{!a.calday}</div>
+                                            </td>
+                                            <td data-label="calweek" style='display:none'>
+                                                <div class="slds-truncate" title="">{!a.calweek}</div>
+                                            </td>
+                                            <td data-label="doseOfInfusion">
+                                                <div class="slds-truncate" title="">
+                                                    <lightning:input aura:id="Dosis1" variant = "label-hidden" value="{!a.doseOfInfusion}" messageWhenPatternMismatch="Allowed only 1 or 2 digit number and upto 2 decimal points"  pattern="^\d+\.\d{0,2}$" onchange="{!c.checkDoseFields}" required="true" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </aura:if> 
+                                    </aura:iteration>
+                                </tbody>
+                        	</table>
+                        </div><br />
+                       <lightning:button variant="Success" label="Actualizar detalles" title="Actualizar detalles" onclick="{!c.updateUserCalRec}" disabled="{!v.isDosBtnActive}" />
+                    </aura:if> 
+                </lightning:layoutItem>
+
+                </lightning:layout> 
+                </div>
+                <div class='box_css'>
+                <h3 class="sub2-title">Evolución de Transaminasas</h3>
+                <lightning:layout>                    
+                <lightning:layoutItem padding="around-small" size="6">
+                    <button id="TransImg" class="slds-button chartButton">Descargar</button>
+                    <a id="TransImg-down" style='display:none'>Download</a>
+                    <canvas aura:id="chart2" id="chart2" style="width:100%;max-width:600px;height:310px;"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="6">
+                    <span class="tabletitle">Transaminasas</span>
+                    <div class="slds-float_right slds-p-bottom_small">
+		    <h3 class="slds-page-header__title">Descargar datos
+                            <lightning:buttonIcon iconName="utility:download"  size="large" variant="bare" alternativeText="Download" onclick="{!c.downloadTransaminasasData}"/>
+                        </h3>
+                    </div>
+                    <div class="slds-float_right slds-p-bottom_small">    
+                        <h1 class="slds-page-header__title">Añadir filas 
+                            <lightning:buttonIcon iconName="utility:add"  size="large" variant="bare" alternativeText="Add" onclick="{!c.addTransRow}"/>
+                        </h1>
+                    </div>
+                    <aura:if isTrue="{!v.showTable}">
+                        <div class="scrollit">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div class="slds-truncate ALT_small2" title="Fecha">Fecha</div>
+                                        </th>
+                                        <th scope="col" style='display:none'>
+                                            <div class="slds-truncate" title="Dia" >Dia</div>
+                                        </th>
+                                        <th scope="col" style='display:none'>
+                                            <div class="slds-truncate" title="Semana" >Semana</div>
+                                        </th>
+                                        <th scope="col" >
+                                            <div class="slds-truncate" title="" ></div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate ALT_small" title="Corticoides">increase el valor real del paciente</div>
+                                         <!--   <div class="slds-truncate" title="Corticoides">ALT (U/I)</div> -->
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate ALT_small" title="Corticoides">increase el valor de referencial del laboratorio</div>
+                                        <!--    <div class="slds-truncate" title="Corticoides">ALT Ref (U/I)</div> -->
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate ALT_small" title="Corticoides">Calculo de x veces el LÍMITE Normal Superior(UNL)</div>
+                                        <!--    <div class="slds-truncate" title="Corticoides">ALT Calval (U/I)</div> -->
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <aura:iteration items="{!v.data}" var="a">
+                                    <aura:if isTrue="{!not(empty(a.isTRANSAMINASASTable))}">
+                                        <tr>
+                                            <td data-label="calInfusionDate">
+                                                <div class="slds-truncate" title="">
+                                                    <ui:inputDate aura:id="oDate2" class="field" value="{!a.calInfusionDate}" format="DD-MM-YYYY"  displayDatePicker="true" change="{!c.dateChange2}" />
+                                                    </div>
+                                            </td>
+                                            <td data-label="calday" style='display:none'>
+                                                <div class="slds-truncate" title="" >{!a.calday}</div>
+                                            </td>
+                                            <td data-label="calweek" style='display:none'>
+                                                <div class="slds-truncate" title="" >{!a.calweek}</div>
+                                            </td>
+                                            <td data-label="calweek" >
+                                                <div class="slds-truncate" title="" >ALT</div>
+                                                <div class="slds-truncate" title="" >AST</div>
+                                            </td>
+                                            <td data-label="doseOfInfusion">
+                                                <div class="slds-truncate" title="">
+                                                    <p><lightning:input aura:id="AST" variant = "label-hidden" value="{!a.transaminasas_AST}" onchange="{!c.astcalval}" messageWhenPatternMismatch="Allowed only 1 or 2 digit number and upto 2 decimal points"  pattern="^\d+\.\d{0,2}$"  required="true"/></p></div>
+                                                
+                                                <div class="slds-truncate" title="">
+                                                    <p><lightning:input aura:id="ALT" variant = "label-hidden" value="{!a.transaminasas_ALT}" onchange="{!c.astcalval}" messageWhenPatternMismatch="Allowed only 1 or 2 digit number and upto 2 decimal points"  pattern="^\d+\.\d{0,2}$" required="true" /></p></div>
+                                            </td>
+                                            <td data-label="doseOfInfusion">
+                                                <div class="slds-truncate" title="">
+                                                    <p><lightning:input aura:id="AST" variant = "label-hidden" value="{!a.transaminasas_AST_Ref}" onchange="{!c.astcalval}" messageWhenPatternMismatch="Allowed only 1 or 2 digit number and upto 2 decimal points"  pattern="^\d+\.\d{0,2}$" required="true" /></p></div>
+                                                
+                                                <div class="slds-truncate" title="">
+                                                    <p><lightning:input aura:id="ALT" variant = "label-hidden" value="{!a.transaminasas_ALT_Ref}" onchange="{!c.astcalval}" messageWhenPatternMismatch="Allowed only 1 or 2 digit number and upto 2 decimal points"  pattern="^\d+\.\d{0,2}$" required="true" /></p></div>
+                                            </td>
+                                            <td data-label="doseOfInfusion">
+                                                <div class="slds-truncate" title="">
+                                                    <p><lightning:input aura:id="AST" variant = "label-hidden" value="{!a.transaminasas_AST_CalVal}" onchange="{!c.CalTransRef2}" disabled="true"/></p></div>
+                                                
+                                                <div class="slds-truncate" title="">
+                                                    <p><lightning:input aura:id="ALT" variant = "label-hidden" value="{!a.transaminasas_ALT_CalVal}" onchange="{!c.CalTransRef1}" disabled="true"/></p></div>
+                                            </td>
+                                        </tr>
+                                        </aura:if> 
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </div><br />
+                        <lightning:button variant="Success" label="Actualizar detalles" title="Actualizar detalles" onclick="{!c.updateUserCalRec}" disabled="{!v.isTransBtnActive}"/>
+                       </aura:if>  
+                </lightning:layoutItem>
+
+                </lightning:layout> 
+                    </div>
+                <div class='box_css'>
+                <h3 class="sub2-title">Evolución de Recuento de Plaquetas </h3>
+                <lightning:layout> 
+                <lightning:layoutItem padding="around-small" size="6">
+                    <button id="PlaquetasImg" class="slds-button chartButton">Descargar</button>
+                    <a id="PlaquetasImg-down" style='display:none'>Download</a>
+                    <canvas aura:id="chart3" id="chart3" style="width:100%;max-width:600px;height:310px;"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="6">
+                    <span class="tabletitle">Plaquetas</span>
+                    <div class="slds-float_right slds-p-bottom_small">
+		    <h3 class="slds-page-header__title">Descargar datos
+                            <lightning:buttonIcon iconName="utility:download"  size="large" variant="bare" alternativeText="Download" onclick="{!c.downloadPlaquetas}"/>
+                        </h3>
+                    </div>
+                    <div class="slds-float_right slds-p-bottom_small"> 
+                        <h1 class="slds-page-header__title">Añadir filas
+                            <lightning:buttonIcon iconName="utility:add"  size="large" variant="bare" alternativeText="Add" onclick="{!c.addPlaqRow}"/>
+                        </h1>
+                    </div>
+                    <aura:if isTrue="{!v.showTable}">
+                        <div class="scrollit">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Fecha">Fecha</div>
+                                        </th>
+                                        <th scope="col" style='display:none'>
+                                            <div class="slds-truncate" title="Dia" >Dia</div>
+                                        </th>
+                                        <th scope="col" style='display:none'>
+                                            <div class="slds-truncate" title="Semana" >Semana</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Plaquetas">Plaquetas</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <aura:iteration items="{!v.data}" var="a">
+                                    <aura:if isTrue="{!not(empty(a.isPLAQUETASTable))}">
+                                        <tr>
+                                            <td data-label="calInfusionDate">
+                                                <div class="slds-truncate" title="">
+                                                    <ui:inputDate aura:id="oDate3" class="field" value="{!a.calInfusionDate}" format="DD-MM-YYYY" change="{!c.dateChange3}" displayDatePicker="true" />  
+                                                </div>
+                                            </td>
+                                            <td data-label="calday" style='display:none'>
+                                                <div class="slds-truncate" title="" >{!a.calday}</div>
+                                            </td>
+                                            <td data-label="calweek" style='display:none'>
+                                                <div class="slds-truncate" title="" >{!a.calweek}</div>
+                                            </td>
+                                            <td data-label="platelets">
+                                                <div class="slds-truncate" title="">
+                                                    <p><lightning:input aura:id="Plaquetas" variant = "label-hidden" value="{!a.platelets}" messageWhenPatternMismatch="Allowed only 1 or 2 digit number" pattern="^\d{2}$" onchange="{!c.checkPalqFields}"  required="true" /></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </aura:if> 
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </div>
+                            <br />
+                        <lightning:button variant="Success" label="Actualizar detalles" title="Actualizar detalles" onclick="{!c.updateUserCalRec}" disabled="{!v.isPalqBtnActive}"/>
+                    </aura:if> 
+                </lightning:layoutItem>
+
+                </lightning:layout> 
+                    </div>
+                <div class='box_css'>
+                <h3 class="sub2-title">Evolución de Evaluación CHOP-INTEND </h3>
+                <lightning:layout>                                      
+				<lightning:layoutItem padding="around-small" size="6">
+                    <button id="CHOP-INTENDImg" class="slds-button chartButton">Descargar</button>
+                    <a id="CHOP-INTENDImg-down" style='display:none'>Download</a>
+                    <canvas aura:id="chart4" id="chart4" style="width:100%;max-width:600px;height:310px;"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="6">
+                    <span class="tabletitle">CHOP INTEND</span>
+                    <div class="slds-float_right slds-p-bottom_small">
+		    			<h3 class="slds-page-header__title">Descargar datos
+                            <lightning:buttonIcon iconName="utility:download"  size="large" variant="bare" alternativeText="Download" onclick="{!c.downloadChopIntend}"/>
+                        </h3>
+                    </div>
+                    <div class="slds-float_right slds-p-bottom_small">    
+                        <h1 class="slds-page-header__title">Añadir filas
+                            <lightning:buttonIcon iconName="utility:add"  size="large" variant="bare" alternativeText="Add" onclick="{!c.addChopRow}"/>
+                        </h1>
+                    </div>
+                    <aura:if isTrue="{!v.showTable}">
+                        <div class="scrollit"> 
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="Fecha">Fecha</div>
+                                        </th>
+                                        <th scope="col" style='display:none'>
+                                            <div class="slds-truncate" title="Dia" >Dia</div>
+                                        </th>
+                                        <th scope="col" style='display:none'>
+                                            <div class="slds-truncate" title="Semana" >Semana</div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate" title="CHOP-INTEND">CHOP INTEND</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <aura:iteration items="{!v.data}" var="a">
+                                    <aura:if isTrue="{!not(empty(a.isCHOPTable))}">
+                                        <tr>
+                                            <td data-label="calInfusionDate">
+                                                <div class="slds-truncate" title="">
+                                                    <ui:inputDate aura:id="oDate4" class="field" value="{!a.calInfusionDate}" format="DD-MM-YYYY" change="{!c.dateChange4}" displayDatePicker="true" />
+                                                </div>
+                                            </td>
+                                            <td data-label="calday" style='display:none'>
+                                                <div class="slds-truncate" title="">{!a.calday}</div>
+                                            </td>
+                                            <td data-label="calweek" style='display:none'>
+                                                <div class="slds-truncate" title="">{!a.calweek}</div>
+                                            </td>
+                                            <td data-label="chopintended">
+                                                <div class="slds-truncate" title="">
+                                                    <p><lightning:input aura:id="CHOP-INTED" variant = "label-hidden" value="{!a.chopintended}"  messageWhenPatternMismatch="Allowed only 2 digit number" pattern="^\d{2}$" onchange="{!c.checkChopFields}"  required="true"/></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </aura:if> 
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </div>
+						<br />
+                        <lightning:button variant="Success" label="Actualizar detalles" title="Actualizar detalles" onclick="{!c.updateUserCalRec}" disabled="{!v.isChopBtnActive}"/>
+                    </aura:if>
+                    
+                </lightning:layoutItem>
+               </lightning:layout>
+                </div>
+		<aura:set attribute="else">
+            <br />
+            
+            <div id='On-DemandP' class="col-lg-12 col-md-12 curvDivfooter dropdown">
+                <p style='background:#8a199c;padding:10px;color: #FFF !important;border-radius: 10px 0px 10px 0px;'>
+                    <b>Seleccione el paciente del menú desplegable de arriba.</b>
+                </p>
+            </div>
+        </aura:set>
+      </aura:if>
+       </lightning:tab>
+        <lightning:tab label="All" title="All Patients">
+            <div class=''>                
+                <lightning:layout> 
+                    <lightning:layoutItem padding="around-small" size="12">
+                     <lightning:select aura:id="MultiChart" class="dropdown selectpatient" onchange="{! c.onChangeMultiChart }">
+                        <option  value="" >Select Variable</option>
+                        <option  value="DOSIS" >Dosis de Corticoesteroides</option>
+                        <option  value="ALT-REAL" >ALT (valor real)</option>
+                        <option  value="AST-REAL" >AST (valor real)</option>
+                        <option  value="ALT-XUNL" >ALT ( X UNLl)</option>
+                        <option  value="AST-XUNL" >AST ( X UNLl)</option>
+                        <option  value="PLAQUETAS" >Recuento de Plaquetas</option>
+                        <option  value="CHOP-INTEND" >CHOP-INTEND</option>
+                     </lightning:select>
+                    <button id="CHART5Img" class="slds-button chartButton5">Download</button>
+                    <a id="CHART5Img-down" style='display:none'>Download</a>
+                    <div aura:id="chart5DIV" class='chartDiv'>
+                       <!-- <canvas aura:id="chart5" id="chart5" style="width:100%;height:300px;"/> -->
+                        <canvas aura:id="chart5DOSIS" id="chart5DOSIS" class='chartDiv'/>
+                        <canvas aura:id="chart5ALT-REAL" id="chart5ALT-REAL" style="width:100%;height:300px;display:none"/>
+                        <canvas aura:id="chart5AST-REAL" id="chart5AST-REAL" style="width:100%;height:300px;display:none"/>
+                        <canvas aura:id="chart5ALT-XUNL" id="chart5ALT-XUNL" style="width:100%;height:300px;display:none"/>
+                        <canvas aura:id="chart5AST-XUNL" id="chart5AST-XUNL" style="width:100%;height:300px;display:none"/>
+                        <canvas aura:id="chart5PLAQUETAS" id="chart5PLAQUETAS" style="width:100%;height:300px;display:none"/>
+                        <canvas aura:id="chart5CHOP-INTEND" id="chart5CHOP-INTEND" style="width:100%;height:300px;display:none"/>
+                    </div>
+                    
+                    </lightning:layoutItem>
+                </lightning:layout> 
+           </div>
+        </lightning:tab>
+    </lightning:tabset> 
+    </div>
+
+    <br /> <br /> <br /><br />
+    <div class="col-lg-12 col-md-12 curvDivfooter sub2-title">
+        <p class="t_a_C">
+            <aura:if isTrue="{!v.userlanguage=='English'}">
+               The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+               <aura:set attribute="else">
+                  La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+               </aura:set>
+            </aura:if>
+        </p>	
+    </div>
+
+    <c:ZOE_FOOTER />
+    </aura:if>
+</aura:component>

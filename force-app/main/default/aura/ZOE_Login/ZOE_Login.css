@@ -1,0 +1,60 @@
+.THIS .contact-form form .form-control {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.THIS .contact-form form{
+    -webkit-box-shadow: 0px 5px 28.5px 1.5px rgb(149 152 200 / 20%) !important;
+    box-shadow: 0px 5px 28.5px 1.5px rgb(149 152 200) !important;
+    padding: 2%;
+    border-radius: 5px;
+    background: #FFF !important;
+}
+.THIS .login_h {
+    color: #111f90;
+    font-weight: 700 !important;
+    padding-bottom: 20px !important;
+    font-size: 36px !important;
+    text-align: center !important;
+    margin:auto;
+    padding-left:20px;
+}
+.THIS .ptb-100 {
+    padding-top: 2% !important;
+    padding-bottom: 5% !important;
+}
+.THIS .btn-primary{
+	background: #111f90;    
+}
+.THIS .color_prime{
+    color: #111f90;
+    text-align:center;
+}
+.THIS .color_prime2{
+    width: 50%;left: 25%;position: relative;text-align: justify;
+    color: #111f90;
+    font-size: 15px;
+    line-height: 20px;
+}
+.THIS .section-title {
+    margin-bottom: 20px;
+}
+.THIS .bg-map {
+    top: 70%;
+}
+.THIS .slds-modal__body{
+    background: #FFF;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .THIS .color_prime2{
+        width:100%;
+        left:0%;
+    }
+} 
+
+@media only screen and (max-width: 767px){
+    .THIS .color_prime2{
+        width:100%;
+        left:0%;
+    }
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>State</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT( ISBLANK(State__c )), NOT( REGEX( State__c , &quot;[a-zA-Z- À-ž]*&quot;)))</errorConditionFormula>
+    <errorDisplayField>State__c</errorDisplayField>
+    <errorMessage>No se permiten caracteres especiales ni números.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Calendar_Activities</fullName>
+    <columns>NAME</columns>
+    <columns>Calendar_Activity__c</columns>
+    <columns>Calendar_Activity_desc__c</columns>
+    <columns>Calendar_Activity_duration__c</columns>
+    <columns>Calendar_Activity_Duration_Type__c</columns>
+    <columns>Calendar_email_template__c</columns>
+    <columns>Spanish_Calendar_Activity__c</columns>
+    <columns>Spanish_Calendar_Activity_Description__c</columns>
+    <columns>First_Notification__c</columns>
+    <columns>Second_Notification__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Master_Configuration__c.Calendar_Activities</value>
+    </filters>
+    <label>Calendario de Actividades</label>
+</ListView>

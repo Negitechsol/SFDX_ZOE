@@ -1,0 +1,211 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="userlanguage" type="String" />
+    <aura:attribute name="showcontent" type="String"/>
+    <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <c:ZOE_HEADER />
+    <aura:if isTrue="{!v.showcontent=='true'}">
+     <section class="page-title-areass">
+        <div class="d-table banner">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 							 <h2>Adverse Event Report</h2>
+                            	 <aura:set attribute="else">
+                         	<h2>Reporte de Eventos Adversos</h2>
+                            	 </aura:set>
+                        </aura:if>
+                        <ul>
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Home</a></li>
+                        <aura:set attribute="else">
+                           <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Casa</a></li>
+                        </aura:set>
+                     </aura:if>
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+ 								<li>Adverse Event Report</li>
+                            		 <aura:set attribute="else">
+                         		<li>Reporte de Eventos Adversos</li>
+	                            	 </aura:set>
+                       	    </aura:if>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="main-services-area ptb-50">
+        <div class="container margin_css_top">
+            <div class="row">
+                <div class="col-lg-12">
+                    <blockquote class="wp-block-quote quote_css">
+                        
+            	<div>
+                    <img class="title_img" src="{!$Resource.home_icons + '/img/adverse.png'}" alt="indicacion" />
+                    <aura:if isTrue="{!v.userlanguage=='English'}">
+ 				     	<h4 class='sub-title'>What is an Adverse Event and when is it reported? </h4>
+                           	 <aura:set attribute="else">
+                       	<h4 class='sub-title'>¿Qué es un Evento Adverso y cuándo se reporta? </h4>
+                           	 </aura:set>
+                    </aura:if>
+                </div>
+                    <aura:if isTrue="{!v.userlanguage=='English'}">
+ 				     	<p class="block_p text_left">An<b> Adverse Event (AE) is any untoward medical occurrence in a patient or clinical trial subject administered a Novartis product</b> <span>(i.e., a drug and/or device doctor)</span><b> and that it does not necessarily have to have a causal relationship with this product.<br></br> </b>
+									Therefore, an AE can be any untoward and/or unintended sign (for example, an abnormal laboratory finding), symptom, or illness temporarily associated with the use of a Novartis product, regardless of whether it is considered related or unrelated to the use of a Novartis product. the product.<br></br>
+									Additionally, all cases of death and the following special scenarios, described in the <b><u>Adverse Event training</u></b> must also be reported
+                    	</p>
+                           	 <aura:set attribute="else">
+                       	<p class="block_p text_left">Un<b> Evento Adverso (EA) es cualquier ocurrencia médica desfavorable en un paciente o sujeto de un estudio clínico al que se le ha administrado un producto de Novartis</b> <span>(es decir, un medicamento y/o dispositivo médico)</span><b> y que no necesariamente ha de tener una relación causal con este producto.<br></br> </b>
+									Por lo tanto, un EA puede ser cualquier signo desfavorable y/o involuntario (por ejemplo, un hallazgo anormal de laboratorio), síntoma o enfermedad temporalmente asociada con el uso de un producto de Novartis, independientemente de si se considera relacionado o no relacionado con el producto.<br></br>  
+									Adicionalmente, todos los casos de muerte y los siguientes escenarios especiales, descritos en el <b><u>entrenamiento de Evento Adversos</u></b> también deben ser reportados
+                    	</p>
+                           	 </aura:set>
+                    </aura:if>
+                    
+
+                                </blockquote>
+
+                </div>
+            </div>
+        </div>
+            <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+    </section>
+    
+    
+        <section class="main-services-area ptb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <blockquote class="wp-block-quote quote_css">
+                        
+            	<div> 
+                    <aura:if isTrue="{!v.userlanguage=='English'}">
+ 				     	<h4 class='sub-title'>When is an EA reported?</h4>
+                           	 <aura:set attribute="else">
+                       	<h4 class='sub-title'>¿Cuándo se reporta un EA?</h4>
+                           	 </aura:set>
+                    </aura:if>
+                </div>
+                    <aura:if isTrue="{!v.userlanguage=='English'}">
+ 				     	<p class="block_p">
+                            An AE in a patient under treatment receiving Zolgensma<sup>®</sup> or any Novartis product must be reported to the Patient Safety department within the first twenty-four (24) hours after becoming aware of it. 
+                    	</p>
+                           	 <aura:set attribute="else">
+                       	<p class="block_p">
+                            Un EA en un paciente en tratamiento recibiendo Zolgensma<sup>®</sup> o cualquier producto de Novartis debe ser reportado al departamento de Seguridad de los Pacientes dentro de las primeras veinticuatro (24) horas después de tomar conocimiento del mismo. 
+                    	</p>
+                           	 </aura:set>
+                    </aura:if>
+                    
+                                </blockquote>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+      <section class="main-services-area ptb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <blockquote class="wp-block-quote quote_css">
+                        
+            	<div> 
+                    <aura:if isTrue="{!v.userlanguage=='English'}">
+ 				     	<h4 class='sub-title'>Where to report an EA?</h4>
+                           	 <aura:set attribute="else">
+                       	<h4 class='sub-title'>¿Dónde reportar un EA?</h4>
+                           	 </aura:set>
+                    </aura:if>
+                </div>
+                    <aura:if isTrue="{!v.userlanguage=='English'}">
+ 				     	<p class="block_p">
+                             If your patient presents an AE, you can report it in two ways:
+                    	</p>
+                           	 <aura:set attribute="else">
+                       	<p class="block_p">
+                             Si tu paciente presenta un EA, podes reportarlo de dos formas: 
+                    	</p>
+                           	 </aura:set>
+                    </aura:if>
+                    <aura:if isTrue="{!v.userlanguage=='English'}">
+ 				     	<p class="block_p text_left">
+                             
+                                  <ul class="services-features-list p_in_margin">
+											<li><i class="i_css">o</i> Generate an <b>Online Report</b> in the following
+                               				<a href="https://3800-pvi-prd-ch.foresightgroup.com/pvi-web/login?lang=en" target="blank"><b><u class="i_css2">link</u></b></a></li>
+                                        	<li><i class="i_css">o</i> Send an email to <a class="i_css2" href="mailto:farmaco.vigilancia@novartis.com"><b><u>farmaco.vigilancia@novartis.com</u></b></a>describing the name of the drug, the adverse event, your name (optional) and information about the person. </li>
+                                    </ul>
+                    	</p>
+                           	 <aura:set attribute="else">
+                       	<p class="block_p text_left p_in_margin">
+                             <ul class="services-features-list">
+										<li><i class="i_css">o</i> Generá un <b>Reporte Online</b> en el siguiente
+                               				 <a href="https://3800-pvi-prd-ch.foresightgroup.com/pvi-web/login?lang=en" target="blank"><b><u class="i_css2">link</u></b></a></li>
+                                        <li><i class="i_css">o</i> Envía un e-mail a <a class="i_css2" href="mailto:farmaco.vigilancia@novartis.com"><b><u>farmaco.vigilancia@novartis.com</u></b></a> describiendo nombre de la droga, el evento adverso, su nombre (opcional) e información de la persona. </li>
+                                    </ul> 
+                    	</p>
+
+                           	 </aura:set>
+                    </aura:if>
+                    
+
+                                </blockquote>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        
+        
+        
+        
+        <section class="main-services-area ptb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <blockquote class="wp-block-quote quote_css">
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+    						<div class="pl_50">
+        						<p class="text_left">For more information on Novartis Adverse Event Reporting, click <a href="https://www.report.novartis.com/" target="blank"><b><u>here.</u></b></a></p>
+        						<p class="text_left">Thank you for helping us ensure the safety of our products and patients! </p>
+    						</div>
+    							<aura:set attribute="else">
+        					<div class="pl_50">
+            					<p class="text_left">Para mayor información sobre Reporte de Eventos Adversos de Novartis, hacé clic <a href="https://www.report.novartis.com/" target="blank"><b><u>aquí.</u></b></a></p>
+            					<p class="text_left">¡Gracias por ayudarnos a garantizar la seguridad de nuestros productos y de los pacientes! </p>
+        					</div>
+    							</aura:set>
+    					</aura:if>
+           			</blockquote>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        
+        
+        
+        
+    
+    
+    
+<section class="fun-facts-area1 f_f_a">
+                
+                        <p class="f_f_a_p">
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+                                The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+                                     <aura:set attribute="else">
+                                La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+                                     </aura:set>
+                            </aura:if>
+                        </p>	
+        </section>
+
+
+    <div id="footer_content"><c:ZOE_FOOTER /></div>
+</aura:if>	
+</aura:component>

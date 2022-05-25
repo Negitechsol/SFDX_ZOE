@@ -1,0 +1,181 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="userlanguage" type="String" />
+    <aura:attribute name="showcontent" type="String"/>
+    <aura:handler  event="c:LanguageEvent" action="{!c.handleLanguageChangeEvent}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <c:ZOE_HEADER />
+    <aura:if isTrue="{!v.showcontent=='true'}">
+	 <section class="page-title-areass">
+        <div class="d-table banner">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 							 <h2>(PSP) Services</h2>
+                            	 <aura:set attribute="else">
+                         	<h2>Servicios del (PSP)</h2>
+                            	 </aura:set>
+                        </aura:if>
+                        <ul>
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+                        <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Home</a></li>
+                        <aura:set attribute="else">
+                           <li><a href="{!$Label.c.sitecontext+$Label.c.ZoeLandingPage}" onclick="{!c.activeLink}">Casa</a></li>
+                        </aura:set>
+                     </aura:if>
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+ 							 	<li>Patient Support Services</li>
+                            		 <aura:set attribute="else">
+                         		<li>Servicios del Patient Support Services</li>
+                            		 </aura:set>
+                        	</aura:if>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+        <section class="main-services-area ptb-50">
+        <div class="container margin_css_top">
+            <div class="row">
+                <div class="col-lg-12">
+                    <blockquote class="wp-block-quote quote_css">
+                        
+            	<div class="pb_20px">
+                    <a href="https://www.viviendomejor.com.ar/" target='blank'><img src="{!$Resource.psp_new_logo}" alt="indicacion" /></a>
+                </div>
+                   
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+ 						 	<p>At Novartis we want to offer you the best support for you and your patients. For this reason, we have developed a specific program with a multidisciplinary approach for patients with Spinal Muscular Atrophy.</p>
+                           		 <aura:set attribute="else">
+                         	<p>Desde Novartis queremos ofrecerte el mejor acompañamiento para vos y tus pacientes. Por ello, hemos desarrollado un programa específico y con un enfoque multidisciplinario para los pacientes con Atrofia Muscular Espinal.</p>
+                           		 </aura:set>
+                        </aura:if>
+                    
+
+                               <cite>Tom Cruise</cite>
+                                </blockquote>
+
+                </div>
+            </div>
+        </div>
+            <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+    </section>
+    
+     <section class="main-services-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <blockquote class="wp-block-quote quote_css">
+                <div class="text_left"> 
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+ 						 		<h4 class='sub-title'>Living Better Services for Gene Therapy:</h4>
+                           			 <aura:set attribute="else">
+                         		<h4 class='sub-title'>Servicios de Viviendo Mejor para Terapia Génica:</h4>
+                         	  		 </aura:set>
+                        	</aura:if>
+                </div>
+                 <div>
+                     
+                                    <ul class="services-features-list text_left">
+                                     <aura:if isTrue="{!v.userlanguage=='English'}">   
+                                        <li><i class="i_css">o</i> Welcome kit for the kinesiological rehabilitation of patients.</li>
+                                        <li><i class="i_css">o</i> Anti-AAV9 antibody testing service.</li>
+                                        <li><i class="i_css">o</i> Laboratory, basal and control analysis service.</li>
+                                        <li><i class="i_css">o</i> Telemedicine services for kinesiological accompaniment.</li>
+                                        <li><i class="i_css">o</i> Psychological accompaniment workshops.</li>
+                                        <li><i class="i_css">o</i> And more!</li>
+                                        
+                                        <aura:set attribute="else">
+                                        
+										<li><i class="i_css">o</i> Kit de bienvenida para la rehabilitación kinesiológica de pacientes.</li>
+                                        <li><i class="i_css">o</i> Servicio de testeo de anticuerpos anti-AAV9.</li>
+                                        <li><i class="i_css">o</i> Servicio de análisis de laboratorio, basales y de control.</li>
+                                        <li><i class="i_css">o</i> Servicios de telemedicina para acompañamiento kinesiológico.</li>
+                                        <li><i class="i_css">o</i> Workshops de acompañamiento psicológico.</li>
+                                        <li><i class="i_css">o</i> ¡Y más!</li>
+                                        </aura:set> 
+                                    </aura:if>
+                                   </ul>
+                        </div>
+                    
+
+                               <cite>Tom Cruise</cite>
+                                </blockquote>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+      <section class="main-services-area ptb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <blockquote class="wp-block-quote quote_css">
+                   
+                      
+						<aura:if isTrue="{!v.userlanguage=='English'}">
+                        	<p class="text_left pt_in">Remember that to access services, patients must be registered with the Living Better Program and must have an on-label indication for Zolgensma<sup>®</sup> (onasemnogene abeparvovec).</p>
+                        	<p class="text_left">Forms of Contact:</p>
+                           <aura:set attribute="else">	
+                        	<p class="text_left pt_in">Recordá que para acceder a los servicios, los pacientes se deben registrar al Programa Viviendo Mejor y deben contar con una indicación on-label de Zolgensma<sup>®</sup> (onasemnogén abeparvovec).</p>
+                        	<p class="text_left">Formas de Contacto:</p>
+                            </aura:set>
+                        </aura:if>
+                        
+                        <div class="text_left">
+                        <button class="btn btn-primary text_left">
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+ 								<a href="tel:0800-444-3367" class="c_f">Phone: 0800-444-3367</a> <i class="flaticon-right-chevron"></i>
+                            		 <aura:set attribute="else">
+                         		<a href="tel:0800-444-3367" class="c_f">Teléfono: 0800-444-3367</a> <i class="flaticon-right-chevron"></i>
+                            		 </aura:set>
+                       		</aura:if>
+                        </button>
+                       </div>
+                            <div class="text_left">
+                        <aura:if isTrue="{!v.userlanguage=='English'}">
+                            <h6 class="padding_top">Monday to Friday from 9 a.m. to 8 p.m.</h6>
+                        	<h6 class="padding_top"><a href="https://www.cac.novartis.com/pacientes-y-medicos/para-profesionales-de-la-salud/programas-para-pacientes" target="blank">programa.pacientes@novartis.com</a></h6>
+                        	<h6 class="padding_top"><a href="https://www.viviendomejor.com.ar/" target="blank">www.viviendomejor.com.ar</a></h6>
+                           <aura:set attribute="else"> 
+                        	<h6 class="padding_top">Lunes a Viernes de 9 a 20hs</h6>
+                        	<h6 class="padding_top"><a href="https://www.cac.novartis.com/pacientes-y-medicos/para-profesionales-de-la-salud/programas-para-pacientes" target="blank">programa.pacientes@novartis.com</a></h6>
+                        	<h6 class="padding_top"><a href="https://www.viviendomejor.com.ar/" target="blank">www.viviendomejor.com.ar</a></h6>
+                                                    
+                           </aura:set>
+                        </aura:if>
+                                </div>
+
+                    
+
+                               <cite>Tom Cruise</cite>
+                                </blockquote>
+
+                </div>
+            </div>
+        </div>
+            <div class="shape2"><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+    </section>
+    
+    
+       <section class="fun-facts-area1 f_f_a">                
+             <p class="f_f_a_p">
+                            <aura:if isTrue="{!v.userlanguage=='English'}">
+                                The information on this site is indicative. For more details, we recommend that you go to <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">leaflet</a> from Zolgensma<sup>®</sup>
+                                     <aura:set attribute="else">
+                                La información de este sitio es orientativa. Para más detalle, recomendamos que se dirija al <a class="hyplnk" href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="blank">prospecto</a> de Zolgensma<sup>®</sup>
+                                     </aura:set>
+                            </aura:if>
+            </p>	
+        </section>
+      
+    
+
+
+   <div id="footer_content"><c:ZOE_FOOTER /></div>
+</aura:if>
+</aura:component>

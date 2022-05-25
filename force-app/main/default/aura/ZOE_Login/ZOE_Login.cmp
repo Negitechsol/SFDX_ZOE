@@ -1,0 +1,87 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ZOE_LoginCntrl">
+	<aura:attribute name="Username" type="String" />
+	<aura:attribute name="Password" type="String" />
+    <aura:attribute name="showcontent" type="String"/>
+    <c:ZOE_Login_Header />    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- SHOW LOADING SPINNER--> 
+    <lightning:spinner variant="brand" size="large" aura:id="Id_spinner" class="slds-hide" />
+    <lightning:notificationsLibrary aura:id="notifyId"/>
+    <aura:if isTrue="{!v.showcontent=='true'}">
+    <section class="contact-area ptb-100" style="padding-top: 2% !important;
+    padding-bottom: 5% !important;">
+            <div class="container">
+                <div class="text-align">
+                     <p class="color_prime">
+                         <span style="font-size: 145%;"><b>¡Bienvenido a ZOE!</b></span><br/>
+                     </p>
+                     <p class="color_prime2">                         
+						Esta plataforma está diseñada para acompañar a médicos tratantes, farmacéuticos, enfermeros y/u otros
+                        profesionales de la salud en el recorrido de la infusión con onasemnogén abeparvovec, la primera Terapia Génica 
+                        para la Atrofia Muscular Espinal (AME) en Argentina.<sup>1</sup>
+						Te invitamos a registrarte para conocer más sobre ZOE y sus funcionalidades.
+						Si ya sos un usuario habilitado, puedes ingresar aquí:
+					 </p>
+                </div>
+                <div class="section-title">
+                    <!-- <span>Zolgensma®</span> -->
+                    <!-- <p>If you have an idea, we would love to hear about it.</p> -->    
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-1 col-sm-12">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-6 col-md-10 col-sm-12">
+                            <div class="contact-form">
+                                <form id="contactForm">
+                                    <div class="row">
+                                        <h2 class="login_h">Acceso </h2>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <lightning:input aura:id="FormVal" 
+                                                    type="email" autocomplete="off"
+                                                    class="form-control"
+                                                    placeholder="usuario"
+                                                    value="{!v.Username}"/>
+                                            <!-- <div class="help-block with-errors"></div> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <lightning:input aura:id="FormVal" 
+                                                    type="password"
+                                                   	class="form-control"
+                                                    placeholder="Contraseña" autocomplete="off"
+                                                    value="{!v.Password}"/>
+                                            <!-- <div class="help-block with-errors"></div> -->
+                                        </div>
+                                    </div>
+                                    <div class="forgot_class">
+                                        <a href="{!$Label.c.sitecontext + $Label.c.Registration}">Inscribirse</a> / <a href="{!$Label.c.sitecontext + 'forgotpwd'}">Has olvidado tu contraseña</a>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <!-- <button type="submit" class="btn btn-primary">Login <i class="flaticon-right-chevron"></i></button> 
+                                        <a class="btn btn-primary" onClick="{!c.userLogin}">Login <i class="flaticon-right-chevron"></i></a>-->
+                                        <lightning:button variant="brand"
+                                        label="Acceso"
+                                        title="Login"
+                                        class="btn btn-primary"
+                                        onclick="{!c.userLogin}" iconName="utility:chevronright" iconPosition="right"/>
+                                        <!-- <div id="msgSubmit" class="h3 text-center hidden"></div> -->
+                                        <!-- <div class="clearfix"></div> -->
+                                    </div>
+                                </div>
+                         <!--       <p>Diseñada para acompañar a los profesionales de la saluden el recorrido del tratamiento conZolgensma® (onasemnogén abeparvovec), la terapia génica para los pacientes con Atrofia Muscular Espinal.</p> -->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-1 col-sm-12">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        <div class="bg-map"><img src="{!$Resource.zoe_img + '/img/bg-map.png'}" alt="image"/></div>
+        </section>
+    <c:ZOE_Login_Footer />
+        </aura:if>
+</aura:component>

@@ -1,0 +1,17 @@
+.THIS.bgimg {
+    background-image: url('/ZOE/resource/1648751917000/footerbg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.THIS .justify{
+    text-align: justify;
+}
+.THIS .over_flow{
+    overflow-x: hidden; padding:10px;
+}
+.THIS .hov{
+    color:#8a199c !IMPORTANT;
+}
+.THIS .hov:hover{
+    color:#19ce67 !IMPORTANT;
+}

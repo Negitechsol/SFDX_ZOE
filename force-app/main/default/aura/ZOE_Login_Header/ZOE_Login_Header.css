@@ -1,0 +1,9 @@
+.THIS .siteforceContentArea .comm-layout-column:not(:empty){
+    padding-top:0px !important;
+}
+.THIS .ui-widget{
+    display:none;
+}
+.THIS .header-area{
+    display:none !important;
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other_Institution_Should_be_blank</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF( AND(  Institution__c != &apos;Other&apos;,  ISPICKVAL( Status__c , &apos;Registered&apos;), NOT(ISBLANK(  Other_Institution_Name__c ) )
+) , true, false)</errorConditionFormula>
+    <errorDisplayField>Other_Institution_Name__c</errorDisplayField>
+    <errorMessage>Other Institution name should be blank if Institution is set apart from other</errorMessage>
+</ValidationRule>

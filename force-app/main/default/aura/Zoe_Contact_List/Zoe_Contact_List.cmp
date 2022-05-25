@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+	<c:ZOE_HEADER />   
+    <div style='margin:5%'>
+        <lightning:listView aura:id="listViewZeoContact"
+                objectApiName="ZOE_Contact__c"
+                listName="ALLContact"
+                rows="5"
+                showSearchBar="false"
+                showActionBar="false"
+                enableInlineEdit="false"
+                showRowLevelActions="false"
+            /> 
+    </div>
+    <div class="shape2" style='top: 10% !important;'><img src="{!$Resource.zoe_img + '/img/shape/2.png'}" alt="image"/></div>
+    <c:ZOE_FOOTER />
+</aura:component>

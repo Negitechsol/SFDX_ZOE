@@ -1,0 +1,143 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="isModal" type="boolean" default="false"/>
+    <div id="footer_content">
+        <!-- Start Footer Area -->
+       <section class="footer-area light_bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                                <!-- <h3>Claim</h3> -->
+                                <p>Este sitio está diseñado para profesionales de la salud de Argentina. Queda prohibido su registro y/o acceso a pacientes, consumidores y/o público en general.</p>
+                                <a href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/Zolgensma.pdf" target="_blank">
+                                  Ref. 1 Último prospecto aprobado por ANMAT.
+                            	</a>
+                        </div>
+                        <div class="single-footer-widget">
+                            <p>AGXXXXXX</p>
+                        </div>  
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <div class="logo">
+                                <a href="#"><img src="{!$Resource.zoe_img + '/img/novartislogojuli.png'}" alt="image" width="140" /></a>
+                                <p><i class="fab fa-location"></i> Novartis Argentina S.A Ramallo 1851. C1429DUC. Buenos Aires. Argentina</p>
+                            </div>
+                           <!--  <div class="logo">
+                                <a href="#"><img src="assets/img/Zolgensma_Logo.png" alt="image" width="180"></a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-footer-widget pl-5">
+                            <!-- <h3>Product reference and link</h3>
+                            <ul class="links-list">
+                                <li><a href="https://prod.novartis.com.ar/sites/www.novartis.com.ar/files/PROYECTO%20DE%20PROSPECTO%2028Ago2020%20Zolgensma%20%28003%29%20FINAL.pdf" target="_blank">1. Último prospecto aprobado por ANMAT</a></li>
+                            </ul> -->
+                            <div class="footer_page">
+                                <p class="font_weight"><a onclick="{! c.openModel }">Políticas de Privacidad</a></p>
+                                <p class="font_weight"><a onclick="{! c.opencModel }">Términos y condiciones</a></p>
+                                
+                                
+     <!-- for Terms & Conditions -->                           
+       		<aura:if isTrue="{!v.isModalOpen}">
+     <!-- Modal/Popup Box starts here-->
+             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" >
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                         <h2>TÉRMINOS Y CONDICIONES</h2>
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closecModel }"
+                                              alternativeText="close"
+                                              
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                                              
+                    </header>
+                    <body class="slds-modal__body" style="overflow-x: hidden; padding:10px;">
+                        	<c:Terms_Conditions/>
+                    <!--Modal/Popup Box Body Starts here-->
+                     
+                    </body>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="de acuerdo"
+                                          title="Cancel"
+                                          onclick="{! c.closecModel }"/>
+                        
+                    </footer>
+                 </div>
+               </section> 
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+             </aura:if>
+                                
+     <!-- for privacy policies -->
+                            
+            <aura:if isTrue="{!v.isModal}">
+     <!-- Modal/Popup Box starts here-->
+             <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" >
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                         <h2>Aviso de Privacidad para Páginas Web y Aplicaciones Móviles</h2>
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                                              
+                    </header>
+                    <body class="slds-modal__body" style="overflow-x: hidden; padding:10px;">
+                        	<c:privacy_policies/>
+                    <!--Modal/Popup Box Body Starts here-->
+                     
+                    </body>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="de acuerdo"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                        
+                    </footer>
+                 </div>
+               </section> 
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+             </aura:if>
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-area">
+                    <p><i class="far fa-copyright"></i> <a href="#" target="_blank">2021 NovartisAG</a></p>
+                </div>
+            </div>
+        </section>
+        <!-- End Footer Area -->
+    </div>
+	<div class="go-top"><i class="fas fa-chevron-up"></i></div>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/jquery.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/popper.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/bootstrap.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/slick.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/jquery.meanmenu.js'}"/>
+	<ltng:require scripts="{!$Resource.zoe_js + '/js/jquery.appear.min.js'}"/>
+	<ltng:require scripts="{!$Resource.zoe_js + '/js/odometer.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/parallax.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/jquery.magnific-popup.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/jquery.nice-select.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/wow.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/jquery.ajaxchimp.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/form-validator.min.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/contact-form-script.js'}"/>
+    <ltng:require scripts="{!$Resource.zoe_js + '/js/main.js'}"/>
+</aura:component>

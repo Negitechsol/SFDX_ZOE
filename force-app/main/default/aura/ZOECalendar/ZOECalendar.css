@@ -1,0 +1,155 @@
+.THIS .hyplnk{
+    color:#19ce67;
+}
+.THIS .t_a_C{
+    color: #FFF !important;
+            text-align: center;
+            padding: 5px 0px;
+            font-size: 17px !important;
+            margin-bottom:1% !important;
+}
+.THIS table{
+   width: auto;
+}
+.THIS .slds-form-element {
+    width: 59.2%;
+    text-align: center;
+    margin-left: 7%;
+}
+.THIS .calendar{
+    overflow: hidden;
+    height: 100% !important;
+}
+.THIS .slds-select{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    height:40px;
+    color: #212529;
+    background-color: #fff;
+    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e) !important;
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    }
+
+.THIS .my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    }
+.THIS .my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+.THIS .my-legend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+    }
+.THIS .my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 15px;
+    margin-right: 5px;
+    margin-left: 0;
+    border-radius: 10px;
+    }
+.THIS .my-legend ul.ptlegend-labels li span {
+    display: block;
+    float: left;
+    height: 5px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    margin-top: 3%;
+    }
+.THIS .my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+    }
+.THIS .my-legend a {
+    color: #777;
+    }
+.THIS label {
+    max-width: 80%;
+}
+.THIS .Activities{
+    width:15%;
+    margin-top: 5%;
+}
+.THIS .calendar table.month tr td .day-content {
+    padding: 3px 5px;
+}
+.THIS .calendar table td, .THIS .calendar table th {
+    height: 32px;
+}
+.THIS .calendar .month-container {
+    height: 250px;
+}
+
+.THIS .sub-img{
+    float: left;
+    height: 60px;
+}
+.THIS .sub-title{
+    padding-top:1%;
+}
+.THIS .sub2-title{
+   padding-top: 5px;
+}
+.THIS .shape2 {
+    top: 20% !important;
+}
+.THIS h1 {
+    color: #8a199c !important;
+}
+.THIS h2 {
+    color: #8a199c !important;
+}
+.THIS h3 {
+    color: #8a199c !important;
+}
+.THIS .my-legend{
+    float:left;
+}
+.THIS.bgimg {
+    background-image: url('/resource/1639564096000/footerbg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.THIS .justify{
+    text-align: justify;
+}
+.THIS .btn {
+    padding: 7px 50px 10px 25px;
+    margin: 5px;
+}
+.THIS .margin-40{
+    margin-left: 40%;
+}
+.THIS .btn-primary i {
+    right: 7px;
+    top: 46%;
+    height: 22px;
+    width: 22px;
+    line-height: 25px;
+}
+.THIS .btn-active{
+    background: #19ce67;   
+}
